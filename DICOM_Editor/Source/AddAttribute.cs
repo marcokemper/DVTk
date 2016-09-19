@@ -292,7 +292,9 @@ namespace DCMEditor
 				|| (vrString == "LT")  
 				|| (vrString == "OB")  
 				|| (vrString == "OF")  
-				|| (vrString == "OW")  
+				|| (vrString == "OW")
+                || (vrString == "OL")
+                || (vrString == "OD")
 				|| (vrString == "PN")  
 				|| (vrString == "SH")  
 				|| (vrString == "SL")  
@@ -303,7 +305,9 @@ namespace DCMEditor
 				|| (vrString == "UI")  
 				|| (vrString == "UL")  
 				|| (vrString == "UN")  
-				|| (vrString == "US")  
+				|| (vrString == "US")
+                || (vrString == "UR")
+                || (vrString == "UC") 
 				|| (vrString == "UT"))
 			{
 				isVRValid = true;

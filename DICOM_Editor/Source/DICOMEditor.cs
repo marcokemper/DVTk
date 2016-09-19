@@ -813,7 +813,7 @@ namespace DCMEditor
 
 				//Subscribe the Dvtk activity report event handler for getting all activity logging.
 				_MainThread.Options.DvtkScriptSession.ActivityReportEvent += activityReportEventHandler;
-				_MainThread.Options.DvtkScriptSession.AddGroupLength = true;
+				_MainThread.Options.DvtkScriptSession.AddGroupLength = false;
 
 				// Set the Results & Data directory
 				_MainThread.Options.ResultsDirectory = Application.StartupPath + "\\" + "Results";
@@ -1644,9 +1644,8 @@ namespace DCMEditor
                         // Add modified dataset to Media file
                         dcmFile.DataSet = _DCMdataset;
 
-                        //Set attribute group length
-                        if (_IsAttributeGroupLengthDefined)
-                            dcmFile.AddGroupLength = true;
+                        //Set attribute group length to false
+                        dcmFile.AddGroupLength = false;
 
                         dcmFile.Write(_NewDCMFileName);
                     }
@@ -1973,6 +1972,8 @@ namespace DCMEditor
 			if (vrString == "OB")   return VR.OB;
 			if (vrString == "OF")   return VR.OF;
 			if (vrString == "OW")   return VR.OW;
+            if (vrString == "OL")   return VR.OL;
+            if (vrString == "OD")   return VR.OD;
 			if (vrString == "PN")   return VR.PN;
 			if (vrString == "SH")   return VR.SH;
 			if (vrString == "SL")   return VR.SL;
@@ -1985,6 +1986,8 @@ namespace DCMEditor
 			if (vrString == "UN")   return VR.UN;
 			if (vrString == "US")   return VR.US;
 			if (vrString == "UT")   return VR.UT;
+            if (vrString == "UC")   return VR.UC;
+            if (vrString == "UR")   return VR.UR;
 			// Unknown DicomValueType
 			throw new System.NotImplementedException();
 		}

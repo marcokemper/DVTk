@@ -1438,6 +1438,14 @@ namespace Dvtk.Dicom.InformationEntity
 									{
 										break;
 									}
+                                    case VR.UR:
+                                    {
+                                        break;
+                                    }
+                                    case VR.UC:
+                                    {
+                                        break;
+                                    }
 
 									default:
 										isFound = false;
@@ -2028,7 +2036,14 @@ namespace Dvtk.Dicom.InformationEntity
                     {
                         break;
                     }
-
+                case VR.UR:
+                    {
+                        break;
+                    }
+                case VR.UC:
+                    {
+                        break;
+                    }
                 default:
                     isFound = false;
                     break;

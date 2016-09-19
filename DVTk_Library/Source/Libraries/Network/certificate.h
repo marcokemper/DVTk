@@ -133,9 +133,9 @@ private:
 
 	DVT_STATUS importPem(const char* filename, bool certificatesOnly, const char* password);
 
-	static char* derCallback(CERTIFICATE_FILE_CLASS* certFileClass_ptr, unsigned char **buf_ptrptr, long length);
+	static char* derCallback(CERTIFICATE_FILE_CLASS* certFileClass_ptr, const unsigned char **buf_ptrptr, long length);
 
-	char* derDecode(unsigned char **buf_ptrptr, long length);
+	static char* derDecode(const unsigned char **buf_ptrptr, long length);
 
 	DVT_STATUS importDer(const char* filename, bool certificatesOnly, const char* password);
 

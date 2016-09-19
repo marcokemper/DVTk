@@ -215,6 +215,14 @@ namespace ManagedUnManagedDimseConvertors
         static void
             Convert(DCM_ATTRIBUTE_CLASS *pUMAttribute, DvtkData::Dimse::OtherWordString __gc *pOtherWordString);
 
+	private:
+        static void
+            Convert(DCM_ATTRIBUTE_CLASS *pUMAttribute, DvtkData::Dimse::OtherLongString __gc *pOtherLongString);
+
+	private:
+        static void
+            Convert(DCM_ATTRIBUTE_CLASS *pUMAttribute, DvtkData::Dimse::OtherDoubleString __gc *pOtherDoubleString);
+
     private:
         static void
             Convert(DCM_ATTRIBUTE_CLASS *pUMAttribute, DvtkData::Dimse::PersonName __gc *pPersonName);
@@ -247,6 +255,10 @@ namespace ManagedUnManagedDimseConvertors
         static void
             Convert(DCM_ATTRIBUTE_CLASS *pUMAttribute, DvtkData::Dimse::UniqueIdentifier __gc *pUniqueIdentifier);
 
+	private:
+        static void
+            Convert(DCM_ATTRIBUTE_CLASS *pUMAttribute, DvtkData::Dimse::UnlimitedCharacters __gc *pUnlimitedCharacters);
+
     private:
         static void
             Convert(DCM_ATTRIBUTE_CLASS *pUMAttribute, DvtkData::Dimse::UnsignedLong __gc *pUnsignedLong);
@@ -262,6 +274,10 @@ namespace ManagedUnManagedDimseConvertors
     private:
         static void
             Convert(DCM_ATTRIBUTE_CLASS *pUMAttribute, DvtkData::Dimse::UnlimitedText __gc *pUnlimitedText);
+
+	private:
+        static void
+            Convert(DCM_ATTRIBUTE_CLASS *pUMAttribute, DvtkData::Dimse::UniversalResourceIdentifier __gc *pUniversalResourceIdentifier);
     };
 
 }

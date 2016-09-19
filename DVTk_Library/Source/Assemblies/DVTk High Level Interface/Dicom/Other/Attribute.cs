@@ -245,6 +245,8 @@ namespace DvtkHighLevelInterface.Dicom.Other
 				case VR.UL: // Unsigned Long
 				case VR.US: // Unsigned Short
 				case VR.UT: // Unlimited Text
+                case VR.UC: // Unlimited Characters
+                case VR.UR: // Universal Resource Locator
 					isSimpleVR = true;
 					break;
 

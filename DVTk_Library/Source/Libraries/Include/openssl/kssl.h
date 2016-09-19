@@ -10,7 +10,7 @@
  * are met:
  *
  * 1. Redistributions of source code must retain the above copyright
- *    notice, this list of conditions and the following disclaimer. 
+ *    notice, this list of conditions and the following disclaimer.
  *
  * 2. Redistributions in binary form must reproduce the above copyright
  *    notice, this list of conditions and the following disclaimer in
@@ -70,6 +70,15 @@
 #include <stdio.h>
 #include <ctype.h>
 #include <krb5.h>
+#ifdef OPENSSL_SYS_WIN32
+/* These can sometimes get redefined indirectly by krb5 header files
+ * after they get undefed in ossl_typ.h
+ */
+#undef X509_NAME
+#undef X509_EXTENSIONS
+#undef OCSP_REQUEST
+#undef OCSP_RESPONSE
+#endif
 
 #ifdef  __cplusplus
 extern "C" {
@@ -82,6 +91,12 @@ extern "C" {
 #ifdef KRB5_HEIMDAL
 typedef unsigned char krb5_octet;
 #define FAR
+#else
+
+#ifndef FAR
+#define FAR
+#endif
+
 #endif
 
 /*	Uncomment this to debug kssl problems or
@@ -149,7 +164,7 @@ KSSL_CTX *kssl_ctx_new(void);
 KSSL_CTX *kssl_ctx_free(KSSL_CTX *kssl_ctx);
 void kssl_ctx_show(KSSL_CTX *kssl_ctx);
 krb5_error_code kssl_ctx_setprinc(KSSL_CTX *kssl_ctx, int which,
-        krb5_data *realm, krb5_data *entity);
+        krb5_data *realm, krb5_data *entity, int nentities);
 krb5_error_code	kssl_cget_tkt(KSSL_CTX *kssl_ctx,  krb5_data **enc_tktp,
         krb5_data *authenp, KSSL_ERR *kssl_err);
 krb5_error_code	kssl_sget_tkt(KSSL_CTX *kssl_ctx,  krb5_data *indata,
@@ -165,6 +180,10 @@ krb5_error_code  kssl_validate_times(krb5_timestamp atime,
 krb5_error_code  kssl_check_authent(KSSL_CTX *kssl_ctx, krb5_data *authentp,
 			            krb5_timestamp *atimep, KSSL_ERR *kssl_err);
 unsigned char	*kssl_skip_confound(krb5_enctype enctype, unsigned char *authn);
+
+void SSL_set0_kssl_ctx(SSL *s, KSSL_CTX *kctx);
+KSSL_CTX * SSL_get0_kssl_ctx(SSL *s);
+char *kssl_ctx_get0_client_princ(KSSL_CTX *kctx);
 
 #ifdef  __cplusplus
 }

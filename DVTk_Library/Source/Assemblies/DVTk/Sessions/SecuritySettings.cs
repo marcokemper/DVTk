@@ -23,6 +23,8 @@ namespace Dvtk.Sessions
     // Aliases for types
     //
     using FileName = System.String;
+    using System.Windows.Forms;
+    using System.Reflection;
 
     internal class TlsVersionFlagsConverter : EnumConverter 
     {
@@ -32,7 +34,7 @@ namespace Dvtk.Sessions
         // want to expose them to users of my webservices or 
         // my businesslogic layer.
         #region Constants
-        public const string TLSv1="TLSv1";
+        public const string TLSv1 = "TLSv1";
         public const string SSLv3="SSLv3";
         public const string Seperator=":";
         #endregion
@@ -174,7 +176,8 @@ namespace Dvtk.Sessions
             AES         ="AES",
             NoAES128    ="-DHE-RSA-AES128-SHA:-DHE-DSS-AES128-SHA:-AES128-SHA",
             NoAES256    ="-DHE-RSA-AES256-SHA:-DHE-DSS-AES256-SHA:-AES256-SHA",
-            TlsPostFix  =":@STRENGTH:-SSLv2",
+            TlsPostFix = ":@STRENGTH:-SSLv2",
+            //TlsPostFix = "+TLSv1.2",
             SecElementSeperator = "+",
             SecGroupSeperator = ":";
         #endregion
@@ -194,32 +197,120 @@ namespace Dvtk.Sessions
             return base.CanConvertFrom(context, sourceType);
         }
         // Overrides the ConvertFrom method of TypeConverter.
+
+        public bool getSecuritySettingsChangedStatus()
+        {
+            return securitySettingsChanged;
+        }
+
+        
+        public bool isFirstcheck = true;
+        public bool securitySettingsChanged;
         public override object ConvertFrom(ITypeDescriptorContext context, 
             System.Globalization.CultureInfo culture, object value) 
         {
             if (value is string) 
             {
+                securitySettingsChanged = false;
                 string stringValue = (string)value;
                 // Search for AES128 and AES256 disabling settings
                 bool bDisableAES128 = (stringValue.IndexOf(NoAES128) != -1);
                 bool bDisableAES256 = (stringValue.IndexOf(NoAES256) != -1);
+                
+                int count = 0;
                 CipherFlags cipherFlags = 0;
                 // Split library string into security groups
                 string[] secGroups = stringValue.Split(new char[] {':'});
                 // Analyze the first security group only for settings
-                if (secGroups[0].IndexOf(aRSA) != -1)       cipherFlags |= CipherFlags.TLS_AUTHENICATION_METHOD_RSA;
-                if (secGroups[0].IndexOf(aDSS) != -1)       cipherFlags |= CipherFlags.TLS_AUTHENICATION_METHOD_DSA;
-                if (secGroups[0].IndexOf(kRSA) != -1)       cipherFlags |= CipherFlags.TLS_KEY_EXCHANGE_METHOD_RSA;
-                if (secGroups[0].IndexOf("+"+DH) != -1)     cipherFlags |= CipherFlags.TLS_KEY_EXCHANGE_METHOD_DH;
-                if (secGroups[0].IndexOf(SHA1) != -1)       cipherFlags |= CipherFlags.TLS_DATA_INTEGRITY_METHOD_SHA1;
-                if (secGroups[0].IndexOf(MD5) != -1)        cipherFlags |= CipherFlags.TLS_DATA_INTEGRITY_METHOD_MD5;
-                if (secGroups[0].IndexOf(eNULL) != -1)      cipherFlags |= CipherFlags.TLS_ENCRYPTION_METHOD_NONE;
-                if (secGroups[0].IndexOf(tripleDES) != -1)  cipherFlags |= CipherFlags.TLS_ENCRYPTION_METHOD_3DES;
-                if (secGroups[0].IndexOf(AES) != -1) 
+
+                if (secGroups[0].IndexOf(aRSA) != -1 & secGroups[0].IndexOf(aDSS) != -1)      
                 {
-                    if (!bDisableAES128) cipherFlags |= CipherFlags.TLS_ENCRYPTION_METHOD_AES128;
-                    if (!bDisableAES256) cipherFlags |= CipherFlags.TLS_ENCRYPTION_METHOD_AES256;
+                    cipherFlags |= CipherFlags.TLS_AUTHENICATION_METHOD_RSA;
+                    securitySettingsChanged = true;
+                    // none aan
                 }
+                //else if (secGroups[0].IndexOf(aRSA) == -1 & secGroups[0].IndexOf(aDSS) == -1)
+                //{
+                //    cipherFlags |= CipherFlags.TLS_AUTHENICATION_METHOD_RSA;
+                //    securitySettingsChanged = true;
+                //    // none aan
+                //}
+                else
+                {
+                    if (secGroups[0].IndexOf(aRSA) != -1) cipherFlags |= CipherFlags.TLS_AUTHENICATION_METHOD_RSA;
+                    if (secGroups[0].IndexOf(aDSS) != -1) cipherFlags |= CipherFlags.TLS_AUTHENICATION_METHOD_DSA;
+                }
+                
+                if (secGroups[0].IndexOf(kRSA) != -1 & secGroups[0].IndexOf("+"+DH) != -1)
+                {
+                    cipherFlags |= CipherFlags.TLS_KEY_EXCHANGE_METHOD_RSA;
+                    securitySettingsChanged = true;
+                }
+                //else if (secGroups[0].IndexOf(kRSA) == -1 & secGroups[0].IndexOf("+" + DH) == -1)
+                //{
+                //    cipherFlags |= CipherFlags.TLS_KEY_EXCHANGE_METHOD_RSA;
+                //    securitySettingsChanged = true;
+                //}
+                else
+                {
+                    if (secGroups[0].IndexOf(kRSA) != -1)  cipherFlags |= CipherFlags.TLS_KEY_EXCHANGE_METHOD_RSA;
+                    if (secGroups[0].IndexOf("+"+DH) != -1)  cipherFlags |= CipherFlags.TLS_KEY_EXCHANGE_METHOD_DH;
+                }
+
+
+                if (secGroups[0].IndexOf(SHA1) != -1 & secGroups[0].IndexOf("+" + MD5) != -1)
+                {
+                    cipherFlags |= CipherFlags.TLS_DATA_INTEGRITY_METHOD_SHA1;
+                    securitySettingsChanged = true;
+                }
+                //else if (secGroups[0].IndexOf(SHA1) == -1 & secGroups[0].IndexOf("+" + MD5) == -1)
+                //{
+                //    cipherFlags |= CipherFlags.TLS_DATA_INTEGRITY_METHOD_SHA1;
+                //    securitySettingsChanged = true;
+                //}
+                else
+                {
+                    if (secGroups[0].IndexOf(SHA1) != -1) cipherFlags |= CipherFlags.TLS_DATA_INTEGRITY_METHOD_SHA1;
+                    if (secGroups[0].IndexOf(MD5) != -1) cipherFlags |= CipherFlags.TLS_DATA_INTEGRITY_METHOD_MD5;
+                }
+
+
+                if (secGroups[0].IndexOf(eNULL) != -1) count++;
+                if (secGroups[0].IndexOf(tripleDES) != -1) count++;
+                if (secGroups[0].IndexOf(AES) != -1)
+                {
+                    if (!bDisableAES128) count++;
+                    if (!bDisableAES256) count++;
+                }
+
+
+                if (count < 2)
+                {
+                    if (secGroups[0].IndexOf(eNULL) != -1) cipherFlags |= CipherFlags.TLS_ENCRYPTION_METHOD_NONE;
+                    if (secGroups[0].IndexOf(tripleDES) != -1) cipherFlags |= CipherFlags.TLS_ENCRYPTION_METHOD_3DES;
+                    if (secGroups[0].IndexOf(AES) != -1)
+                    {
+                        if (!bDisableAES128) cipherFlags |= CipherFlags.TLS_ENCRYPTION_METHOD_AES128;
+                        if (!bDisableAES256) cipherFlags |= CipherFlags.TLS_ENCRYPTION_METHOD_AES256;
+                    }
+                }
+                else 
+                {
+                    securitySettingsChanged = true;
+                    // Set 3DES as default
+                    cipherFlags |= CipherFlags.TLS_ENCRYPTION_METHOD_3DES;
+                }
+
+                if (securitySettingsChanged & isFirstcheck)
+                {
+                    MessageBox.Show("Configuration not supported by new openssl version, default configuration is loaded", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    isFirstcheck = false;
+                }
+                else if (!securitySettingsChanged & !isFirstcheck)
+                {
+                    isFirstcheck = true;
+                }
+
                 return cipherFlags;
             }
             return base.ConvertFrom(context, culture, value);
@@ -252,8 +343,8 @@ namespace Dvtk.Sessions
                 libraryString = libraryString.Replace(CipherFlags.TLS_ENCRYPTION_METHOD_3DES.ToString(), tripleDES);
                 if (bAES128 || bAES256) libraryString += (SecElementSeperator + AES);
                 // Append AES128 and AES256 disabling settings
-                if (!bAES128 &&  bAES256) libraryString += (SecGroupSeperator + NoAES128);
-                if ( bAES128 && !bAES256) libraryString += (SecGroupSeperator + NoAES256);
+                if (!bAES128 && bAES256) libraryString += (SecGroupSeperator + NoAES128);
+                if (bAES128 && !bAES256) libraryString += (SecGroupSeperator + NoAES256);
                 // Append post fix
                 libraryString += TlsPostFix;
                 return libraryString;
@@ -398,6 +489,11 @@ namespace Dvtk.Sessions
             get;
             set;
         }
+
+        bool securitySettingsChanged
+        {
+            get;
+        }
         /// <summary>
         /// Session caching will be optionally supported.
         /// It can be turned on or off.
@@ -490,6 +586,24 @@ namespace Dvtk.Sessions
                     TypeDescriptor.GetConverter(value).ConvertToString(value); 
             }
         }
+
+        CipherFlagsConverter bla = new CipherFlagsConverter();
+
+        public bool securitySettingsChanged
+        {
+            get
+            {
+
+                Type type = typeof(CipherFlagsConverter);
+                MethodInfo info = type.GetMethod("getSecuritySettingsChangedStatus");
+
+                object bla2 = info.Invoke(bla, new object[] { });
+                return (bool)bla2;
+
+                    
+            }
+        }
+
         public System.Boolean CheckRemoteCertificate
         {
             get
@@ -504,32 +618,32 @@ namespace Dvtk.Sessions
         public CipherFlags CipherFlags
         {
             get 
-            { 
-                return (CipherFlags)
-                    TypeDescriptor.
-                    GetConverter(typeof(CipherFlags)).
-                    ConvertFromString(this.m_adaptee.CipherList); 
+            {
+                return (CipherFlags)bla.ConvertFrom(this.m_adaptee.CipherList); 
+                    //TypeDescriptor.
+                    //GetConverter(typeof(CipherFlags)).
+                    //ConvertFromString(this.m_adaptee.CipherList); 
             }
             set 
-            { 
-                if (
-                    (value & CipherFlags.TLS_AUTHENICATION_METHOD_RSA) == 0 &&
-                    (value & CipherFlags.TLS_AUTHENICATION_METHOD_DSA) == 0
-                    ) throw new System.ArgumentException("Select at least one Authentication method");
-                if (
-                    (value & CipherFlags.TLS_KEY_EXCHANGE_METHOD_RSA) == 0 &&
-                    (value & CipherFlags.TLS_KEY_EXCHANGE_METHOD_DH) == 0
-                    ) throw new System.ArgumentException("Select at least one Key Exchange method");  
-                if (
-                    (value & CipherFlags.TLS_DATA_INTEGRITY_METHOD_SHA1) == 0 &&
-                    (value & CipherFlags.TLS_DATA_INTEGRITY_METHOD_MD5) == 0
-                    ) throw new System.ArgumentException("Select at least one Data Integrity method");
-                if (
-                    (value & CipherFlags.TLS_ENCRYPTION_METHOD_NONE) == 0 &&
-                    (value & CipherFlags.TLS_ENCRYPTION_METHOD_3DES) == 0 &&
-                    (value & CipherFlags.TLS_ENCRYPTION_METHOD_AES128) == 0 &&
-                    (value & CipherFlags.TLS_ENCRYPTION_METHOD_AES256) == 0
-                    ) throw new System.ArgumentException("Select at least one Encryption method");
+            {
+                //if (
+                //    (value & CipherFlags.TLS_AUTHENICATION_METHOD_RSA) == 0 &&
+                //    (value & CipherFlags.TLS_AUTHENICATION_METHOD_DSA) == 0
+                //    ) throw new System.ArgumentException("Select at least one Authentication method");
+                //if (
+                //    (value & CipherFlags.TLS_KEY_EXCHANGE_METHOD_RSA) == 0 &&
+                //    (value & CipherFlags.TLS_KEY_EXCHANGE_METHOD_DH) == 0
+                //    ) throw new System.ArgumentException("Select at least one Key Exchange method");
+                //if (
+                //    (value & CipherFlags.TLS_DATA_INTEGRITY_METHOD_SHA1) == 0 &&
+                //    (value & CipherFlags.TLS_DATA_INTEGRITY_METHOD_MD5) == 0
+                //    ) throw new System.ArgumentException("Select at least one Data Integrity method");
+                //if (
+                //    (value & CipherFlags.TLS_ENCRYPTION_METHOD_NONE) == 0 &&
+                //    (value & CipherFlags.TLS_ENCRYPTION_METHOD_3DES) == 0 &&
+                //    (value & CipherFlags.TLS_ENCRYPTION_METHOD_AES128) == 0 &&
+                //    (value & CipherFlags.TLS_ENCRYPTION_METHOD_AES256) == 0
+                //    ) throw new System.ArgumentException("Select at least one Encryption method");
                 if (!_ValidCipherFlags(value))
                     throw new System.ArgumentException("Configuration does not match any cipher suites");
                 this.m_adaptee.CipherList =

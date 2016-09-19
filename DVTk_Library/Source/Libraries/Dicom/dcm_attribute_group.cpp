@@ -288,13 +288,17 @@ UINT32 DCM_ATTRIBUTE_GROUP_CLASS::computeLength(TS_CODE tsCode)
 				// explicit VR = 2 bytes
 				totalLength += 2;
 			
-				// check for special OB, OF, OW, SQ, UN & UT encoding
-				if ((vr == ATTR_VR_OB) ||
-					(vr == ATTR_VR_OF) ||
-					(vr == ATTR_VR_OW) ||
-					(vr == ATTR_VR_SQ) ||
-					(vr == ATTR_VR_UN) ||
-					(vr == ATTR_VR_UT))
+				// check for special OB, OF, OW, OL, OD, SQ, UN, UR, UC& UT encoding
+			if ((vr == ATTR_VR_OB) || 
+				(vr == ATTR_VR_OF) || 
+				(vr == ATTR_VR_OW) || 
+				(vr == ATTR_VR_OL) || 
+				(vr == ATTR_VR_OD) || 
+				(vr == ATTR_VR_SQ) || 
+				(vr == ATTR_VR_UN) || 
+				(vr == ATTR_VR_UR) ||
+				(vr == ATTR_VR_UC) ||
+				(vr == ATTR_VR_UT)) 
 				{
 					// 16 bit padding & 32 bit length used = 6 bytes
 					totalLength += 6;
@@ -747,13 +751,17 @@ void DCM_ATTRIBUTE_GROUP_CLASS::computeItemOffsets(DATA_TF_CLASS& dataTransfer)
 			// explicit VR = 2 bytes
 			offsetM += 2;
 			
-			// check for special OB, OF, OW, SQ, UN & UT encoding
-			if ((vr == ATTR_VR_OB) ||
-				(vr == ATTR_VR_OF) ||
-				(vr == ATTR_VR_OW) ||
-				(vr == ATTR_VR_SQ) ||
-				(vr == ATTR_VR_UN) ||
-				(vr == ATTR_VR_UT))
+			// check for special OB, OF, OW, OL, OD, SQ, UN, UR, UC& UT encoding
+			if ((vr == ATTR_VR_OB) || 
+				(vr == ATTR_VR_OF) || 
+				(vr == ATTR_VR_OW) || 
+				(vr == ATTR_VR_OL) || 
+				(vr == ATTR_VR_OD) || 
+				(vr == ATTR_VR_SQ) || 
+				(vr == ATTR_VR_UN) || 
+				(vr == ATTR_VR_UR) ||
+				(vr == ATTR_VR_UC) ||
+				(vr == ATTR_VR_UT)) 
 			{
 				// 16 bit padding & 32 bit length used = 6 bytes
 				offsetM += 6;
@@ -830,13 +838,17 @@ void DCM_ATTRIBUTE_GROUP_CLASS::computeItemOffsets(string transferSyntax)
 			// explicit VR = 2 bytes
 			offsetM += 2;
 			
-			// check for special OB, OF, OW, SQ, UN & UT encoding
-			if ((vr == ATTR_VR_OB) ||
-				(vr == ATTR_VR_OF) ||
-				(vr == ATTR_VR_OW) ||
-				(vr == ATTR_VR_SQ) ||
-				(vr == ATTR_VR_UN) ||
-				(vr == ATTR_VR_UT))
+			// check for special OB, OF, OW, OL, OD, SQ, UN, UR, UC& UT encoding
+			if ((vr == ATTR_VR_OB) || 
+				(vr == ATTR_VR_OF) || 
+				(vr == ATTR_VR_OW) || 
+				(vr == ATTR_VR_OL) || 
+				(vr == ATTR_VR_OD) || 
+				(vr == ATTR_VR_SQ) || 
+				(vr == ATTR_VR_UN) || 
+				(vr == ATTR_VR_UR) ||
+				(vr == ATTR_VR_UC) ||
+				(vr == ATTR_VR_UT)) 
 			{
 				// 16 bit padding & 32 bit length used = 6 bytes
 				offsetM += 6;

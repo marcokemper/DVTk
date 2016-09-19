@@ -1195,6 +1195,8 @@ bool SCRIPT_SESSION_CLASS::updateLabelledValues(DCM_ATTRIBUTE_GROUP_CLASS *dsObj
 				case ATTR_VR_UI:
 				case ATTR_VR_UN:
 				case ATTR_VR_UT:
+				case ATTR_VR_UC:
+				case ATTR_VR_UR:
 					{
 						// for all items check the label updates
 						for (int j = 0; j < rxAttribute_ptr->GetNrValues(); j++)

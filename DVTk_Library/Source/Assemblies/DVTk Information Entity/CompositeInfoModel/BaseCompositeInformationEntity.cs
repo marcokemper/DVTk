@@ -251,6 +251,14 @@ namespace Dvtk.Dicom.InformationEntity.CompositeInfoModel
                         {
                             break;
                         }
+                    case VR.UR:
+                        {
+                            break;
+                        }
+                    case VR.UC:
+                        {
+                            break;
+                        }
                     default:
                         dumpString += String.Format("\'  \'");
                         break;

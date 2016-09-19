@@ -29,7 +29,7 @@
 #include "Iutility.h"		// Utility component interface
 #include "base_socket.h"	// Socket base class interface
 #include "openssl.h"		// OpenSSL library interface
-
+#include <string>
 
 //*****************************************************************************
 //  CONSTANTS AND TYPE DEFINITIONS

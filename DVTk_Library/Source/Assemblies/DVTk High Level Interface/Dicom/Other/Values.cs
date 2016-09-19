@@ -328,6 +328,11 @@ namespace DvtkHighLevelInterface.Dicom.Other
 						collection = theUnsignedShort.Values;
 						break;
 
+                    case VR.UC: // Unlimited Characters
+                        DvtkData.Dimse.UnlimitedCharacters theUnlimitedCharacters = dicomValue as DvtkData.Dimse.UnlimitedCharacters;
+                        collection = theUnlimitedCharacters.Values;
+                        break;
+
 					default:
 						collection = null;
 						break;
@@ -376,7 +381,7 @@ namespace DvtkHighLevelInterface.Dicom.Other
 						count = 1;
 					}
 				}
-                else if ((attribute.VR == VR.OB) || (attribute.VR == VR.OF) || (attribute.VR == VR.OW))
+                else if ((attribute.VR == VR.OB) || (attribute.VR == VR.OF) || (attribute.VR == VR.OW) || (attribute.VR == VR.OD) || (attribute.VR == VR.OL))
 					// File or pattern implementation.
 				{
 					if ((FileNameImplementation != null) || (BitmapPatternParametersImplementation != null))
@@ -518,6 +523,7 @@ namespace DvtkHighLevelInterface.Dicom.Other
 					case VR.UI: // Unique Identifier (UID)
 					case VR.UL: // Unsigned Long
 					case VR.US: // Unsigned Short
+                    case VR.UC: // Unlimited Characters
 						isCollectionImplementation = true;
 						break;
 
@@ -547,6 +553,7 @@ namespace DvtkHighLevelInterface.Dicom.Other
 					case VR.LT: // Long Text
 					case VR.ST: // Short Text
 					case VR.UT: // Unlimited Text
+                    case VR.UR: // 
 						isImplementedWithString = true;
 						break;
 
@@ -600,6 +607,11 @@ namespace DvtkHighLevelInterface.Dicom.Other
 						DvtkData.Dimse.UnlimitedText theUnlimitedText = dicomValue as DvtkData.Dimse.UnlimitedText;
 						stringImplementation = theUnlimitedText.Value;
 						break;
+                    
+                    case VR.UR:
+                        DvtkData.Dimse.UniversalResourceIdentifier theUniversalResourceIdentifier = dicomValue as DvtkData.Dimse.UniversalResourceIdentifier;
+                        stringImplementation = theUniversalResourceIdentifier.Value;
+                        break;
 
 					default:
 						stringImplementation = "";
@@ -636,6 +648,10 @@ namespace DvtkHighLevelInterface.Dicom.Other
 						theUnlimitedText.Value = value;
 						break;
 
+                    case VR.UR:
+                        DvtkData.Dimse.UniversalResourceIdentifier theUniversalResourceIdentifier = dicomValue as DvtkData.Dimse.UniversalResourceIdentifier;
+                        theUniversalResourceIdentifier.Value = value;
+                        break;
 					default:
 						break;
 				}
@@ -1330,6 +1346,7 @@ namespace DvtkHighLevelInterface.Dicom.Other
                 case VR.SH: // Short String
                 case VR.TM: // Time
                 case VR.UI: // Unique Identifier (UID)
+                case VR.UC:
                     singleValue = (CollectionImplementation as DvtkData.Collections.StringCollection)[zeroBasedIndex].ToString();
                     break;
 
@@ -1644,6 +1661,7 @@ namespace DvtkHighLevelInterface.Dicom.Other
                 case VR.SH: // Short String
                 case VR.TM: // Time
                 case VR.UI: // Unique Identifier (UID)
+                case VR.UC:
                     {
                         DvtkData.Collections.StringCollection collectionToAdd = ConvertToStringCollection(parameters);
                         DvtkData.Collections.StringCollection currentCollection = (CollectionImplementation as DvtkData.Collections.StringCollection);
@@ -1895,6 +1913,8 @@ namespace DvtkHighLevelInterface.Dicom.Other
                 case VR.ST:
                 case VR.TM:
                 case VR.UT:
+                case VR.UC:
+                case VR.UR:
                     removeTrailingSpaces = true;
                     break;
 
@@ -2085,6 +2105,7 @@ namespace DvtkHighLevelInterface.Dicom.Other
                     case VR.LT:
                     case VR.ST:
                     case VR.UT:
+                    case VR.UR:
                         {
                             if (StringImplementation != null)
                             {
@@ -2096,6 +2117,8 @@ namespace DvtkHighLevelInterface.Dicom.Other
                     case VR.OB:
                     case VR.OF:
                     case VR.OW:
+                    case VR.OD:
+                    case VR.OL:
                     case VR.SQ:
                         {
                             // Do nothing.
@@ -2111,6 +2134,7 @@ namespace DvtkHighLevelInterface.Dicom.Other
 
                     case VR.SS:
                     case VR.US:
+                    case VR.UC:
                         {
                             newDvtkDataLength = (System.UInt32)CollectionImplementation.Count * 2;
                             break;

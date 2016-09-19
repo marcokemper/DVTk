@@ -150,6 +150,8 @@ LT			{ yylval.vr = ATTR_VR_LT; RETURN(VR); }
 OB			{ yylval.vr = ATTR_VR_OB; RETURN(VR); }
 OF			{ yylval.vr = ATTR_VR_OF; RETURN(VR); }
 OW			{ yylval.vr = ATTR_VR_OW; RETURN(VR); }
+OL			{ yylval.vr = ATTR_VR_OL; RETURN(VR); }
+OD			{ yylval.vr = ATTR_VR_OD; RETURN(VR); }
 PN			{ yylval.vr = ATTR_VR_PN; RETURN(VR); }
 SH			{ yylval.vr = ATTR_VR_SH; RETURN(VR); }
 SL			{ yylval.vr = ATTR_VR_SL; RETURN(VR); }
@@ -162,6 +164,8 @@ UL			{ yylval.vr = ATTR_VR_UL; RETURN(VR); }
 UN			{ yylval.vr = ATTR_VR_UN; RETURN(VR); }
 US			{ yylval.vr = ATTR_VR_US; RETURN(VR); }
 UT			{ yylval.vr = ATTR_VR_UT; RETURN(VR); }
+UR			{ yylval.vr = ATTR_VR_UR; RETURN(VR); }
+UC			{ yylval.vr = ATTR_VR_UC; RETURN(VR); }
 
 C-ECHO-RQ			{ yylval.commandField = DIMSE_CMD_CECHO_RQ;         RETURN(COMMANDFIELD); }
 C-ECHO-RSP			{ yylval.commandField = DIMSE_CMD_CECHO_RSP;        RETURN(COMMANDFIELD); }

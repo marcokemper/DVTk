@@ -349,6 +349,7 @@ UINT32 DCM_ATTRIBUTE_CLASS::getPaddedLength()
 		case ATTR_VR_SH:
 		case ATTR_VR_TM:
 		case ATTR_VR_UI:
+		case ATTR_VR_UC:
 			// these VRs have the BACKSLASH as a delimiter between values
 			// - this contributes to the overall length
 			paddedLength += (GetNrValues() - 1);

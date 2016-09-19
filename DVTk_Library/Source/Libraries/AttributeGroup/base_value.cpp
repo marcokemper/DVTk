@@ -52,6 +52,10 @@
 #include "value_un.h"
 #include "value_us.h"
 #include "value_ut.h"
+#include "value_uc.h"
+#include "value_ur.h"
+#include "value_od.h"
+#include "value_ol.h"
 
 //>>===========================================================================
 
@@ -82,6 +86,8 @@ BASE_VALUE_CLASS * CreateNewValue (ATTR_VR_ENUM vr)
     case ATTR_VR_OB:    return (new (VALUE_OB_CLASS));
     case ATTR_VR_OF:    return (new (VALUE_OF_CLASS));
     case ATTR_VR_OW:    return (new (VALUE_OW_CLASS));
+	case ATTR_VR_OD:    return (new (VALUE_OD_CLASS));
+	case ATTR_VR_OL:    return (new (VALUE_OL_CLASS));
     case ATTR_VR_PN:    return (new (VALUE_PN_CLASS));
     case ATTR_VR_SH:    return (new (VALUE_SH_CLASS));
     case ATTR_VR_SL:    return (new (VALUE_SL_CLASS));
@@ -94,6 +100,8 @@ BASE_VALUE_CLASS * CreateNewValue (ATTR_VR_ENUM vr)
     case ATTR_VR_UN:    return (new (VALUE_UN_CLASS));
     case ATTR_VR_US:    return (new (VALUE_US_CLASS));
     case ATTR_VR_UT:    return (new (VALUE_UT_CLASS));
+	case ATTR_VR_UC:    return (new (VALUE_UC_CLASS));
+	case ATTR_VR_UR:    return (new (VALUE_UR_CLASS));
     default:
                         // The vr passed to this function is unknown
                         // should we display some kind of message here?
@@ -154,6 +162,10 @@ UINT32 BASE_VALUE_CLASS::GetMaximumVrLength()
     case ATTR_VR_UN:    return UN_LENGTH;
     case ATTR_VR_US:    return US_LENGTH;
     case ATTR_VR_UT:    return UT_LENGTH;
+	case ATTR_VR_OD:    return OD_LENGTH;
+	case ATTR_VR_OL:    return OL_LENGTH;
+	case ATTR_VR_UR:    return UR_LENGTH;
+	case ATTR_VR_UC:    return UC_LENGTH;
     default: return 0;
     }
 }

@@ -10,7 +10,7 @@
  * are met:
  *
  * 1. Redistributions of source code must retain the above copyright
- *    notice, this list of conditions and the following disclaimer. 
+ *    notice, this list of conditions and the following disclaimer.
  *
  * 2. Redistributions in binary form must reproduce the above copyright
  *    notice, this list of conditions and the following disclaimer in
@@ -59,25 +59,19 @@
 #ifndef HEADER_UI_H
 #define HEADER_UI_H
 
+#ifndef OPENSSL_NO_DEPRECATED
 #include <openssl/crypto.h>
+#endif
 #include <openssl/safestack.h>
+#include <openssl/ossl_typ.h>
 
 #ifdef  __cplusplus
 extern "C" {
 #endif
 
-/* The UI type is a holder for a specific user interface session.  It can
-   contain an illimited number of informational or error strings as well
-   as things to prompt for, both passwords (noecho mode) and others (echo
-   mode), and verification of the same.  All of these are called strings,
-   and are further described below. */
-typedef struct ui_st UI;
-
-/* All instances of UI have a reference to a method structure, which is a
-   ordered vector of functions that implement the lower level things to do.
-   There is an instruction on the implementation further down, in the section
-   for method implementors. */
-typedef struct ui_method_st UI_METHOD;
+/* Declared already in ossl_typ.h */
+/* typedef struct ui_st UI; */
+/* typedef struct ui_method_st UI_METHOD; */
 
 
 /* All the following functions return -1 or NULL on error and in some cases
@@ -217,7 +211,7 @@ int UI_process(UI *ui);
 /* Give a user interface parametrised control commands.  This can be used to
    send down an integer, a data pointer or a function pointer, as well as
    be used to get information from a UI. */
-int UI_ctrl(UI *ui, int cmd, long i, void *p, void (*f)());
+int UI_ctrl(UI *ui, int cmd, long i, void *p, void (*f)(void));
 
 /* The commands */
 /* Use UI_CONTROL_PRINT_ERRORS with the value 1 to have UI_process print the
@@ -293,8 +287,8 @@ UI_METHOD *UI_OpenSSL(void);
 /* The UI_STRING type is the data structure that contains all the needed info
    about a string or a prompt, including test data for a verification prompt.
 */
-DECLARE_STACK_OF(UI_STRING)
 typedef struct ui_string_st UI_STRING;
+DECLARE_STACK_OF(UI_STRING)
 
 /* The different types of strings that are currently supported.
    This is only needed by method authors. */
@@ -316,11 +310,13 @@ int UI_method_set_writer(UI_METHOD *method, int (*writer)(UI *ui, UI_STRING *uis
 int UI_method_set_flusher(UI_METHOD *method, int (*flusher)(UI *ui));
 int UI_method_set_reader(UI_METHOD *method, int (*reader)(UI *ui, UI_STRING *uis));
 int UI_method_set_closer(UI_METHOD *method, int (*closer)(UI *ui));
+int UI_method_set_prompt_constructor(UI_METHOD *method, char *(*prompt_constructor)(UI* ui, const char* object_desc, const char* object_name));
 int (*UI_method_get_opener(UI_METHOD *method))(UI*);
 int (*UI_method_get_writer(UI_METHOD *method))(UI*,UI_STRING*);
 int (*UI_method_get_flusher(UI_METHOD *method))(UI*);
 int (*UI_method_get_reader(UI_METHOD *method))(UI*,UI_STRING*);
 int (*UI_method_get_closer(UI_METHOD *method))(UI*);
+char * (*UI_method_get_prompt_constructor(UI_METHOD *method))(UI*, const char*, const char*);
 
 /* The following functions are helpers for method writers to access relevant
    data from a UI_STRING. */

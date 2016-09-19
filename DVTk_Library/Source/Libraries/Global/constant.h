@@ -332,6 +332,8 @@ enum DVT_STATUS
 #define UINT16_VR_OB	'OB'	// Other Byte String
 #define UINT16_VR_OF	'OF'	// Other Floating Point String
 #define UINT16_VR_OW	'OW'	// Other Word String
+#define UINT16_VR_OL	'OL'	// Other Long String
+#define UINT16_VR_OD	'OD'	// Other Double String
 #define UINT16_VR_PN	'PN'	// Person Name
 #define UINT16_VR_SH	'SH'	// Short String
 #define UINT16_VR_SL	'SL'	// Signed Long
@@ -341,6 +343,8 @@ enum DVT_STATUS
 #define UINT16_VR_TM	'TM'	// Time
 #define UINT16_VR_UI	'UI'	// Unique Identifier
 #define UINT16_VR_UL	'UL'	// Unsigned Long
+#define UINT16_VR_UR	'UR'	// Universal Resource Locator
+#define UINT16_VR_UC	'UC'	// Unlimited Characters
 #define UINT16_VR_UN	'UN'	// Unknown Value Representation
 #define UINT16_VR_US	'US'	// Unsigned Short
 #define UINT16_VR_UT	'UT'	// Unlimited Text
@@ -368,6 +372,8 @@ enum DVT_STATUS
 #define OB_LENGTH	UNDEFINED_LENGTH
 #define OF_LENGTH	UNDEFINED_LENGTH
 #define OW_LENGTH	UNDEFINED_LENGTH
+#define OD_LENGTH	UNDEFINED_LENGTH
+#define OL_LENGTH	UNDEFINED_LENGTH
 #define PN_LENGTH	1024    // 3 component groups of 64 displayed chars, 2nd and 3rd with esc sequences - let length be 1024 (can't define real maximum)
 #define SH_LENGTH	64      // 16 chars + esc sequences = 4*16 max
 #define SL_LENGTH	4
@@ -380,6 +386,8 @@ enum DVT_STATUS
 #define UN_LENGTH	UNDEFINED_LENGTH
 #define US_LENGTH	2
 #define UT_LENGTH	MAXIMUM_LENGTH
+#define UR_LENGTH	MAXIMUM_LENGTH
+#define UC_LENGTH	MAXIMUM_LENGTH
 
 #define LO_CHAR_LENGTH	64
 #define LT_CHAR_LENGTH	10240
@@ -411,6 +419,8 @@ enum ATTR_VR_ENUM
     ATTR_VR_OB,
 	ATTR_VR_OF,
 	ATTR_VR_OW,
+	ATTR_VR_OL,
+	ATTR_VR_OD,
     ATTR_VR_PN,
     ATTR_VR_SH,
 	ATTR_VR_SL,
@@ -424,6 +434,8 @@ enum ATTR_VR_ENUM
 	ATTR_VR_US,
 	ATTR_VR_UT,
 	ATTR_VR_QQ,
+	ATTR_VR_UR,
+	ATTR_VR_UC,
 	ATTR_VR_DOESNOTEXIST
 };
 

@@ -470,6 +470,18 @@ namespace DvtkData.Dimse
 							dumpString+= String.Format(", \"{0}\"\r\n", otherWordString.FileName);
 							break;
 						}
+                        case VR.OL:
+                        {
+                            OtherLongString otherLongString = (OtherLongString)attribute.DicomValue;
+                            dumpString += String.Format(", \"{0}\"\r\n", otherLongString.FileName);
+                            break;
+                        }
+                        case VR.OD:
+                        {
+                            OtherDoubleString otherDoubleString = (OtherDoubleString)attribute.DicomValue;
+                            dumpString += String.Format(", \"{0}\"\r\n", otherDoubleString.FileName);
+                            break;
+                        }
 						case VR.PN:
 						{
 							PersonName personName = (PersonName)attribute.DicomValue;
@@ -545,9 +557,17 @@ namespace DvtkData.Dimse
 						{
 							break;
 						}
+                        case VR.UR:
+                        {
+                            break;
+                        }
+                        case VR.UC:
+                        {
+                            break;
+                        }
 						default:
-							dumpString+= String.Format("\r\n");
-							break;
+						dumpString+= String.Format("\r\n");
+						break;
 					}
 				}
 				else
@@ -1648,6 +1668,14 @@ namespace DvtkData.Dimse
         /// </summary>
         OW,
         /// <summary>
+        /// Other Double String
+        /// </summary>
+        OD,
+        /// <summary>
+        /// Other Long String
+        /// </summary>
+        OL,
+        /// <summary>
         /// Person Name
         /// </summary>
         PN,
@@ -1695,6 +1723,14 @@ namespace DvtkData.Dimse
         /// Unlimited Text
         /// </summary>
         UT,
+        /// <summary>
+        /// Universal Resource Locator
+        /// </summary>
+        UR,
+        /// <summary>
+        /// Unlimited Characters
+        /// </summary>
+        UC
     }
 
 	/// <summary>
@@ -2161,6 +2197,31 @@ namespace DvtkData.Dimse
             return (System.String[])arrayList.ToArray(typeof(System.String));
         }
 
+        private System.String[] _CastUnlimitedCharactersStringArray(object[] inArray)
+        {
+            System.Collections.ArrayList arrayList = new ArrayList();
+            foreach (object item in inArray)
+            {
+                if (item is DvtkData.Dul.AbstractSyntax)
+                    arrayList.Add((item as DvtkData.Dul.AbstractSyntax).UID);
+                else if (item is DvtkData.Dul.TransferSyntax)
+                    arrayList.Add((item as DvtkData.Dul.TransferSyntax).UID);
+                else
+                {
+                    try
+                    {
+                        System.String value = System.Convert.ToString(item);
+                        arrayList.Add(value);
+                    }
+                    catch (InvalidCastException e)
+                    {
+                        Console.WriteLine("Error casting attribute parameter to VR value. " + e);
+                    }
+                }
+            }
+            return (System.String[])arrayList.ToArray(typeof(System.String));
+        }
+
         private UNSIGNED_LONG[] _CastToUnsignedLongArray(object[] inArray)
         {
             System.Collections.ArrayList arrayList = new ArrayList();
@@ -2509,6 +2570,95 @@ namespace DvtkData.Dimse
 						dicomValue = otherFloatString;
 						break;
 					}
+
+                case VR.OD:
+                    {
+                        OtherDoubleString otherDoubleString = new OtherDoubleString();
+                        if (list.Length > 0)
+                        {
+                            if (list.Length == 1 && list[0] is System.String)
+                            {
+                                otherDoubleString.FileName = (System.String)list[0];
+                                Length = (System.UInt32)otherDoubleString.FileName.Length;
+                            }
+                            else if (list.Length == 1 && list[0] is BitmapPatternParameters)
+                            {
+                                otherDoubleString.BitmapPattern = (BitmapPatternParameters)list[0];
+                            }
+                            else if (list.Length > 0 && list.Length <= 7)
+                            {
+                                BitmapPatternParameters pattern = new BitmapPatternParameters();
+                                try
+                                {
+                                    int listLength = list.Length;
+                                    if (listLength > 0)
+                                    {
+                                        pattern.NumberOfRows = System.Convert.ToUInt16(list[0]);
+                                        if (listLength == 1) pattern.NumberOfColumns = pattern.NumberOfRows;
+                                    }
+                                    if (listLength > 1) pattern.NumberOfColumns = System.Convert.ToUInt16(list[1]);
+                                    if (listLength > 2) pattern.StartValue = System.Convert.ToUInt16(list[2]);
+                                    if (listLength > 3) pattern.ValueIncrementPerRowBlock = System.Convert.ToUInt16(list[3]);
+                                    if (listLength > 4) pattern.ValueIncrementPerColumnBlock = System.Convert.ToUInt16(list[4]);
+                                    if (listLength > 5) pattern.NumberOfIdenticalValueRows = System.Convert.ToUInt16(list[5]);
+                                    if (listLength > 6) pattern.NumberOfIdenticalValueColumns = System.Convert.ToUInt16(list[6]);
+                                }
+                                catch
+                                {
+                                    throw new System.ArgumentException();
+                                }
+                                otherDoubleString.BitmapPattern = pattern;
+                            }
+                            else throw new System.ArgumentException();
+                        }
+                        dicomValue = otherDoubleString;
+                        break;
+                    }
+
+                case VR.OL:
+                    {
+                        OtherLongString otherLongString = new OtherLongString();
+                        if (list.Length > 0)
+                        {
+                            if (list.Length == 1 && list[0] is System.String)
+                            {
+                                otherLongString.FileName = (System.String)list[0];
+                                Length = (System.UInt32)otherLongString.FileName.Length;
+                            }
+                            else if (list.Length == 1 && list[0] is BitmapPatternParameters)
+                            {
+                                otherLongString.BitmapPattern = (BitmapPatternParameters)list[0];
+                            }
+                            else if (list.Length > 0 && list.Length <= 7)
+                            {
+                                BitmapPatternParameters pattern = new BitmapPatternParameters();
+                                try
+                                {
+                                    int listLength = list.Length;
+                                    if (listLength > 0)
+                                    {
+                                        pattern.NumberOfRows = System.Convert.ToUInt16(list[0]);
+                                        if (listLength == 1) pattern.NumberOfColumns = pattern.NumberOfRows;
+                                    }
+                                    if (listLength > 1) pattern.NumberOfColumns = System.Convert.ToUInt16(list[1]);
+                                    if (listLength > 2) pattern.StartValue = System.Convert.ToUInt16(list[2]);
+                                    if (listLength > 3) pattern.ValueIncrementPerRowBlock = System.Convert.ToUInt16(list[3]);
+                                    if (listLength > 4) pattern.ValueIncrementPerColumnBlock = System.Convert.ToUInt16(list[4]);
+                                    if (listLength > 5) pattern.NumberOfIdenticalValueRows = System.Convert.ToUInt16(list[5]);
+                                    if (listLength > 6) pattern.NumberOfIdenticalValueColumns = System.Convert.ToUInt16(list[6]);
+                                }
+                                catch
+                                {
+                                    throw new System.ArgumentException();
+                                }
+                                otherLongString.BitmapPattern = pattern;
+                            }
+                            else throw new System.ArgumentException();
+                        }
+                        dicomValue = otherLongString;
+                        break;
+                    }
+
 					case VR.OW:
 					{
 						OtherWordString otherWordString = new OtherWordString();
@@ -2742,6 +2892,41 @@ namespace DvtkData.Dimse
 						dicomValue = unlimitedText;
 						break;
 					}
+                    case VR.UR:
+                    {
+                        if (list.Length > 1) throw new System.ArgumentException();
+                        UniversalResourceIdentifier universalResourceIdentifier = new UniversalResourceIdentifier();
+                        Length = 0;
+                        if (list.Length == 1)
+                        {
+                            System.String stringValue = System.Convert.ToString(list[0]);
+                            universalResourceIdentifier.Value = stringValue;
+                            Length = (System.UInt32)universalResourceIdentifier.Value.Length;
+                        }
+                        dicomValue = universalResourceIdentifier;
+                        break;
+                    }
+                    case VR.UC:
+                        {
+                            System.String[] stringArray = _CastUnlimitedCharactersStringArray(list);
+                            UnlimitedCharacters unlimitedCharacters = new UnlimitedCharacters();
+                            unlimitedCharacters.Values =
+                                new DvtkData.Collections.StringCollection(stringArray);
+                            dicomValue = unlimitedCharacters;
+
+                            // compute attribute value length
+                            Length = 0;
+                            if (unlimitedCharacters.Values.Count > 0)
+                            {
+                                System.UInt32 length = 0;
+                                foreach (String data in unlimitedCharacters.Values)
+                                {
+                                    length += (System.UInt32)data.Length;
+                                }
+                                Length = length + (System.UInt32)unlimitedCharacters.Values.Count - 1;
+                            }
+                            break;
+                        }
 					default:
 						dicomValue = null;
 						break;
@@ -2846,6 +3031,8 @@ namespace DvtkData.Dimse
                 if (_ValueField is OtherByteString)     return VR.OB;
                 if (_ValueField is OtherFloatString)    return VR.OF;
                 if (_ValueField is OtherWordString)     return VR.OW;
+                if (_ValueField is OtherLongString)     return VR.OL;
+                if (_ValueField is OtherDoubleString)   return VR.OD;
                 if (_ValueField is PersonName)          return VR.PN;
                 if (_ValueField is ShortString)         return VR.SH;
                 if (_ValueField is SignedLong)          return VR.SL;
@@ -2858,6 +3045,8 @@ namespace DvtkData.Dimse
                 if (_ValueField is Unknown)             return VR.UN;
                 if (_ValueField is UnsignedShort)       return VR.US;
                 if (_ValueField is UnlimitedText)       return VR.UT;
+                if (_ValueField is UniversalResourceIdentifier) return VR.UR;
+                if (_ValueField is UnlimitedCharacters) return VR.UC;
                 // Unknown DicomValueType
                 throw new System.NotImplementedException();
             }
@@ -6054,7 +6243,90 @@ namespace DvtkData.Dimse
             return true;
 		}        
 	}
-    
+
+
+    /// <summary>
+    /// Universal Resource Identifier
+    /// </summary>
+    /// <remarks>
+    /// A string of characters that identifies a URI or a URL as defined in [RFC3986]. 
+    /// Leading spaces are not allowed. Trailing spaces shall be ignored. 
+    /// Data Elements with this VR shall not be multi-valued.
+    /// </remarks>
+    public class UniversalResourceIdentifier : DicomValueType
+    {
+
+        /// <summary>
+        /// Underlying <see cref="System.String"/> value.
+        /// </summary>        
+        public string Value
+        {
+            get
+            {
+                return _Value;
+            }
+            set
+            {
+                _Value = value;
+            }
+        }
+        private string _Value = null;
+        // TODO should this be string.Empty?;
+
+        /// <summary>
+        /// Serialize DVT Detail Data to Xml.
+        /// </summary>
+        /// <param name="streamWriter">Stream writer to serialize to.</param>
+        /// <param name="level">Recursion level. 0 = Top.</param> 
+        /// <returns>bool - success/failure</returns>
+        public override bool DvtDetailToXml(StreamWriter streamWriter, int level)
+        {
+            streamWriter.WriteLine("<Value>{0}</Value>", DvtToXml.ConvertString(Value, true));
+
+            // try to convert the string to Unicode - if possible
+            if (_dicomUnicodeConverter != null)
+            {
+                String outString = DvtToXml.ConvertStringToXmlUnicode(_dicomUnicodeConverter, Value);
+                if (outString != String.Empty)
+                {
+                    streamWriter.WriteLine("<Unicode>{0}</Unicode>", outString);
+                }
+            }
+
+            return true;
+        }
+    }
+
+    /// <summary>
+    /// Unlimited Characters
+    /// </summary>
+    /// <remarks>
+    /// A character string that may be of unlimited length that may be padded with trailing spaces.
+    /// The character code 5CH (the BACKSLASH "\" in ISO-IR 6) shall not be present, as it is used as the delimiter between values in multiple valued data elements.
+    /// The string shall not have Control Characters except for ESC.
+    /// </remarks>
+    public class UnlimitedCharacters : DicomValueType
+    {
+        /// <summary>
+        /// Underlying <see cref="System.String"/> collection.
+        /// </summary>
+        public DvtkData.Collections.StringCollection Values = new DvtkData.Collections.StringCollection();
+
+        /// <summary>
+        /// Serialize DVT Detail Data to Xml.
+        /// </summary>
+        /// <param name="streamWriter">Stream writer to serialize to.</param>
+        /// <param name="level">Recursion level. 0 = Top.</param> 
+        /// <returns>bool - success/failure</returns>
+        public override bool DvtDetailToXml(StreamWriter streamWriter, int level)
+        {
+            Values.DicomUnicodeConverter = _dicomUnicodeConverter;
+            bool result = Values.DvtDetailToXml(streamWriter, level);
+            return result;
+        }   
+    }
+
+
     /// <summary>
     /// Unsigned Short
     /// </summary>
@@ -6789,6 +7061,214 @@ namespace DvtkData.Dimse
 			return true;
 		}        
 	}
+
+    /// <summary>
+    /// Other Long String
+    /// </summary>
+    /// <remarks>
+    /// A string of 32-bit words where the encoding of the contents is specified by the negotiated Transfer Syntax.
+    /// OL is a VR that requires byte swapping within each word when changing between Little Endian and Big Endian byte ordering (see Section 7.3).
+    /// </remarks>
+    public class OtherLongString : DicomValueType
+    {
+
+        /// <summary>
+        /// Underlying <c>FileName</c> <see cref="System.String"/> value or <c>BitMapPattern</c> <see cref="BitmapPatternParameters"/>.
+        /// </summary>
+        public object Item
+        {
+            get
+            {
+                return _Item;
+            }
+            set
+            {
+                _Item = value;
+            }
+        }
+        private object _Item = null;
+        // TODO should this be string.Empty?
+
+        //        public System.Byte[] ByteArray
+        //        {
+        //            set { _Item = value; }
+        //        }
+
+        /// <summary>
+        /// File name.
+        /// </summary>
+        public string FileName
+        {
+            get
+            {
+                return (string)_Item;
+            }
+            set
+            {
+                _Item = value;
+            }
+        }
+
+        /// <summary>
+        /// Bit pattern.
+        /// </summary>
+        public BitmapPatternParameters BitmapPattern
+        {
+            get { return (BitmapPatternParameters)_Item; }
+            set { _Item = value; }
+        }
+
+        /// <summary>
+        /// Property Compressed - is OF data compressed Y/N?
+        /// </summary>
+        public bool Compressed
+        {
+            get { return _compressed; }
+            set { _compressed = value; }
+        }
+        private bool _compressed = false;
+
+        /// <summary>
+        /// Serialize DVT Detail Data to Xml.
+        /// </summary>
+        /// <param name="streamWriter">Stream writer to serialize to.</param>
+        /// <param name="level">Recursion level. 0 = Top.</param> 
+        /// <returns>bool - success/failure</returns>
+        public override bool DvtDetailToXml(StreamWriter streamWriter, int level)
+        {
+            if (Item != null)
+            {
+                if (Item is string)
+                {
+                    string fileName = (string)Item;
+                    streamWriter.WriteLine("<Value>{0}</Value>", fileName);
+                }
+                else if (Item is BitmapPatternParameters)
+                {
+                    BitmapPatternParameters bitmapPattern = (BitmapPatternParameters)Item;
+                    streamWriter.WriteLine("<BitmapPattern>");
+                    streamWriter.WriteLine("<NumberOfRows>{0}</NumberOfRows>", bitmapPattern.NumberOfRows);
+                    streamWriter.WriteLine("<NumberOfColumns>{0}</NumberOfColumns>", bitmapPattern.NumberOfColumns);
+                    streamWriter.WriteLine("<StartValue>{0}</StartValue>", bitmapPattern.StartValue);
+                    streamWriter.WriteLine("<ValueIncrementPerRowBlock>{0}</ValueIncrementPerRowBlock>", bitmapPattern.ValueIncrementPerRowBlock);
+                    streamWriter.WriteLine("<ValueIncrementPerColumnBlock>{0}</ValueIncrementPerColumnBlock>", bitmapPattern.ValueIncrementPerColumnBlock);
+                    streamWriter.WriteLine("<NumberOfIdenticalValueRows>{0}</NumberOfIdenticalValueRows>", bitmapPattern.NumberOfIdenticalValueRows);
+                    streamWriter.WriteLine("<NumberOfIdenticalValueColumns>{0}</NumberOfIdenticalValueColumns>", bitmapPattern.NumberOfIdenticalValueColumns);
+                    streamWriter.WriteLine("</BitmapPattern>");
+                }
+                else
+                {
+                    throw new System.NotSupportedException();
+                }
+            }
+            return true;
+        }
+    }
+
+    /// <summary>
+    /// Other Double String
+    /// </summary>
+    /// <remarks>
+    /// A string of 64-bit IEEE 754:1985 floating point words.
+    /// OD is a VR that requires byte swapping within each 64-bit
+    /// word when changing between Little Endian and Big Endian
+    /// byte ordering (see Section 7.3).
+    /// </remarks>
+    public class OtherDoubleString : DicomValueType
+    {
+
+        /// <summary>
+        /// Underlying <c>FileName</c> <see cref="System.String"/> value or <c>BitMapPattern</c> <see cref="BitmapPatternParameters"/>.
+        /// </summary>
+        public object Item
+        {
+            get
+            {
+                return _Item;
+            }
+            set
+            {
+                _Item = value;
+            }
+        }
+        private object _Item = null;
+        // TODO should this be string.Empty?
+
+        //        public System.Byte[] ByteArray
+        //        {
+        //            set { _Item = value; }
+        //        }
+
+        /// <summary>
+        /// File name.
+        /// </summary>
+        public string FileName
+        {
+            get
+            {
+                return (string)_Item;
+            }
+            set
+            {
+                _Item = value;
+            }
+        }
+
+        /// <summary>
+        /// Bit pattern.
+        /// </summary>
+        public BitmapPatternParameters BitmapPattern
+        {
+            get { return (BitmapPatternParameters)_Item; }
+            set { _Item = value; }
+        }
+
+        /// <summary>
+        /// Property Compressed - is OB data compressed Y/N?
+        /// </summary>
+        public bool Compressed
+        {
+            get { return _compressed; }
+            set { _compressed = value; }
+        }
+        private bool _compressed = false;
+
+        /// <summary>
+        /// Serialize DVT Detail Data to Xml.
+        /// </summary>
+        /// <param name="streamWriter">Stream writer to serialize to.</param>
+        /// <param name="level">Recursion level. 0 = Top.</param> 
+        /// <returns>bool - success/failure</returns>
+        public override bool DvtDetailToXml(StreamWriter streamWriter, int level)
+        {
+            if (Item != null)
+            {
+                if (Item is string)
+                {
+                    string fileName = (string)Item;
+                    streamWriter.WriteLine("<Value>{0}</Value>", fileName);
+                }
+                else if (Item is BitmapPatternParameters)
+                {
+                    BitmapPatternParameters bitmapPattern = (BitmapPatternParameters)Item;
+                    streamWriter.WriteLine("<BitmapPattern>");
+                    streamWriter.WriteLine("<NumberOfRows>{0}</NumberOfRows>", bitmapPattern.NumberOfRows);
+                    streamWriter.WriteLine("<NumberOfColumns>{0}</NumberOfColumns>", bitmapPattern.NumberOfColumns);
+                    streamWriter.WriteLine("<StartValue>{0}</StartValue>", bitmapPattern.StartValue);
+                    streamWriter.WriteLine("<ValueIncrementPerRowBlock>{0}</ValueIncrementPerRowBlock>", bitmapPattern.ValueIncrementPerRowBlock);
+                    streamWriter.WriteLine("<ValueIncrementPerColumnBlock>{0}</ValueIncrementPerColumnBlock>", bitmapPattern.ValueIncrementPerColumnBlock);
+                    streamWriter.WriteLine("<NumberOfIdenticalValueRows>{0}</NumberOfIdenticalValueRows>", bitmapPattern.NumberOfIdenticalValueRows);
+                    streamWriter.WriteLine("<NumberOfIdenticalValueColumns>{0}</NumberOfIdenticalValueColumns>", bitmapPattern.NumberOfIdenticalValueColumns);
+                    streamWriter.WriteLine("</BitmapPattern>");
+                }
+                else
+                {
+                    throw new System.NotSupportedException();
+                }
+            }
+            return true;
+        }
+    }
     
     /// <summary>
     /// Other Byte String

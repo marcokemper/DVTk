@@ -5,21 +5,21 @@
  * This package is an SSL implementation written
  * by Eric Young (eay@cryptsoft.com).
  * The implementation was written so as to conform with Netscapes SSL.
- * 
+ *
  * This library is free for commercial and non-commercial use as long as
  * the following conditions are aheared to.  The following conditions
  * apply to all code found in this distribution, be it the RC4, RSA,
  * lhash, DES, etc., code; not just the SSL code.  The SSL documentation
  * included with this distribution is covered by the same copyright terms
  * except that the holder is Tim Hudson (tjh@cryptsoft.com).
- * 
+ *
  * Copyright remains Eric Young's, and as such any Copyright notices in
  * the code are not to be removed.
  * If this package is used in a product, Eric Young should be given attribution
  * as the author of the parts of the library used.
  * This can be in the form of a textual message at program startup or
  * in documentation (online or textual) provided with the package.
- * 
+ *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
  * are met:
@@ -34,10 +34,10 @@
  *     Eric Young (eay@cryptsoft.com)"
  *    The word 'cryptographic' can be left out if the rouines from the library
  *    being used are not cryptographic related :-).
- * 4. If you include any Windows specific code (or a derivative thereof) from 
+ * 4. If you include any Windows specific code (or a derivative thereof) from
  *    the apps directory (application code) you must include an acknowledgement:
  *    "This product includes software written by Tim Hudson (tjh@cryptsoft.com)"
- * 
+ *
  * THIS SOFTWARE IS PROVIDED BY ERIC YOUNG ``AS IS'' AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
@@ -49,7 +49,7 @@
  * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
  * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
- * 
+ *
  * The licence and distribution terms for any publically available version or
  * derivative of this code cannot be changed.  i.e. this code cannot simply be
  * copied and put under another distribution licence
@@ -59,13 +59,22 @@
 #ifndef HEADER_BIO_H
 #define HEADER_BIO_H
 
+#include <openssl/e_os2.h>
+
 #ifndef OPENSSL_NO_FP_API
 # include <stdio.h>
 #endif
 #include <stdarg.h>
 
 #include <openssl/crypto.h>
-#include <openssl/e_os2.h>
+
+#ifndef OPENSSL_NO_SCTP
+# ifndef OPENSSL_SYS_VMS
+# include <stdint.h>
+# else
+# include <inttypes.h>
+# endif
+#endif
 
 #ifdef  __cplusplus
 extern "C" {
@@ -93,6 +102,12 @@ extern "C" {
 #define BIO_TYPE_BER		(18|0x0200)		/* BER -> bin filter */
 #define BIO_TYPE_BIO		(19|0x0400)		/* (half a) BIO pair */
 #define BIO_TYPE_LINEBUFFER	(20|0x0200)		/* filter */
+#define BIO_TYPE_DGRAM		(21|0x0400|0x0100)
+#ifndef OPENSSL_NO_SCTP
+#define BIO_TYPE_DGRAM_SCTP	(24|0x0400|0x0100)
+#endif
+#define BIO_TYPE_ASN1 		(22|0x0200)		/* filter */
+#define BIO_TYPE_COMP 		(23|0x0200)		/* filter */
 
 #define BIO_TYPE_DESCRIPTOR	0x0100	/* socket, fd, connect or accept */
 #define BIO_TYPE_FILTER		0x0200
@@ -124,6 +139,59 @@ extern "C" {
 
 #define BIO_CTRL_SET_FILENAME	30	/* BIO_s_file special */
 
+/* dgram BIO stuff */
+#define BIO_CTRL_DGRAM_CONNECT       31  /* BIO dgram special */
+#define BIO_CTRL_DGRAM_SET_CONNECTED 32  /* allow for an externally
+					  * connected socket to be
+					  * passed in */
+#define BIO_CTRL_DGRAM_SET_RECV_TIMEOUT 33 /* setsockopt, essentially */
+#define BIO_CTRL_DGRAM_GET_RECV_TIMEOUT 34 /* getsockopt, essentially */
+#define BIO_CTRL_DGRAM_SET_SEND_TIMEOUT 35 /* setsockopt, essentially */
+#define BIO_CTRL_DGRAM_GET_SEND_TIMEOUT 36 /* getsockopt, essentially */
+
+#define BIO_CTRL_DGRAM_GET_RECV_TIMER_EXP 37 /* flag whether the last */
+#define BIO_CTRL_DGRAM_GET_SEND_TIMER_EXP 38 /* I/O operation tiemd out */
+
+/* #ifdef IP_MTU_DISCOVER */
+#define BIO_CTRL_DGRAM_MTU_DISCOVER       39 /* set DF bit on egress packets */
+/* #endif */
+
+#define BIO_CTRL_DGRAM_QUERY_MTU          40 /* as kernel for current MTU */
+#define BIO_CTRL_DGRAM_GET_FALLBACK_MTU   47
+#define BIO_CTRL_DGRAM_GET_MTU            41 /* get cached value for MTU */
+#define BIO_CTRL_DGRAM_SET_MTU            42 /* set cached value for
+					      * MTU. want to use this
+					      * if asking the kernel
+					      * fails */
+
+#define BIO_CTRL_DGRAM_MTU_EXCEEDED       43 /* check whether the MTU
+					      * was exceed in the
+					      * previous write
+					      * operation */
+
+#define BIO_CTRL_DGRAM_GET_PEER           46
+#define BIO_CTRL_DGRAM_SET_PEER           44 /* Destination for the data */
+
+#define BIO_CTRL_DGRAM_SET_NEXT_TIMEOUT   45 /* Next DTLS handshake timeout to
+                                              * adjust socket timeouts */
+
+#define BIO_CTRL_DGRAM_GET_MTU_OVERHEAD   49
+
+#ifndef OPENSSL_NO_SCTP
+/* SCTP stuff */
+#define BIO_CTRL_DGRAM_SCTP_SET_IN_HANDSHAKE	50
+#define BIO_CTRL_DGRAM_SCTP_ADD_AUTH_KEY		51
+#define BIO_CTRL_DGRAM_SCTP_NEXT_AUTH_KEY		52
+#define BIO_CTRL_DGRAM_SCTP_AUTH_CCS_RCVD		53
+#define BIO_CTRL_DGRAM_SCTP_GET_SNDINFO		60
+#define BIO_CTRL_DGRAM_SCTP_SET_SNDINFO		61
+#define BIO_CTRL_DGRAM_SCTP_GET_RCVINFO		62
+#define BIO_CTRL_DGRAM_SCTP_SET_RCVINFO		63
+#define BIO_CTRL_DGRAM_SCTP_GET_PRINFO			64
+#define BIO_CTRL_DGRAM_SCTP_SET_PRINFO			65
+#define BIO_CTRL_DGRAM_SCTP_SAVE_SHUTDOWN		70
+#endif
+
 /* modifiers */
 #define BIO_FP_READ		0x02
 #define BIO_FP_WRITE		0x04
@@ -135,6 +203,11 @@ extern "C" {
 #define BIO_FLAGS_IO_SPECIAL	0x04
 #define BIO_FLAGS_RWS (BIO_FLAGS_READ|BIO_FLAGS_WRITE|BIO_FLAGS_IO_SPECIAL)
 #define BIO_FLAGS_SHOULD_RETRY	0x08
+#ifndef	BIO_FLAGS_UPLINK
+/* "UPLINK" flag denotes file descriptors provided by application.
+   It defaults to 0, as most platforms don't require UPLINK interface. */
+#define	BIO_FLAGS_UPLINK	0
+#endif
 
 /* Used in BIO_gethostbyname() */
 #define BIO_GHBN_CTRL_HITS		1
@@ -157,32 +230,36 @@ extern "C" {
  */
 #define BIO_FLAGS_MEM_RDONLY	0x200
 
-#define BIO_set_flags(b,f) ((b)->flags|=(f))
-#define BIO_get_flags(b) ((b)->flags)
+typedef struct bio_st BIO;
+
+void BIO_set_flags(BIO *b, int flags);
+int  BIO_test_flags(const BIO *b, int flags);
+void BIO_clear_flags(BIO *b, int flags);
+
+#define BIO_get_flags(b) BIO_test_flags(b, ~(0x0))
 #define BIO_set_retry_special(b) \
-		((b)->flags|=(BIO_FLAGS_IO_SPECIAL|BIO_FLAGS_SHOULD_RETRY))
+		BIO_set_flags(b, (BIO_FLAGS_IO_SPECIAL|BIO_FLAGS_SHOULD_RETRY))
 #define BIO_set_retry_read(b) \
-		((b)->flags|=(BIO_FLAGS_READ|BIO_FLAGS_SHOULD_RETRY))
+		BIO_set_flags(b, (BIO_FLAGS_READ|BIO_FLAGS_SHOULD_RETRY))
 #define BIO_set_retry_write(b) \
-		((b)->flags|=(BIO_FLAGS_WRITE|BIO_FLAGS_SHOULD_RETRY))
+		BIO_set_flags(b, (BIO_FLAGS_WRITE|BIO_FLAGS_SHOULD_RETRY))
 
 /* These are normally used internally in BIOs */
-#define BIO_clear_flags(b,f) ((b)->flags&= ~(f))
 #define BIO_clear_retry_flags(b) \
-		((b)->flags&= ~(BIO_FLAGS_RWS|BIO_FLAGS_SHOULD_RETRY))
+		BIO_clear_flags(b, (BIO_FLAGS_RWS|BIO_FLAGS_SHOULD_RETRY))
 #define BIO_get_retry_flags(b) \
-		((b)->flags&(BIO_FLAGS_RWS|BIO_FLAGS_SHOULD_RETRY))
+		BIO_test_flags(b, (BIO_FLAGS_RWS|BIO_FLAGS_SHOULD_RETRY))
 
 /* These should be used by the application to tell why we should retry */
-#define BIO_should_read(a)		((a)->flags & BIO_FLAGS_READ)
-#define BIO_should_write(a)		((a)->flags & BIO_FLAGS_WRITE)
-#define BIO_should_io_special(a)	((a)->flags & BIO_FLAGS_IO_SPECIAL)
-#define BIO_retry_type(a)		((a)->flags & BIO_FLAGS_RWS)
-#define BIO_should_retry(a)		((a)->flags & BIO_FLAGS_SHOULD_RETRY)
+#define BIO_should_read(a)		BIO_test_flags(a, BIO_FLAGS_READ)
+#define BIO_should_write(a)		BIO_test_flags(a, BIO_FLAGS_WRITE)
+#define BIO_should_io_special(a)	BIO_test_flags(a, BIO_FLAGS_IO_SPECIAL)
+#define BIO_retry_type(a)		BIO_test_flags(a, BIO_FLAGS_RWS)
+#define BIO_should_retry(a)		BIO_test_flags(a, BIO_FLAGS_SHOULD_RETRY)
 
 /* The next three are used in conjunction with the
  * BIO_should_io_special() condition.  After this returns true,
- * BIO *BIO_get_retry_BIO(BIO *bio, int *reason); will walk the BIO 
+ * BIO *BIO_get_retry_BIO(BIO *bio, int *reason); will walk the BIO
  * stack and return the 'reason' for the special and the offending BIO.
  * Given a BIO, BIO_get_retry_reason(bio) will return the code. */
 /* Returned from the SSL bio when the certificate retrieval code had an error */
@@ -207,18 +284,17 @@ extern "C" {
 #define BIO_cb_pre(a)	(!((a)&BIO_CB_RETURN))
 #define BIO_cb_post(a)	((a)&BIO_CB_RETURN)
 
-#define BIO_set_callback(b,cb)		((b)->callback=(cb))
-#define BIO_set_callback_arg(b,arg)	((b)->cb_arg=(char *)(arg))
-#define BIO_get_callback_arg(b)		((b)->cb_arg)
-#define BIO_get_callback(b)		((b)->callback)
-#define BIO_method_name(b)		((b)->method->name)
-#define BIO_method_type(b)		((b)->method->type)
+long (*BIO_get_callback(const BIO *b)) (struct bio_st *,int,const char *,int, long,long);
+void BIO_set_callback(BIO *b,
+	long (*callback)(struct bio_st *,int,const char *,int, long,long));
+char *BIO_get_callback_arg(const BIO *b);
+void BIO_set_callback_arg(BIO *b, char *arg);
 
-typedef struct bio_st BIO;
+const char * BIO_method_name(const BIO *b);
+int BIO_method_type(const BIO *b);
 
 typedef void bio_info_cb(struct bio_st *, int, const char *, int, long, long);
 
-#ifndef OPENSSL_SYS_WIN16
 typedef struct bio_method_st
 	{
 	int type;
@@ -232,21 +308,6 @@ typedef struct bio_method_st
 	int (*destroy)(BIO *);
         long (*callback_ctrl)(BIO *, int, bio_info_cb *);
 	} BIO_METHOD;
-#else
-typedef struct bio_method_st
-	{
-	int type;
-	const char *name;
-	int (_far *bwrite)();
-	int (_far *bread)();
-	int (_far *bputs)();
-	int (_far *bgets)();
-	long (_far *ctrl)();
-	int (_far *create)();
-	int (_far *destroy)();
-	long (_far *callback_ctrl)();
-	} BIO_METHOD;
-#endif
 
 struct bio_st
 	{
@@ -274,6 +335,15 @@ DECLARE_STACK_OF(BIO)
 
 typedef struct bio_f_buffer_ctx_struct
 	{
+	/* Buffers are setup like this:
+	 *
+	 * <---------------------- size ----------------------->
+	 * +---------------------------------------------------+
+	 * | consumed | remaining          | free space        |
+	 * +---------------------------------------------------+
+	 * <-- off --><------- len ------->
+	 */
+
 	/* BIO *bio; */ /* this is now in the BIO struct */
 	int ibuf_size;	/* how big is the input buffer */
 	int obuf_size;	/* how big is the output buffer */
@@ -286,6 +356,37 @@ typedef struct bio_f_buffer_ctx_struct
 	int obuf_len;		/* how many bytes are in it */
 	int obuf_off;		/* write/read offset */
 	} BIO_F_BUFFER_CTX;
+
+/* Prefix and suffix callback in ASN1 BIO */
+typedef int asn1_ps_func(BIO *b, unsigned char **pbuf, int *plen, void *parg);
+
+#ifndef OPENSSL_NO_SCTP
+/* SCTP parameter structs */
+struct bio_dgram_sctp_sndinfo
+	{
+	uint16_t snd_sid;
+	uint16_t snd_flags;
+	uint32_t snd_ppid;
+	uint32_t snd_context;
+	};
+
+struct bio_dgram_sctp_rcvinfo
+	{
+	uint16_t rcv_sid;
+	uint16_t rcv_ssn;
+	uint16_t rcv_flags;
+	uint32_t rcv_ppid;
+	uint32_t rcv_tsn;
+	uint32_t rcv_cumtsn;
+	uint32_t rcv_context;
+	};
+
+struct bio_dgram_sctp_prinfo
+	{
+	uint16_t pr_policy;
+	uint32_t pr_value;
+	};
+#endif
 
 /* connect BIO stuff */
 #define BIO_CONN_S_BEFORE		1
@@ -347,7 +448,15 @@ typedef struct bio_f_buffer_ctx_struct
 #define BIO_C_NWRITE0				145
 #define BIO_C_NWRITE				146
 #define BIO_C_RESET_READ_REQUEST		147
+#define BIO_C_SET_MD_CTX			148
 
+#define BIO_C_SET_PREFIX			149
+#define BIO_C_GET_PREFIX			150
+#define BIO_C_SET_SUFFIX			151
+#define BIO_C_GET_SUFFIX			152
+
+#define BIO_C_SET_EX_ARG			153
+#define BIO_C_GET_EX_ARG			154
 
 #define BIO_set_app_data(s,arg)		BIO_set_ex_data(s,0,arg)
 #define BIO_get_app_data(s)		BIO_get_ex_data(s,0)
@@ -360,7 +469,7 @@ typedef struct bio_f_buffer_ctx_struct
 #define BIO_get_conn_hostname(b)  BIO_ptr_ctrl(b,BIO_C_GET_CONNECT,0)
 #define BIO_get_conn_port(b)      BIO_ptr_ctrl(b,BIO_C_GET_CONNECT,1)
 #define BIO_get_conn_ip(b) 		 BIO_ptr_ctrl(b,BIO_C_GET_CONNECT,2)
-#define BIO_get_conn_int_port(b) BIO_int_ctrl(b,BIO_C_GET_CONNECT,3)
+#define BIO_get_conn_int_port(b) BIO_int_ctrl(b,BIO_C_GET_CONNECT,3,0)
 
 
 #define BIO_set_nbio(b,n)	BIO_ctrl(b,BIO_C_SET_NBIO,(n),NULL)
@@ -369,7 +478,7 @@ typedef struct bio_f_buffer_ctx_struct
 #define BIO_set_accept_port(b,name) BIO_ctrl(b,BIO_C_SET_ACCEPT,0,(char *)name)
 #define BIO_get_accept_port(b)	BIO_ptr_ctrl(b,BIO_C_GET_ACCEPT,0)
 /* #define BIO_set_nbio(b,n)	BIO_ctrl(b,BIO_C_SET_NBIO,(n),NULL) */
-#define BIO_set_nbio_accept(b,n) BIO_ctrl(b,BIO_C_SET_ACCEPT,1,(n)?"a":NULL)
+#define BIO_set_nbio_accept(b,n) BIO_ctrl(b,BIO_C_SET_ACCEPT,1,(n)?(void *)"a":NULL)
 #define BIO_set_accept_bios(b,bio) BIO_ctrl(b,BIO_C_SET_ACCEPT,2,(char *)bio)
 
 #define BIO_BIND_NORMAL			0
@@ -487,6 +596,22 @@ size_t BIO_ctrl_get_write_guarantee(BIO *b);
 size_t BIO_ctrl_get_read_request(BIO *b);
 int BIO_ctrl_reset_read_request(BIO *b);
 
+/* ctrl macros for dgram */
+#define BIO_ctrl_dgram_connect(b,peer)  \
+                     (int)BIO_ctrl(b,BIO_CTRL_DGRAM_CONNECT,0, (char *)peer)
+#define BIO_ctrl_set_connected(b, state, peer) \
+         (int)BIO_ctrl(b, BIO_CTRL_DGRAM_SET_CONNECTED, state, (char *)peer)
+#define BIO_dgram_recv_timedout(b) \
+         (int)BIO_ctrl(b, BIO_CTRL_DGRAM_GET_RECV_TIMER_EXP, 0, NULL)
+#define BIO_dgram_send_timedout(b) \
+         (int)BIO_ctrl(b, BIO_CTRL_DGRAM_GET_SEND_TIMER_EXP, 0, NULL)
+#define BIO_dgram_get_peer(b,peer) \
+         (int)BIO_ctrl(b, BIO_CTRL_DGRAM_GET_PEER, 0, (char *)peer)
+#define BIO_dgram_set_peer(b,peer) \
+         (int)BIO_ctrl(b, BIO_CTRL_DGRAM_SET_PEER, 0, (char *)peer)
+#define BIO_dgram_get_mtu_overhead(b) \
+         (unsigned int)BIO_ctrl((b), BIO_CTRL_DGRAM_GET_MTU_OVERHEAD, 0, NULL)
+
 /* These two aren't currently implemented */
 /* int BIO_get_ex_num(BIO *bio); */
 /* void BIO_set_ex_free_func(BIO *bio,int idx,void (*cb)()); */
@@ -497,22 +622,21 @@ int BIO_get_ex_new_index(long argl, void *argp, CRYPTO_EX_new *new_func,
 unsigned long BIO_number_read(BIO *bio);
 unsigned long BIO_number_written(BIO *bio);
 
+/* For BIO_f_asn1() */
+int BIO_asn1_set_prefix(BIO *b, asn1_ps_func *prefix,
+					asn1_ps_func *prefix_free);
+int BIO_asn1_get_prefix(BIO *b, asn1_ps_func **pprefix,
+					asn1_ps_func **pprefix_free);
+int BIO_asn1_set_suffix(BIO *b, asn1_ps_func *suffix,
+					asn1_ps_func *suffix_free);
+int BIO_asn1_get_suffix(BIO *b, asn1_ps_func **psuffix,
+					asn1_ps_func **psuffix_free);
+
 # ifndef OPENSSL_NO_FP_API
-#  if defined(OPENSSL_SYS_WIN16) && defined(_WINDLL)
-BIO_METHOD *BIO_s_file_internal(void);
-BIO *BIO_new_file_internal(char *filename, char *mode);
-BIO *BIO_new_fp_internal(FILE *stream, int close_flag);
-#    define BIO_s_file	BIO_s_file_internal
-#    define BIO_new_file	BIO_new_file_internal
-#    define BIO_new_fp	BIO_new_fp_internal
-#  else /* FP_API */
 BIO_METHOD *BIO_s_file(void );
 BIO *BIO_new_file(const char *filename, const char *mode);
 BIO *BIO_new_fp(FILE *stream, int close_flag);
-#    define BIO_s_file_internal		BIO_s_file
-#    define BIO_new_file_internal	BIO_new_file
-#    define BIO_new_fp_internal		BIO_s_file
-#  endif /* FP_API */
+# define BIO_s_file_internal	BIO_s_file
 # endif
 BIO *	BIO_new(BIO_METHOD *type);
 int	BIO_set(BIO *a,BIO_METHOD *type);
@@ -541,13 +665,8 @@ int BIO_nread(BIO *bio, char **buf, int num);
 int BIO_nwrite0(BIO *bio, char **buf);
 int BIO_nwrite(BIO *bio, char **buf, int num);
 
-#ifndef OPENSSL_SYS_WIN16
 long BIO_debug_callback(BIO *bio,int cmd,const char *argp,int argi,
 	long argl,long ret);
-#else
-long _far _loadds BIO_debug_callback(BIO *bio,int cmd,const char *argp,int argi,
-	long argl,long ret);
-#endif
 
 BIO_METHOD *BIO_s_mem(void);
 BIO *BIO_new_mem_buf(void *buf, int len);
@@ -566,15 +685,31 @@ BIO_METHOD *BIO_f_buffer(void);
 BIO_METHOD *BIO_f_linebuffer(void);
 #endif
 BIO_METHOD *BIO_f_nbio_test(void);
+#ifndef OPENSSL_NO_DGRAM
+BIO_METHOD *BIO_s_datagram(void);
+#ifndef OPENSSL_NO_SCTP
+BIO_METHOD *BIO_s_datagram_sctp(void);
+#endif
+#endif
+
 /* BIO_METHOD *BIO_f_ber(void); */
 
 int BIO_sock_should_retry(int i);
 int BIO_sock_non_fatal_error(int error);
+int BIO_dgram_non_fatal_error(int error);
+
 int BIO_fd_should_retry(int i);
 int BIO_fd_non_fatal_error(int error);
+int BIO_dump_cb(int (*cb)(const void *data, size_t len, void *u),
+		void *u, const char *s, int len);
+int BIO_dump_indent_cb(int (*cb)(const void *data, size_t len, void *u),
+		       void *u, const char *s, int len, int indent);
 int BIO_dump(BIO *b,const char *bytes,int len);
 int BIO_dump_indent(BIO *b,const char *bytes,int len,int indent);
-
+#ifndef OPENSSL_NO_FP_API
+int BIO_dump_fp(FILE *fp, const char *s, int len);
+int BIO_dump_indent_fp(FILE *fp, const char *s, int len, int indent);
+#endif
 struct hostent *BIO_gethostbyname(const char *name);
 /* We might want a thread-safe interface too:
  * struct hostent *BIO_gethostbyname_r(const char *name,
@@ -596,6 +731,16 @@ void BIO_sock_cleanup(void);
 int BIO_set_tcp_ndelay(int sock,int turn_on);
 
 BIO *BIO_new_socket(int sock, int close_flag);
+BIO *BIO_new_dgram(int fd, int close_flag);
+#ifndef OPENSSL_NO_SCTP
+BIO *BIO_new_dgram_sctp(int fd, int close_flag);
+int BIO_dgram_is_sctp(BIO *bio);
+int BIO_dgram_sctp_notification_cb(BIO *b,
+                                   void (*handle_notifications)(BIO *bio, void *context, void *buf),
+                                   void *context);
+int BIO_dgram_sctp_wait_for_dry(BIO *b);
+int BIO_dgram_sctp_msg_waiting(BIO *b);
+#endif
 BIO *BIO_new_fd(int fd, int close_flag);
 BIO *BIO_new_connect(char *host_port);
 BIO *BIO_new_accept(char *host_port);
@@ -611,10 +756,20 @@ void BIO_copy_next_retry(BIO *b);
 
 /*long BIO_ghbn_ctrl(int cmd,int iarg,char *parg);*/
 
-int BIO_printf(BIO *bio, const char *format, ...);
-int BIO_vprintf(BIO *bio, const char *format, va_list args);
-int BIO_snprintf(char *buf, size_t n, const char *format, ...);
-int BIO_vsnprintf(char *buf, size_t n, const char *format, va_list args);
+#ifdef __GNUC__
+#  define __bio_h__attr__ __attribute__
+#else
+#  define __bio_h__attr__(x)
+#endif
+int BIO_printf(BIO *bio, const char *format, ...)
+	__bio_h__attr__((__format__(__printf__,2,3)));
+int BIO_vprintf(BIO *bio, const char *format, va_list args)
+	__bio_h__attr__((__format__(__printf__,2,0)));
+int BIO_snprintf(char *buf, size_t n, const char *format, ...)
+	__bio_h__attr__((__format__(__printf__,3,4)));
+int BIO_vsnprintf(char *buf, size_t n, const char *format, va_list args)
+	__bio_h__attr__((__format__(__printf__,3,0)));
+#undef __bio_h__attr__
 
 /* BEGIN ERROR CODES */
 /* The following lines are auto generated by the script mkerr.pl. Any changes
@@ -628,6 +783,7 @@ void ERR_load_BIO_strings(void);
 #define BIO_F_ACPT_STATE				 100
 #define BIO_F_BIO_ACCEPT				 101
 #define BIO_F_BIO_BER_GET_HEADER			 102
+#define BIO_F_BIO_CALLBACK_CTRL				 131
 #define BIO_F_BIO_CTRL					 103
 #define BIO_F_BIO_GETHOSTBYNAME				 120
 #define BIO_F_BIO_GETS					 104
@@ -649,6 +805,7 @@ void ERR_load_BIO_strings(void);
 #define BIO_F_BUFFER_CTRL				 114
 #define BIO_F_CONN_CTRL					 127
 #define BIO_F_CONN_STATE				 115
+#define BIO_F_DGRAM_SCTP_READ				 132
 #define BIO_F_FILE_CTRL					 116
 #define BIO_F_FILE_READ					 130
 #define BIO_F_LINEBUFFER_CTRL				 129

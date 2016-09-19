@@ -550,7 +550,7 @@ namespace DvtkHighLevelInterface.Dicom.Files
 			Dvtk.Sessions.ScriptSession dvtkScriptSession = CreateEmptyDvtkScriptSession();
 
 			if (this.AddGroupLength)
-				dvtkScriptSession.AddGroupLength = true;
+				dvtkScriptSession.AddGroupLength = false;
 
 			DvtkData.Media.DicomFile dvtkDataDicomFile = new DvtkData.Media.DicomFile();
 

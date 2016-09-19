@@ -35,9 +35,13 @@
 #include "../AttributeGroup/value_ob.h"
 #include "../AttributeGroup/value_of.h"
 #include "../AttributeGroup/value_ow.h"
+#include "../AttributeGroup/value_ol.h"
+#include "../AttributeGroup/value_od.h"
 #include "../AttributeGroup/ob_value_stream.h"
 #include "../AttributeGroup/of_value_stream.h"
 #include "../AttributeGroup/ow_value_stream.h"
+#include "../AttributeGroup/ol_value_stream.h"
+#include "../AttributeGroup/od_value_stream.h"
 
 #endif /* IATTRIBUTEGROUP_H */
 

@@ -98,12 +98,15 @@ bool DCM_ATTRIBUTE_CLASS::encode(DATA_TF_CLASS& dataTransfer)
 		dataTransfer << sl[0];
 		dataTransfer << sl[1];
 			
-		// check for special OB, OF, OW, SQ, UN & UT encoding
+		// check for special OB, OF, OW, OL, OD, SQ, UN, UR & UT encoding
 		if ((vr == ATTR_VR_OB) || 
 			(vr == ATTR_VR_OF) || 
 			(vr == ATTR_VR_OW) || 
+			(vr == ATTR_VR_OL) || 
+			(vr == ATTR_VR_OD) || 
 			(vr == ATTR_VR_SQ) || 
 			(vr == ATTR_VR_UN) || 
+			(vr == ATTR_VR_UR) ||
 			(vr == ATTR_VR_UT)) 
 		{
 			// encode 16 bit padding
@@ -159,6 +162,37 @@ bool DCM_ATTRIBUTE_CLASS::encode(DATA_TF_CLASS& dataTransfer)
 
 					// set up the data stream
 					OW_VALUE_STREAM_CLASS stream;
+					stream.SetLogger(loggerM_ptr);
+
+					// check if data in a file
+					string filename;
+					if (value_ptr->Get(filename) == MSG_OK)
+					{
+						// set to stream from file
+						stream.SetFilename(filename);
+
+						// check if the file contents are compressed
+						if (stream.GetFileTSCode() & TS_COMPRESSED)
+						{
+							// compressed file content must be encoded with UNDEFINED length
+							length32 = UNDEFINED_LENGTH;
+						}
+					}
+					else
+					{
+						// all others encoded with undefined length
+						length32 = UNDEFINED_LENGTH;
+					}
+				}
+				else if ((vr == ATTR_VR_OL) &&
+					(GetNrValues() == 1))
+				{
+					VALUE_OL_CLASS *value_ptr = static_cast<VALUE_OL_CLASS*>(GetValue(0));
+					if (value_ptr == NULL) return false; // cannot happen
+					value_ptr->SetLogger(loggerM_ptr);
+
+					// set up the data stream
+					OL_VALUE_STREAM_CLASS stream;
 					stream.SetLogger(loggerM_ptr);
 
 					// check if data in a file
@@ -267,7 +301,8 @@ bool DCM_ATTRIBUTE_CLASS::encodeValue(DATA_TF_CLASS& dataTransfer, UINT32 length
 	case ATTR_VR_PN:
 	case ATTR_VR_SH:
 	case ATTR_VR_TM:
-	case ATTR_VR_UI: 
+	case ATTR_VR_UI:
+	case ATTR_VR_UC:
 		{
 			// encode [multi-valued] "string" attribute value
 			for (int i = 0; i < GetNrValues();)
@@ -318,6 +353,7 @@ bool DCM_ATTRIBUTE_CLASS::encodeValue(DATA_TF_CLASS& dataTransfer, UINT32 length
 	case ATTR_VR_ST:
     case ATTR_VR_UN:
 	case ATTR_VR_UT:
+	case ATTR_VR_UR:
 		{
 			// For ATTR_VR_UN encode single-valued "byte array" attribute value(s)
 			// For ATTR_VR_LT, ATTR_VR_ST, ATTR_VR_UT
@@ -460,6 +496,62 @@ bool DCM_ATTRIBUTE_CLASS::encodeValue(DATA_TF_CLASS& dataTransfer, UINT32 length
 		}
 		break;
 
+		case ATTR_VR_OD:
+		{
+			// encode the other data attribute value
+			if (GetNrValues() != 1)
+			{
+				// can only be single value
+				return false;
+			}
+
+			VALUE_OD_CLASS *value_ptr = static_cast<VALUE_OD_CLASS*>(GetValue(0));
+			if (value_ptr == NULL) return false; // cannot happen
+            value_ptr->SetLogger(loggerM_ptr);
+
+			// set up the data stream
+			OD_VALUE_STREAM_CLASS stream;
+			stream.SetLogger(loggerM_ptr);
+
+			// check if data in a file
+			string filename;
+			if (value_ptr->Get(filename) == MSG_OK)
+			{
+				// set to stream from file
+				stream.SetFilename(filename);
+			}
+			else
+			{
+				UINT32 rows,  columns,  start_value, rows_increment, columns_increment, rows_same, columns_same;
+
+				// get the pattern values
+				value_ptr->Get((UINT32) 0, rows);
+				value_ptr->Get((UINT32) 1, columns);
+				value_ptr->Get((UINT32) 2, start_value);
+				value_ptr->Get((UINT32) 3, rows_increment);
+				value_ptr->Get((UINT32) 4, columns_increment);
+				value_ptr->Get((UINT32) 5, rows_same);
+				value_ptr->Get((UINT32) 6, columns_same);
+
+				// set to stream from a generated pattern
+				stream.SetPatternValues(rows, columns, start_value, rows_increment, columns_increment, rows_same, columns_same);
+			}
+
+            // update the stream with the appropriate attribute values
+            stream.UpdateData(value_ptr->GetBitsAllocated(), value_ptr->GetSamplesPerPixel(), value_ptr->GetPlanarConfiguration());
+
+            // stream the other data into the data transfer
+			if (!stream.StreamTo(dataTransfer))
+			{
+				// should never fail
+				return false;
+			}
+
+			// force length to zero		
+			length = 0;
+		}
+		break;
+
 	case ATTR_VR_OW:
 		{
 			// encode the other data attribute value
@@ -475,6 +567,62 @@ bool DCM_ATTRIBUTE_CLASS::encodeValue(DATA_TF_CLASS& dataTransfer, UINT32 length
 
 			// set up the data stream
 			OW_VALUE_STREAM_CLASS stream;
+			stream.SetLogger(loggerM_ptr);
+
+			// check if data in a file
+			string filename;
+			if (value_ptr->Get(filename) == MSG_OK)
+			{
+				// set to stream from file
+				stream.SetFilename(filename);
+			}
+			else
+			{
+				UINT32 rows,  columns,  start_value, rows_increment, columns_increment, rows_same, columns_same;
+
+				// get the pattern values
+				value_ptr->Get((UINT32) 0, rows);
+				value_ptr->Get((UINT32) 1, columns);
+				value_ptr->Get((UINT32) 2, start_value);
+				value_ptr->Get((UINT32) 3, rows_increment);
+				value_ptr->Get((UINT32) 4, columns_increment);
+				value_ptr->Get((UINT32) 5, rows_same);
+				value_ptr->Get((UINT32) 6, columns_same);
+
+				// set to stream from a generated pattern
+				stream.SetPatternValues(rows, columns, start_value, rows_increment, columns_increment, rows_same, columns_same);
+			}
+
+            // update the stream with the appropriate attribute values
+            stream.UpdateData(value_ptr->GetBitsAllocated(), value_ptr->GetSamplesPerPixel(), value_ptr->GetPlanarConfiguration());
+
+            // stream the other data into the data transfer
+			if (!stream.StreamTo(dataTransfer))
+			{
+				// should never fail
+				return false;
+			}
+
+			// force length to zero		
+			length = 0;
+		}
+		break;
+
+		case ATTR_VR_OL:
+		{
+			// encode the other data attribute value
+			if (GetNrValues() != 1)
+			{
+				// can only be single value
+				return false;
+			}
+
+			VALUE_OL_CLASS *value_ptr = static_cast<VALUE_OL_CLASS*>(GetValue(0));
+			if (value_ptr == NULL) return false; // cannot happen
+            value_ptr->SetLogger(loggerM_ptr);
+
+			// set up the data stream
+			OL_VALUE_STREAM_CLASS stream;
 			stream.SetLogger(loggerM_ptr);
 
 			// check if data in a file
@@ -922,13 +1070,16 @@ bool DCM_ATTRIBUTE_CLASS::decode(DATA_TF_CLASS& dataTransfer, UINT16 lastGroup, 
 			transferVrM = TRANSFER_ATTR_VR_EXPLICIT;
 		}
 
-		// check for special OB, OF, OW, SQ, UN & UT encoding
+		// check for special OB, OF, OW, OL, OD, SQ, UN, UR & UT encoding
 		if ((vr == ATTR_VR_OB) || 
 			(vr == ATTR_VR_OF) || 
 			(vr == ATTR_VR_OW) || 
+			(vr == ATTR_VR_OL) || 
+			(vr == ATTR_VR_OD) || 
 			(vr == ATTR_VR_SQ) || 
 			(vr == ATTR_VR_UN) || 
-			(vr == ATTR_VR_UT)) 
+			(vr == ATTR_VR_UR) ||
+			(vr == ATTR_VR_UT))  
 		{
 			// decode 16 bit padding
 			dataTransfer >> length16;
@@ -1188,6 +1339,7 @@ bool DCM_ATTRIBUTE_CLASS::decodeValue(DATA_TF_CLASS& dataTransfer, UINT32 *lengt
 	case ATTR_VR_SH:
 	case ATTR_VR_TM:
 	case ATTR_VR_UI: 
+	case ATTR_VR_UC: 
 		{
 			// decode attribute value(s)
 			BASE_VALUE_CLASS *value_ptr;
@@ -1260,6 +1412,7 @@ bool DCM_ATTRIBUTE_CLASS::decodeValue(DATA_TF_CLASS& dataTransfer, UINT32 *lengt
 	case ATTR_VR_ST:
     case ATTR_VR_UN:
 	case ATTR_VR_UT: 
+	case ATTR_VR_UR: 
 		{
 			// make check on length for UN VR
             if ((vr == ATTR_VR_UN) &&
@@ -1414,7 +1567,7 @@ bool DCM_ATTRIBUTE_CLASS::decodeValue(DATA_TF_CLASS& dataTransfer, UINT32 *lengt
 		}
 		break;
 
-	case ATTR_VR_OF: 
+	case ATTR_VR_OF:
 		{
 			// set up the data stream
 			OF_VALUE_STREAM_CLASS stream;
@@ -1442,6 +1595,41 @@ bool DCM_ATTRIBUTE_CLASS::decodeValue(DATA_TF_CLASS& dataTransfer, UINT32 *lengt
 
 			// save other data value
 			VALUE_OF_CLASS *value_ptr = (VALUE_OF_CLASS*)CreateNewValue(vr);
+            value_ptr->SetLogger(loggerM_ptr);
+			value_ptr->Set(stream.GetFilename());
+			value_ptr->SetDecodedLengthUndefined(length);
+			AddValue(value_ptr);
+		}
+		break;
+
+	case ATTR_VR_OD:
+		{
+			// set up the data stream
+			OD_VALUE_STREAM_CLASS stream;
+			stream.SetLogger(loggerM_ptr);
+			stream.SetLength(length);
+
+			// stream the other data from the data transfer
+			if (!stream.StreamFrom(dataTransfer))
+			{
+				if (loggerM_ptr)
+				{
+                    if (length == UNDEFINED_LENGTH)
+                    {
+					    loggerM_ptr->text(LOG_ERROR, 1, "Cannot read all OD data for Attribute (%04X,%04X) with UNDEFINED length: 0x%X", group, element, length);
+                    }
+                    else
+                    {
+    					loggerM_ptr->text(LOG_ERROR, 1, "Cannot read all OD data for Attribute (%04X,%04X). Length expected: 0x%X=%d", group, element, length, length);
+                    }
+				}
+
+				// should never fail
+				return false;
+			}
+
+			// save other data value
+			VALUE_OD_CLASS *value_ptr = (VALUE_OD_CLASS*)CreateNewValue(vr);
             value_ptr->SetLogger(loggerM_ptr);
 			value_ptr->Set(stream.GetFilename());
 			value_ptr->SetDecodedLengthUndefined(length);
@@ -1492,6 +1680,57 @@ bool DCM_ATTRIBUTE_CLASS::decodeValue(DATA_TF_CLASS& dataTransfer, UINT32 *lengt
 
 			// save OW data value
 			VALUE_OW_CLASS *value_ptr = (VALUE_OW_CLASS*)CreateNewValue(vr);
+            value_ptr->SetLogger(loggerM_ptr);
+			value_ptr->Set(stream.GetFilename());
+			value_ptr->SetCompressed(dataTransfer.isCompressed());
+			value_ptr->SetDecodedLengthUndefined(length);
+			AddValue(value_ptr);
+		}
+		break;
+
+		case ATTR_VR_OL: 
+		{
+			// initialise the bits allocated
+			UINT16 bits_allocated = 32;
+
+			// try to get the parent in order to determine if this is pixel data or not
+			if (parentM_ptr)
+			{
+				if ((GetGroup() == PIXEL_GROUP) &&
+					(GetElement() == PIXEL_DATA))
+				{
+					// get the actual bits allocated
+					parentM_ptr->getUSValue(TAG_BITS_ALLOCATED, &bits_allocated);
+				}
+			}
+
+			// set up the data stream
+			OL_VALUE_STREAM_CLASS stream;
+			stream.SetLogger(loggerM_ptr);
+			stream.SetBitsAllocated(bits_allocated);
+			stream.SetLength(length);
+
+			// stream the other data from the data transfer
+			if (!stream.StreamFrom(dataTransfer))
+			{
+				if (loggerM_ptr)
+				{
+                    if (length == UNDEFINED_LENGTH)
+                    {
+					    loggerM_ptr->text(LOG_ERROR, 1, "Cannot read all OL data for Attribute (%04X,%04X) with UNDEFINED length: 0x%X", group, element, length);
+                    }
+                    else
+                    {
+					    loggerM_ptr->text(LOG_ERROR, 1, "Cannot read all OL data for Attribute (%04X,%04X). Length expected: 0x%X=%d", group, element, length, length);
+                    }
+				}
+
+				// should never fail
+				return false;
+			}
+
+			// save OW data value
+			VALUE_OL_CLASS *value_ptr = (VALUE_OL_CLASS*)CreateNewValue(vr);
             value_ptr->SetLogger(loggerM_ptr);
 			value_ptr->Set(stream.GetFilename());
 			value_ptr->SetCompressed(dataTransfer.isCompressed());

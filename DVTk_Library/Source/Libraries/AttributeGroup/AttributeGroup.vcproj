@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="8.00"
+	Version="8,00"
 	Name="Attribute Group"
 	ProjectGUID="{58A5B797-F08B-4837-96CF-FFBDB7CB3F02}"
 	RootNamespace="AttributeGroup"
@@ -213,7 +213,15 @@
 				>
 			</File>
 			<File
+				RelativePath=".\od_value_stream.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\of_value_stream.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\ol_value_stream.cpp"
 				>
 			</File>
 			<File
@@ -293,7 +301,15 @@
 				>
 			</File>
 			<File
+				RelativePath=".\value_od.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\value_of.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\value_ol.cpp"
 				>
 			</File>
 			<File
@@ -329,6 +345,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\value_uc.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\value_ui.cpp"
 				>
 			</File>
@@ -338,6 +358,10 @@
 			</File>
 			<File
 				RelativePath=".\value_un.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\value_ur.cpp"
 				>
 			</File>
 			<File
@@ -386,7 +410,15 @@
 				>
 			</File>
 			<File
+				RelativePath=".\od_value_stream.h"
+				>
+			</File>
+			<File
 				RelativePath=".\of_value_stream.h"
+				>
+			</File>
+			<File
+				RelativePath=".\ol_value_stream.h"
 				>
 			</File>
 			<File
@@ -462,7 +494,15 @@
 				>
 			</File>
 			<File
+				RelativePath=".\value_od.h"
+				>
+			</File>
+			<File
 				RelativePath=".\value_of.h"
+				>
+			</File>
+			<File
+				RelativePath=".\value_ol.h"
 				>
 			</File>
 			<File
@@ -498,6 +538,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\value_uc.h"
+				>
+			</File>
+			<File
 				RelativePath=".\value_ui.h"
 				>
 			</File>
@@ -507,6 +551,10 @@
 			</File>
 			<File
 				RelativePath=".\value_un.h"
+				>
+			</File>
+			<File
+				RelativePath=".\value_ur.h"
 				>
 			</File>
 			<File

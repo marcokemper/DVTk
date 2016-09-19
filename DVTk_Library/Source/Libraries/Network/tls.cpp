@@ -27,8 +27,13 @@
 //  EXTERNAL DECLARATIONS
 //*****************************************************************************
 #include <sstream>
+#include <string>
 #include "tls.h"
 
+using std::string;
+
+#define SSTR( x ) dynamic_cast< std::ostringstream & >( \
+        ( std::ostringstream() << std::dec << x ) ).str()
 
 //>>===========================================================================
 
@@ -335,6 +340,7 @@ bool TLS_SOCKET_CLASS::openSslInitialize()
 	{
 		ssl_options |= SSL_OP_NO_TLSv1;
 	}
+
 	SSL_CTX_set_options(ctxM_ptr, ssl_options);
 
 	SSL_CTX_set_timeout(ctxM_ptr, tlsCacheTimeoutM);
@@ -352,6 +358,8 @@ bool TLS_SOCKET_CLASS::openSslInitialize()
 
 	if (SSL_CTX_set_cipher_list(ctxM_ptr, cipherListM.c_str()) != 1)
 	{
+		cipherListM = "aRSA+kRSA+SHA1+3DES:@STRENGTH:-SSLv2";
+		SSL_CTX_set_cipher_list(ctxM_ptr, cipherListM.c_str());
 		openSslError("initializing cipher list (no valid ciphers)");
 	}
 	
@@ -564,11 +572,15 @@ bool TLS_SOCKET_CLASS::connect()
 		loggerM_ptr->text(LOG_DEBUG, 1, "Secure Socket - tls::connect(%s)", remoteHost.str().c_str());
 	}
 	bio_ptr = BIO_new_connect(const_cast<char *>(remoteHost.str().c_str()));
+	//bio_ptr = BIO_new_connect("krypted.com:443");
+	
 	if (!bio_ptr)
 	{
 		openSslError("creating connection");
 		return false;
 	}
+
+	
 
 	if (BIO_do_connect(bio_ptr) <= 0)
 	{
@@ -699,7 +711,18 @@ bool TLS_SOCKET_CLASS::listen()
 
 	// create the socket
 	listenPort << localListenPortM;
-	acceptBioM_ptr = BIO_new_accept(const_cast<char *>(listenPort.str().c_str()));
+
+	std::string port = SSTR( localListenPortM );
+
+	char *ipadress = "0.0.0.0:";
+	char buffer[256]; // <- danger, only storage for 256 characters.
+	strncpy(buffer, ipadress, sizeof(buffer));
+	strncat(buffer, port.c_str(), sizeof(buffer));
+
+	char *ipandport = buffer;
+
+	acceptBioM_ptr = BIO_new_accept(ipandport);
+
 	if (acceptBioM_ptr == NULL)
 	{
 		openSslError("creating server socket to port %d", localListenPortM);

@@ -1723,6 +1723,8 @@ BASE_VALUE_CLASS *stringValue(SCRIPT_SESSION_CLASS *session_ptr, char *stringVal
 	case ATTR_VR_UI:
     case ATTR_VR_UN:
 	case ATTR_VR_UT:
+	case ATTR_VR_UR:
+	case ATTR_VR_UC:
 	{
 		string data = stringValue_ptr;
 
@@ -1883,6 +1885,23 @@ BASE_VALUE_CLASS *stringValue(SCRIPT_SESSION_CLASS *session_ptr, char *stringVal
 	}
 	break;
 
+	case ATTR_VR_OD:
+	{
+		// check if value defined - otherwise just treat as zero-length
+		if (length)
+		{
+			// string is a filename - convert it into an absolute pathname
+			string data = session_ptr->getAbsolutePixelPathname(stringValue_ptr);
+
+			// allocate a new vr value
+			VALUE_OD_CLASS *od_value_ptr = (VALUE_OD_CLASS*)CreateNewValue(vr);
+            od_value_ptr->SetLogger(logger_ptr);
+			od_value_ptr->Set(data);
+            value_ptr = od_value_ptr;
+		}
+	}
+	break;
+
 	case ATTR_VR_OW:
 	{
 		// check if value defined - otherwise just treat as zero-length
@@ -1896,6 +1915,23 @@ BASE_VALUE_CLASS *stringValue(SCRIPT_SESSION_CLASS *session_ptr, char *stringVal
             ow_value_ptr->SetLogger(logger_ptr);
 			ow_value_ptr->Set(data);
             value_ptr = ow_value_ptr;
+		}
+	}
+	break;
+
+	case ATTR_VR_OL:
+	{
+		// check if value defined - otherwise just treat as zero-length
+		if (length)
+		{
+			// string is a filename - convert it into an absolute pathname
+			string data = session_ptr->getAbsolutePixelPathname(stringValue_ptr);
+
+			// allocate a new vr value
+			VALUE_OL_CLASS *ol_value_ptr = (VALUE_OL_CLASS*)CreateNewValue(vr);
+            ol_value_ptr->SetLogger(logger_ptr);
+			ol_value_ptr->Set(data);
+            value_ptr = ol_value_ptr;
 		}
 	}
 	break;
@@ -2238,9 +2274,21 @@ BASE_VALUE_CLASS *integerValue(SCRIPT_SESSION_CLASS *session_ptr, int intValue, 
 		value_ptr->Set((UINT32) intValue);
 		break;
 
+	case ATTR_VR_OD:
+		value_ptr = CreateNewValue(vr);
+		value_ptr->Set((UINT32) intValue);
+		break;
+
+	case ATTR_VR_OL:
+		value_ptr = CreateNewValue(vr);
+		value_ptr->Set((UINT32) intValue);
+		break;
+
 	case ATTR_VR_LT:
 	case ATTR_VR_ST:
 	case ATTR_VR_UT:
+	case ATTR_VR_UC:
+	case ATTR_VR_UR:
 		{
 			// allocate a buffer of the given length and fill with a text pattern
 			BYTE *patternValue_ptr = new BYTE [intValue];

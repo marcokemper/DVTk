@@ -1289,12 +1289,16 @@ static BASE_VALUE_CLASS* CreateValueFromString(NAME_STRING string_val, ATTR_VR_E
 		 case ATTR_VR_OB:
 		 case ATTR_VR_OF:
 		 case ATTR_VR_OW:
+		 case ATTR_VR_OL:
+		 case ATTR_VR_OD:
          case ATTR_VR_PN:
          case ATTR_VR_SH:
          case ATTR_VR_ST:
          case ATTR_VR_TM:
          case ATTR_VR_UI:
 		 case ATTR_VR_UN:
+		 case ATTR_VR_UR:
+		 case ATTR_VR_UC:
          case ATTR_VR_UT:
  			 {
 				string data = string_val;

@@ -81,6 +81,8 @@ namespace ManagedUnManagedDimseConvertors
         case ::ATTR_VR_OB: return DvtkData::Dimse::VR::OB; // Other Byte String
         case ::ATTR_VR_OF: return DvtkData::Dimse::VR::OF; // Other Float String
         case ::ATTR_VR_OW: return DvtkData::Dimse::VR::OW; // Other Word String
+		case ::ATTR_VR_OL: return DvtkData::Dimse::VR::OL; // Other Long String
+		case ::ATTR_VR_OD: return DvtkData::Dimse::VR::OD; // Other Double String
         case ::ATTR_VR_PN: return DvtkData::Dimse::VR::PN; // Person Name
         case ::ATTR_VR_SH: return DvtkData::Dimse::VR::SH; // Short String
         case ::ATTR_VR_SL: return DvtkData::Dimse::VR::SL; // Signed Long
@@ -93,6 +95,8 @@ namespace ManagedUnManagedDimseConvertors
         case ::ATTR_VR_UN: return DvtkData::Dimse::VR::UN; // Unknown
         case ::ATTR_VR_US: return DvtkData::Dimse::VR::US; // Unsigned Short
         case ::ATTR_VR_UT: return DvtkData::Dimse::VR::UT; // Unlimited Text
+		case ::ATTR_VR_UC: return DvtkData::Dimse::VR::UC; // Unlimited Characters
+		case ::ATTR_VR_UR: return DvtkData::Dimse::VR::UR; // Universal Resource Identifier
             // Determine what to do with the following VR enums.
         case ::ATTR_VR_DOESNOTEXIST:
             assert(false);
@@ -763,6 +767,120 @@ namespace ManagedUnManagedDimseConvertors
                 pDicomValue = pOtherFloatString;
                 break;
             }
+			case ATTR_VR_OL:
+            {
+                DvtkData::Dimse::OtherLongString *pOtherLongString = new DvtkData::Dimse::OtherLongString();
+
+                // convert OF value
+                if (pUMValueList)
+                {
+                    if (pUMValueList->GetNrValues() == 1)
+                    {
+                        OTHER_VALUE_CLASS *pUMOtherValue = (OTHER_VALUE_CLASS*)pUMValueList->GetValue(0);
+
+                        // check if data in a file
+                        string filename;
+                        if (pUMOtherValue->Get(filename, true) == MSG_OK)
+                        {
+                            // set the filename
+                            pOtherLongString->FileName = filename.c_str();
+                        }
+                        else
+                        {
+                            // get pattern values
+                            // 0 = rows
+                            // 1 = columns
+                            // 2 = start_value
+                            // 3 = rows_increment
+                            // 4 = columns_increment
+                            // 5 = rows_same
+                            // 6 = columns_same
+                            DvtkData::Dimse::BitmapPatternParameters *pBitmapPattern = new DvtkData::Dimse::BitmapPatternParameters();
+
+                            for (int i = 0; i < 7; i++)
+                            {
+                                UINT32 value;
+                                pUMOtherValue->Get((UINT32) i, value);
+                                switch(i)
+                                {
+                                case 0: pBitmapPattern->NumberOfRows = (System::UInt16) value; break;
+                                case 1: pBitmapPattern->NumberOfColumns = (System::UInt16) value; break;
+                                case 2: pBitmapPattern->StartValue = (System::UInt16) value; break;
+                                case 3: pBitmapPattern->ValueIncrementPerRowBlock = (System::UInt16) value; break;
+                                case 4: pBitmapPattern->ValueIncrementPerColumnBlock = (System::UInt16) value; break;
+                                case 5: pBitmapPattern->NumberOfIdenticalValueRows = (System::UInt16) value; break;
+                                case 6: pBitmapPattern->NumberOfIdenticalValueColumns = (System::UInt16) value; break;
+                                default: throw new System::ApplicationException(); break;
+                                }
+                            }
+                            pOtherLongString->BitmapPattern = pBitmapPattern;
+                        }
+
+						// data compressed
+						pOtherLongString->Compressed = pUMOtherValue->IsCompressed();
+                    }
+                }
+
+                pDicomValue = pOtherLongString;
+                break;
+            }
+			case ATTR_VR_OD:
+            {
+                DvtkData::Dimse::OtherDoubleString *pOtherDoubleString = new DvtkData::Dimse::OtherDoubleString();
+
+                // convert OF value
+                if (pUMValueList)
+                {
+                    if (pUMValueList->GetNrValues() == 1)
+                    {
+                        OTHER_VALUE_CLASS *pUMOtherValue = (OTHER_VALUE_CLASS*)pUMValueList->GetValue(0);
+
+                        // check if data in a file
+                        string filename;
+                        if (pUMOtherValue->Get(filename, true) == MSG_OK)
+                        {
+                            // set the filename
+                            pOtherDoubleString->FileName = filename.c_str();
+                        }
+                        else
+                        {
+                            // get pattern values
+                            // 0 = rows
+                            // 1 = columns
+                            // 2 = start_value
+                            // 3 = rows_increment
+                            // 4 = columns_increment
+                            // 5 = rows_same
+                            // 6 = columns_same
+                            DvtkData::Dimse::BitmapPatternParameters *pBitmapPattern = new DvtkData::Dimse::BitmapPatternParameters();
+
+                            for (int i = 0; i < 7; i++)
+                            {
+                                UINT32 value;
+                                pUMOtherValue->Get((UINT32) i, value);
+                                switch(i)
+                                {
+                                case 0: pBitmapPattern->NumberOfRows = (System::UInt16) value; break;
+                                case 1: pBitmapPattern->NumberOfColumns = (System::UInt16) value; break;
+                                case 2: pBitmapPattern->StartValue = (System::UInt16) value; break;
+                                case 3: pBitmapPattern->ValueIncrementPerRowBlock = (System::UInt16) value; break;
+                                case 4: pBitmapPattern->ValueIncrementPerColumnBlock = (System::UInt16) value; break;
+                                case 5: pBitmapPattern->NumberOfIdenticalValueRows = (System::UInt16) value; break;
+                                case 6: pBitmapPattern->NumberOfIdenticalValueColumns = (System::UInt16) value; break;
+                                default: throw new System::ApplicationException(); break;
+                                }
+                            }
+                            pOtherDoubleString->BitmapPattern = pBitmapPattern;
+                        }
+
+						// data compressed
+						pOtherDoubleString->Compressed = pUMOtherValue->IsCompressed();
+                    }
+                }
+
+                pDicomValue = pOtherDoubleString;
+                break;
+            }
         case ATTR_VR_OW:
             {
                 DvtkData::Dimse::OtherWordString *pOtherWordString = new DvtkData::Dimse::OtherWordString();
@@ -979,6 +1097,23 @@ namespace ManagedUnManagedDimseConvertors
                 pDicomValue = pUniqueIdentifier;
                 break;
             }
+		case ATTR_VR_UC:
+            {
+                DvtkData::Dimse::UnlimitedCharacters *pUnlimitedCharacters = new DvtkData::Dimse::UnlimitedCharacters();
+                pUnlimitedCharacters->Values = new DvtkData::Collections::StringCollection();
+
+                // convert all UI values
+                if (pUMValueList)
+                {
+                    for (int i = 0; i < pUMValueList->GetNrValues(); i++)
+                    {
+                        System::String *pString = ConvertString(pUMValueList->GetValue(i));
+                        pUnlimitedCharacters->Values->Add(pString);
+                    }
+                }
+                pDicomValue = pUnlimitedCharacters;
+                break;
+            }
         case ATTR_VR_UL:
             {
                 DvtkData::Dimse::UnsignedLong *pUnsignedLong = new DvtkData::Dimse::UnsignedLong();
@@ -1070,6 +1205,22 @@ namespace ManagedUnManagedDimseConvertors
                     }
                 }
                 pDicomValue = pUnlimitedText;
+                break;
+            }
+		case ATTR_VR_UR:
+            {
+                DvtkData::Dimse::UniversalResourceIdentifier *pUniversalResourceIdentifier = new DvtkData::Dimse::UniversalResourceIdentifier();
+
+                // convert all UC value
+                if (pUMValueList)
+                {
+                    if (pUMValueList->GetNrValues() == 1)
+                    {
+                        System::String *pStringValue = ConvertLongString(pUMValueList->GetValue(0));
+                        pUniversalResourceIdentifier->Value = pStringValue;
+                    }
+                }
+                pDicomValue = pUniversalResourceIdentifier;
                 break;
             }
         default:
@@ -1606,6 +1757,14 @@ namespace ManagedUnManagedDimseConvertors
             // convert OW values
             Convert(pUMAttribute, static_cast<DvtkData::Dimse::OtherWordString __gc*>(pAttribute->DicomValue));
             break;
+		case VR::OL:
+            // convert OL values
+            Convert(pUMAttribute, static_cast<DvtkData::Dimse::OtherLongString __gc*>(pAttribute->DicomValue));
+            break;
+		case VR::OD:
+            // convert OD values
+            Convert(pUMAttribute, static_cast<DvtkData::Dimse::OtherDoubleString __gc*>(pAttribute->DicomValue));
+            break;
         case VR::PN:
             // convert PN values
             Convert(pUMAttribute, static_cast<DvtkData::Dimse::PersonName __gc*>(pAttribute->DicomValue));
@@ -1638,6 +1797,10 @@ namespace ManagedUnManagedDimseConvertors
             // convert UI values
             Convert(pUMAttribute, static_cast<DvtkData::Dimse::UniqueIdentifier __gc*>(pAttribute->DicomValue));
             break;
+		case VR::UC:
+            // convert UC values
+            Convert(pUMAttribute, static_cast<DvtkData::Dimse::UnlimitedCharacters __gc*>(pAttribute->DicomValue));
+            break;
         case VR::UL:
             // convert UL values
             Convert(pUMAttribute, static_cast<DvtkData::Dimse::UnsignedLong __gc*>(pAttribute->DicomValue));
@@ -1653,6 +1816,10 @@ namespace ManagedUnManagedDimseConvertors
         case VR::UT:
             // convert UT value
             Convert(pUMAttribute, static_cast<DvtkData::Dimse::UnlimitedText __gc*>(pAttribute->DicomValue));
+            break;
+		case VR::UR:
+            // convert UT value
+            Convert(pUMAttribute, static_cast<DvtkData::Dimse::UniversalResourceIdentifier __gc*>(pAttribute->DicomValue));
             break;
         default:
             break;
@@ -2154,6 +2321,122 @@ namespace ManagedUnManagedDimseConvertors
     //>>===========================================================================
 
     void 
+        ManagedUnManagedDimseConvertor::Convert(DCM_ATTRIBUTE_CLASS *pUMAttribute, DvtkData::Dimse::OtherLongString __gc *pOtherLongString)
+
+        //  DESCRIPTION     : Convert managed to unmanaged - attribute value OL
+        //  PRECONDITIONS   :
+        //  POSTCONDITIONS  :
+        //  EXCEPTIONS      : System application exception when value not defined. 
+        //  NOTES           :
+        //<<===========================================================================
+    {
+        // set VR
+        ATTR_VR_ENUM UMvr = ATTR_VR_OL;
+        pUMAttribute->SetVR(UMvr);
+
+        // convert the value
+        if (pOtherLongString)
+        {
+            // data comes from a bitmap pattern
+			if(pOtherLongString->Item != NULL)
+			{
+				if (pOtherLongString->Item->GetType() == __typeof(DvtkData::Dimse::BitmapPatternParameters))
+				{
+					DvtkData::Dimse::BitmapPatternParameters *pBitmapPattern = static_cast<DvtkData::Dimse::BitmapPatternParameters __gc *>(pOtherLongString->Item);
+					OTHER_VALUE_CLASS *pUMValue = (OTHER_VALUE_CLASS*)CreateNewValue(UMvr);
+					pUMValue->Add(pBitmapPattern->NumberOfRows);
+					pUMValue->Add(pBitmapPattern->NumberOfColumns);
+					pUMValue->Add(pBitmapPattern->StartValue);
+					pUMValue->Add(pBitmapPattern->ValueIncrementPerRowBlock);
+					pUMValue->Add(pBitmapPattern->ValueIncrementPerColumnBlock);
+					pUMValue->Add(pBitmapPattern->NumberOfIdenticalValueRows);
+					pUMValue->Add(pBitmapPattern->NumberOfIdenticalValueColumns);
+					pUMValue->SetCompressed(pOtherLongString->Compressed);
+					pUMAttribute->AddValue(pUMValue);			
+				}
+				else if (pOtherLongString->Item->GetType() == __typeof(System::String))
+				{
+					// data comes from a file
+					System::String *pFileName = static_cast<System::String __gc *>(pOtherLongString->Item);
+					string value;
+					MarshalString(pFileName, value);
+					if (value.length() != 0)
+					{
+						OTHER_VALUE_CLASS *pUMValue = (OTHER_VALUE_CLASS*)CreateNewValue(UMvr);
+						pUMValue->Set(value);
+						pUMValue->SetCompressed(pOtherLongString->Compressed);
+						pUMAttribute->AddValue(pUMValue);
+					}
+				}
+				else
+				{
+					throw new System::ApplicationException();
+				}
+			}
+        }
+    }
+
+    //>>===========================================================================
+
+	void 
+        ManagedUnManagedDimseConvertor::Convert(DCM_ATTRIBUTE_CLASS *pUMAttribute, DvtkData::Dimse::OtherDoubleString __gc *pOtherDoubleString)
+
+        //  DESCRIPTION     : Convert managed to unmanaged - attribute value OD
+        //  PRECONDITIONS   :
+        //  POSTCONDITIONS  :
+        //  EXCEPTIONS      : System application exception when value not defined. 
+        //  NOTES           :
+        //<<===========================================================================
+    {
+        // set VR
+        ATTR_VR_ENUM UMvr = ATTR_VR_OD;
+        pUMAttribute->SetVR(UMvr);
+
+        // convert the value
+        if (pOtherDoubleString)
+        {
+            // data comes from a bitmap pattern
+			if(pOtherDoubleString->Item != NULL)
+			{
+				if (pOtherDoubleString->Item->GetType() == __typeof(DvtkData::Dimse::BitmapPatternParameters))
+				{
+					DvtkData::Dimse::BitmapPatternParameters *pBitmapPattern = static_cast<DvtkData::Dimse::BitmapPatternParameters __gc *>(pOtherDoubleString->Item);
+					OTHER_VALUE_CLASS *pUMValue = (OTHER_VALUE_CLASS*)CreateNewValue(UMvr);
+					pUMValue->Add(pBitmapPattern->NumberOfRows);
+					pUMValue->Add(pBitmapPattern->NumberOfColumns);
+					pUMValue->Add(pBitmapPattern->StartValue);
+					pUMValue->Add(pBitmapPattern->ValueIncrementPerRowBlock);
+					pUMValue->Add(pBitmapPattern->ValueIncrementPerColumnBlock);
+					pUMValue->Add(pBitmapPattern->NumberOfIdenticalValueRows);
+					pUMValue->Add(pBitmapPattern->NumberOfIdenticalValueColumns);
+					pUMValue->SetCompressed(pOtherDoubleString->Compressed);
+					pUMAttribute->AddValue(pUMValue);			
+				}
+				else if (pOtherDoubleString->Item->GetType() == __typeof(System::String))
+				{
+					// data comes from a file
+					System::String *pFileName = static_cast<System::String __gc *>(pOtherDoubleString->Item);
+					string value;
+					MarshalString(pFileName, value);
+					if (value.length() != 0)
+					{
+						OTHER_VALUE_CLASS *pUMValue = (OTHER_VALUE_CLASS*)CreateNewValue(UMvr);
+						pUMValue->Set(value);
+						pUMValue->SetCompressed(pOtherDoubleString->Compressed);
+						pUMAttribute->AddValue(pUMValue);
+					}
+				}
+				else
+				{
+					throw new System::ApplicationException();
+				}
+			}
+        }
+    }
+
+    //>>===========================================================================
+
+    void 
         ManagedUnManagedDimseConvertor::Convert(DCM_ATTRIBUTE_CLASS *pUMAttribute, DvtkData::Dimse::OtherWordString __gc *pOtherWordString)
 
         //  DESCRIPTION     : Convert managed to unmanaged - attribute value OW
@@ -2470,6 +2753,38 @@ namespace ManagedUnManagedDimseConvertors
 
     //>>===========================================================================
 
+	    void 
+        ManagedUnManagedDimseConvertor::Convert(DCM_ATTRIBUTE_CLASS *pUMAttribute, DvtkData::Dimse::UnlimitedCharacters __gc *pUnlimitedCharacters)
+
+        //  DESCRIPTION     : Convert managed to unmanaged - attribute value UC
+        //  PRECONDITIONS   :
+        //  POSTCONDITIONS  :
+        //  EXCEPTIONS      : 
+        //  NOTES           :
+        //<<===========================================================================
+    {
+        // set VR
+        ATTR_VR_ENUM UMvr = ATTR_VR_UC;
+        pUMAttribute->SetVR(UMvr);
+
+        // convert all values
+        if (pUnlimitedCharacters)
+        {
+            for (int i = 0; i < pUnlimitedCharacters->Values->Count; i++)
+            {
+                // convert each value
+                System::String *pString = pUnlimitedCharacters->Values->Item[i];
+                string UMvalue;
+                MarshalString(pString, UMvalue);
+                BASE_VALUE_CLASS *pUMValue = CreateNewValue(UMvr);
+                pUMValue->Set(UMvalue);
+                pUMAttribute->AddValue(pUMValue);
+            }
+        }
+    }
+
+    //>>===========================================================================
+
     void 
         ManagedUnManagedDimseConvertor::Convert(DCM_ATTRIBUTE_CLASS *pUMAttribute, DvtkData::Dimse::UnsignedLong __gc *pUnsignedLong)
 
@@ -2589,6 +2904,32 @@ namespace ManagedUnManagedDimseConvertors
             // TODO: check this works for long strings
             string UMvalue;
             MarshalString(pUnlimitedText->Value, UMvalue);
+            BASE_VALUE_CLASS *pUMValue = CreateNewValue(UMvr);
+            pUMValue->Set(UMvalue);
+            pUMAttribute->AddValue(pUMValue);
+        }
+    }
+
+	    void 
+        ManagedUnManagedDimseConvertor::Convert(DCM_ATTRIBUTE_CLASS *pUMAttribute, DvtkData::Dimse::UniversalResourceIdentifier __gc *pUniversalResourceIdentifier)
+
+        //  DESCRIPTION     : Convert managed to unmanaged - attribute value UR
+        //  PRECONDITIONS   :
+        //  POSTCONDITIONS  :
+        //  EXCEPTIONS      : 
+        //  NOTES           :
+        //<<===========================================================================
+    {
+        // set VR
+        ATTR_VR_ENUM UMvr = ATTR_VR_UR;
+        pUMAttribute->SetVR(UMvr);
+
+        // convert the value
+        if (pUniversalResourceIdentifier->Value)
+        {
+            // TODO: check this works for long strings
+            string UMvalue;
+            MarshalString(pUniversalResourceIdentifier->Value, UMvalue);
             BASE_VALUE_CLASS *pUMValue = CreateNewValue(UMvr);
             pUMValue->Set(UMvalue);
             pUMAttribute->AddValue(pUMValue);

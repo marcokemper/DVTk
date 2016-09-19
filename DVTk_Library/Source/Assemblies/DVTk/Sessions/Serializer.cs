@@ -1186,5 +1186,8 @@ namespace Dvtk.Sessions
             //
             this.m_endCounters.DvtDetailToXml(m_serializationWriter.SummaryStreamWriter, 0);
         }
+
+        private void SerializeSend()
+        { }
     }
 }

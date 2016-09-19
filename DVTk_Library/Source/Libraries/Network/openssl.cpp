@@ -25,9 +25,17 @@
 //*****************************************************************************
 //  EXTERNAL DECLARATIONS
 //*****************************************************************************
+#define _CRT_RAND_S
+
+#include <stdlib.h>
+#include <stdio.h>
+#include <limits.h>
+
+#include <iostream>
+#include <fstream>
+
 #include <sstream>
 #include "openssl.h"
-
 
 //*****************************************************************************
 //  MACROS 
@@ -162,13 +170,13 @@ rvType functionName(arg1Type a, arg2Type b, arg3Type c, arg4Type d, arg5Type e, 
 //	After adding the function below, uncomment the GetProcAddress line in the
 //	appropriate load lib method below.
 //*****************************************************************************
-ARG3(char *, SSL_CIPHER_description, SSL_CIPHER *, char *, int)
+ARG3(char *, SSL_CIPHER_description, const SSL_CIPHER *, char *, int)
 ARG1(const char *, SSL_CIPHER_get_name, SSL_CIPHER *)
 
 ARG4(long, SSL_CTX_ctrl, SSL_CTX *, int, long, void *)
 ARG1void(SSL_CTX_free, SSL_CTX *)
 ARG3(int, SSL_CTX_load_verify_locations, SSL_CTX *, const char *,const char *)
-ARG1(SSL_CTX *, SSL_CTX_new, SSL_METHOD *)
+ARG1(SSL_CTX *, SSL_CTX_new, const SSL_METHOD *)
 ARG2(int, SSL_CTX_set_cipher_list, SSL_CTX *, const char *)
 ARG2void(SSL_CTX_set_client_CA_list, SSL_CTX *, STACK_OF(X509_NAME) *)
 ARG2void(SSL_CTX_set_default_passwd_cb, SSL_CTX *, pem_password_cb *)
@@ -187,32 +195,38 @@ ARG1(int, SSL_connect, SSL *)
 ARG4(long, SSL_ctrl, SSL *, int, long, void *)
 ARG1void(SSL_free, SSL *)
 ARG1(SSL_SESSION *, SSL_get1_session, SSL *)
-ARG1(SSL_CIPHER *, SSL_get_current_cipher, SSL *)
-ARG2(int, SSL_get_error, SSL *, int)
-ARG1(X509 *, SSL_get_peer_certificate, SSL *)
-ARG1(int, SSL_get_rfd, SSL *)
-ARG1(long, SSL_get_verify_result, SSL *)
-ARG1(const char *, SSL_get_version, SSL *)
-ARG1(int, SSL_get_wfd, SSL *)
+ARG1(const SSL_CIPHER *, SSL_get_current_cipher, const SSL *)
+ARG2(int, SSL_get_error, const SSL *, int)
+ARG1(X509 *, SSL_get_peer_certificate, const SSL *)
+ARG1(int, SSL_get_rfd, const SSL *)
+ARG1(long, SSL_get_verify_result, const SSL *)
+ARG1(const char *, SSL_get_version, const SSL *)
+ARG1(int, SSL_get_wfd, const SSL *)
 ARG0(int, SSL_library_init)
 ARG1(STACK_OF(X509_NAME) *, SSL_load_client_CA_file, const char *)
 ARG0void(SSL_load_error_strings)
 ARG1(SSL *, SSL_new, SSL_CTX *)
-ARG1(int, SSL_pending, SSL *)
+ARG1(int, SSL_pending, const SSL *)
 ARG3(int, SSL_read, SSL *, void *, int)
 ARG1void(SSL_set_accept_state, SSL *)
 ARG3void(SSL_set_bio, SSL *, BIO *, BIO *)
 ARG2(int, SSL_set_session, SSL *, SSL_SESSION *)
 ARG1(int, SSL_shutdown, SSL *)
 ARG3(int, SSL_write, SSL *,const void *, int)
-ARG0(SSL_METHOD *, SSLv23_method)
-ARG0(SSL_METHOD *, SSLv3_method)
-ARG0(SSL_METHOD *, TLSv1_method)
 
-ARG1(long, ASN1_INTEGER_get, ASN1_INTEGER *)
+
+ARG0(const SSL_METHOD *, SSLv23_server_method)
+
+ARG0(const SSL_METHOD *, SSLv23_method)
+ARG0(const SSL_METHOD *, SSLv3_method)
+ARG0(const SSL_METHOD *, TLSv1_method)
+ARG0(const SSL_METHOD *, TLSv1_1_method)
+ARG0(const SSL_METHOD *, TLSv1_2_method)
+
+ARG1(long, ASN1_INTEGER_get, const ASN1_INTEGER *)
 ARG2(int, ASN1_INTEGER_set, ASN1_INTEGER *, long)
 ARG1void(ASN1_TYPE_free, ASN1_TYPE*)
-ARG4(ASN1_VALUE *, ASN1_item_d2i, ASN1_VALUE **, unsigned char **, long, const ASN1_ITEM *)
+ARG4(ASN1_VALUE *, ASN1_item_d2i, ASN1_VALUE **, const unsigned char **, long, const ASN1_ITEM *)
 ARG3(void *, ASN1_item_d2i_bio, const ASN1_ITEM *, BIO *, void *)
 
 ARG4(long, BIO_ctrl, BIO *, int, long, void *)
@@ -246,7 +260,7 @@ ARG5void(ERR_put_error, int, int, int, const char *, int)
 ARG1void(ERR_remove_state, unsigned long)
 
 ARG1(EVP_PKEY *, EVP_PKCS82PKEY, PKCS8_PRIV_KEY_INFO *)
-ARG3(int, EVP_PKEY_assign, EVP_PKEY *, int, char *)
+ARG3(int, EVP_PKEY_assign, EVP_PKEY *, int, void *)
 ARG1void(EVP_PKEY_free, EVP_PKEY *)
 ARG0(EVP_PKEY *, EVP_PKEY_new)
 ARG1(int, EVP_PKEY_type, int)
@@ -284,6 +298,12 @@ ARG3void(RAND_add, const void *, int, double)
 ARG2void(RAND_seed, const void *,int)
 ARG0(int, RAND_status)
 
+// MK: Added following three lines:
+ARG2(const char *, RAND_file_name, char *, size_t)
+ARG2(int, RAND_load_file, const char *, long)
+ARG1(int, RAND_write_file, const char *)
+
+
 ARG1void(RSA_free, RSA *)
 
 ARG1void(X509_INFO_free, X509_INFO *)
@@ -315,24 +335,26 @@ ARG3(int, X509_sign, X509 *, EVP_PKEY *, const EVP_MD *)
 ARG3(ASN1_TIME *, X509_time_adj, ASN1_TIME *, long, time_t *)
 ARG1(const char *, X509_verify_cert_error_string, long )
 
-ARG3(ASN1_TYPE *, d2i_ASN1_TYPE, ASN1_TYPE **, unsigned char **, long)
-ARG4(EVP_PKEY *, d2i_PrivateKey, int, EVP_PKEY **, unsigned char **, long)
+ARG3(ASN1_TYPE *, d2i_ASN1_TYPE, ASN1_TYPE **, const unsigned char **, long)
+//ARG4(ASN1_STRING *, d2i_ASN1_TYPE_BYTES, ASN1_STRING **, const unsigned char **, long, int)
+
+ARG4(EVP_PKEY *, d2i_PrivateKey, int, EVP_PKEY **, const unsigned char **, long)
 ARG2(PKCS12 *, d2i_PKCS12_bio, BIO *, PKCS12 **)
 ARG2(PKCS7 *, d2i_PKCS7_bio, BIO *, PKCS7 **)
-ARG3(PKCS8_PRIV_KEY_INFO*, d2i_PKCS8_PRIV_KEY_INFO, PKCS8_PRIV_KEY_INFO**, unsigned char **, long)
+ARG3(PKCS8_PRIV_KEY_INFO*, d2i_PKCS8_PRIV_KEY_INFO, PKCS8_PRIV_KEY_INFO**, const unsigned char **, long)
 ARG3(X509 *, d2i_X509, X509 **, unsigned char **, long)
-ARG3(X509_SIG *, d2i_X509_SIG, X509_SIG **, unsigned char **, long)
+ARG3(X509_SIG *, d2i_X509_SIG, X509_SIG **, const unsigned char **, long)
 
 ARG3(int, i2t_ASN1_OBJECT, char *, int, ASN1_OBJECT *)
-
-ARG2(char *, sk_delete, STACK *, int)
-ARG3(int, sk_insert, STACK *, char *, int)
-ARG0(STACK *, sk_new_null)
-ARG1(int, sk_num, const STACK *)
-ARG1(char *, sk_pop, STACK *)
-ARG2(int, sk_push, STACK *, char *)
-ARG1(char *, sk_shift, STACK *)
-ARG2(char *, sk_value, const STACK *, int)
+  
+ARG2(void *, sk_delete, _STACK *, int)
+ARG3(int, sk_insert, _STACK *, void *, int)
+ARG0(_STACK *, sk_new_null)
+ARG1(int, sk_num, const _STACK *)
+ARG1(void *, sk_pop, _STACK *)
+ARG2(int, sk_push, _STACK *, void *)
+ARG1(void *,sk_shift, _STACK *)
+ARG2(void *, sk_value, const _STACK *, int)
 
 
 //
@@ -401,6 +423,32 @@ void CRYPTO_set_locking_callback(void (*a)(int mode,int type, const char *file,i
 	CRYPTO_set_locking_callback_FP(a);
 }
 
+				
+//typedef SSL_METHOD * (*SSLv23_method_TYPE)(void);	
+//SSLv23_method_TYPE SSLv23_method_FP = NULL;	
+//SSL_METHOD * SSLv23_method()							
+//{												
+//	return SSLv23_method_FP();					
+//}
+//
+//typedef SSL_METHOD * (*SSLv3_method_TYPE)(void);	
+//SSLv3_method_TYPE SSLv3_method_FP = NULL;	
+//SSL_METHOD * SSLv3_method()							
+//{												
+//	return SSLv3_method_FP();					
+//}
+//
+//typedef SSL_METHOD * (*TLSv1_method_TYPE)(void);	
+//TLSv1_method_TYPE TLSv1_method_FP = NULL;	
+//SSL_METHOD * TLSv1_method()							
+//{												
+//	return TLSv1_method_FP();					
+//}
+
+
+
+
+
 typedef DSA * (*DSA_generate_parameters_TYPE)(int, unsigned char *, int, int *, unsigned long *, void (*)(int, int, void *), void *);
 DSA_generate_parameters_TYPE DSA_generate_parameters_FP = NULL;
 DSA * DSA_generate_parameters(int a, unsigned char *b, int c, int *d, unsigned long *e, void (*f)(int, int, void *), void *g)
@@ -415,16 +463,16 @@ RSA * RSA_generate_key(int a, unsigned long b, void (*c)(int,int,void *), void *
 	return RSA_generate_key_FP(a,b,c,d);
 }
 
-typedef STACK * (*d2i_ASN1_SET_TYPE)(STACK **, unsigned char **, long, char *(*)(), void (*)(void *), int, int);
+typedef _STACK * (*d2i_ASN1_SET_TYPE)(_STACK **, const unsigned char **, long, BIO *, void (*)(void *), int, int);
 d2i_ASN1_SET_TYPE d2i_ASN1_SET_FP = NULL;
-STACK *d2i_ASN1_SET(STACK **a, unsigned char **b, long c, char *(*d)(), void (*e)(void *), int f, int g)
+_STACK *d2i_ASN1_SET(_STACK **a, const unsigned char **b, long c, BIO *d, void (*e)(void *), int f, int g)
 {
 	return d2i_ASN1_SET_FP(a,b,c,d,e,f,g);
 }
 
-typedef void (*sk_pop_free_TYPE)(STACK *, void (*)(void *));
+typedef void (*sk_pop_free_TYPE)(_STACK *, void (*)(void *));
 sk_pop_free_TYPE sk_pop_free_FP = NULL;
-void sk_pop_free(STACK *a, void (*b)(void *))
+void sk_pop_free(_STACK *a, void (*b)(void *))
 {
 	sk_pop_free_FP(a,b);
 }
@@ -598,10 +646,108 @@ void OPENSSL_CLASS::seedPrng()
 	int i = 0;
 	const double entropy = 15.0/8.0;
 
-	// seed the C random number generator
+// seed the C random number generator
 	srand(static_cast<unsigned>(time(NULL)));
 
-	// loop until the random number generator says it has enough seed data
+	//bool use_rand_add_method = false;
+
+	//// seed the C random number generator
+	//// srand(static_cast<unsigned>(time(NULL)));
+
+
+	////
+	//// MK: Determine temp file path to write random data to.
+	////
+
+	//DWORD dwRetVal = 0;
+	//UINT uRetVal   = 0;
+	//TCHAR tempDirectoryPath[MAX_PATH];
+	//TCHAR tempFilePath[MAX_PATH];
+
+ //    //  Gets the temp path env string (no guarantee it's a valid path).
+ //   dwRetVal = GetTempPath(MAX_PATH,          // length of the buffer
+ //                          tempDirectoryPath); // buffer for path 
+ //   if (dwRetVal > MAX_PATH || (dwRetVal == 0))
+	//{
+	//	use_rand_add_method = true;
+	//}
+	//else
+	//{
+	//	//  Generates a temporary file name. 
+	//	uRetVal = GetTempFileName(tempDirectoryPath, // directory for tmp files
+	//							  TEXT("RND"),     // temp file name prefix 
+	//							  0,                // create unique name 
+	//							  tempFilePath);  // buffer for name 
+
+	//	if (uRetVal == 0)
+	//	{
+	//		use_rand_add_method = true;
+	//	}
+	//}
+
+
+	////
+	//// MK: Write random data to temp file and read it as random data for the OpenSSL library.
+	////
+
+	//if (!use_rand_add_method)
+	//{
+	//	// MK:
+	//	// Write the random data and load it again, this should make sure that long delays because of the RAND_status/RAND_add method calls will not occur anymore.
+	//	// This random data may not be such random anymore but this is the price to pay for removing the possible delay under Windows 7.
+
+	//	// Write pseudo random bytes to file.
+	//	const int numberOfRandomIntegers = 512;
+	//	int randBuffer[numberOfRandomIntegers];
+	//	unsigned int randomNumber;
+
+	//	for (int randBufferIndex = 0; randBufferIndex < numberOfRandomIntegers; randBufferIndex++)
+	//	{
+	//		rand_s(&randomNumber);
+	//		randBuffer[randBufferIndex] = randomNumber;
+	//	}
+
+	//	ofstream outputFileStream(tempFilePath);
+	//	outputFileStream.write((char*) &randBuffer, numberOfRandomIntegers * 4);
+	//	outputFileStream.close();
+
+	//	// Read pseudo random bytes from file.
+	//	RAND_load_file(tempFilePath, numberOfRandomIntegers * 4);
+
+	//	// Remove generated temp file.
+	//	DeleteFile(tempFilePath);
+	//}
+
+
+	//////
+	////// MK: Check if OpenSLL library consideres the random data as random enough.
+	//////
+	//
+	////// Check if enough randomness is present according to the library.
+	////if (RAND_status() != 1)
+	////{
+	////	use_rand_add_method = true;
+	////}
+
+
+	////
+	//// MK: If previous code does not work, do it the original which may cause a long delay under Windows 7.
+	////
+
+	//if (use_rand_add_method)
+	//{
+	//	while (RAND_status() != 1)
+	//	{
+	//		value = rand();
+	//		RAND_add(&value, sizeof(value), entropy);
+
+	//		if (i++ > 4000) // sanity check to make sure we don't get stuck in an infinite loop
+	//		{
+	//			break;
+	//		}
+	//	}		
+	//}
+
 	while (RAND_status() != 1)
 	{
 		value = rand();
@@ -612,6 +758,7 @@ void OPENSSL_CLASS::seedPrng()
 			break;
 		}
 	}
+
 }
 
 
@@ -680,18 +827,22 @@ bool OPENSSL_CLASS::isCipherListValid(const char* cipherList)
 {
 	bool result;
 	SSL_CTX* ctx_ptr;
-
+	
 	// setup a connection factory
 	ctx_ptr = SSL_CTX_new(SSLv23_method());
+
+
 	if (ctx_ptr == NULL)
 	{
 		return true; // we have other problems...
 	}
 
+
 	result = (SSL_CTX_set_cipher_list(ctx_ptr, cipherList) ? true : false);
+
 	if (result)
 	{
-		if (ctx_ptr->cipher_list->num == 0)
+		if (ctx_ptr->cipher_list->stack.num == 0)
 		{
 			result = false;
 		}
@@ -701,6 +852,7 @@ bool OPENSSL_CLASS::isCipherListValid(const char* cipherList)
 	SSL_CTX_free(ctx_ptr);
 
 	return result;
+
 }
 
 
@@ -1094,7 +1246,7 @@ DVT_STATUS OPENSSL_CLASS::readPemFile(const char* filename_ptr, STACK_OF(X509_IN
 		{
 			// private key read
 			// convert PEM to private key [code copied and modified from PEM_read_bio_PrivateKey()]
-			unsigned char *tmpData_ptr = data_ptr; // don't modify data_ptr below
+			const unsigned char *tmpData_ptr = data_ptr; // don't modify data_ptr below
 			EVP_PKEY *key_ptr = NULL;
 			bool tryPkcs8 = false;
 
@@ -1383,7 +1535,7 @@ bool OPENSSL_CLASS::writePemFile(const char* filename_ptr,  STACK_OF(X509_INFO)*
 	}
 
 	// write each of the PEM infos
-	num = sk_X509_num(pem_ptr);
+	num = sk_X509_INFO_num(pem_ptr);
 	for (i = 0; i < num; i++)
 	{
 		// get the PEM info
@@ -1516,7 +1668,7 @@ DVT_STATUS OPENSSL_CLASS::readCredentialsFile(const char* filename_ptr,
 			}
 
 			// convert PEM to private key [code copied from PEM_read_bio_PrivateKey()]
-			unsigned char *tmpData_ptr = data_ptr; // don't modify data_ptr below
+			const unsigned char *tmpData_ptr = data_ptr; // don't modify data_ptr below
 			EVP_PKEY *key_ptr = NULL;
 
 			if (strcmp(name_ptr, PEM_STRING_RSA) == 0)
@@ -2208,7 +2360,7 @@ bool OPENSSL_CLASS::loadSsleayLib()
 	if ((SSL_write_FP = (SSL_write_TYPE)GetProcAddress(ssleayHandleM, "SSL_write")) == NULL) goto err;
 //	if ((SSLv23_client_method_FP = (SSLv23_client_method_TYPE)GetProcAddress(ssleayHandleM, "SSLv23_client_method")) == NULL) goto err;
 	if ((SSLv23_method_FP = (SSLv23_method_TYPE)GetProcAddress(ssleayHandleM, "SSLv23_method")) == NULL) goto err;
-//	if ((SSLv23_server_method_FP = (SSLv23_server_method_TYPE)GetProcAddress(ssleayHandleM, "SSLv23_server_method")) == NULL) goto err;
+	if ((SSLv23_server_method_FP = (SSLv23_server_method_TYPE)GetProcAddress(ssleayHandleM, "SSLv23_server_method")) == NULL) goto err;
 //	if ((SSLv2_client_method_FP = (SSLv2_client_method_TYPE)GetProcAddress(ssleayHandleM, "SSLv2_client_method")) == NULL) goto err;
 //	if ((SSLv2_method_FP = (SSLv2_method_TYPE)GetProcAddress(ssleayHandleM, "SSLv2_method")) == NULL) goto err;
 //	if ((SSLv2_server_method_FP = (SSLv2_server_method_TYPE)GetProcAddress(ssleayHandleM, "SSLv2_server_method")) == NULL) goto err;
@@ -2217,6 +2369,8 @@ bool OPENSSL_CLASS::loadSsleayLib()
 //	if ((SSLv3_server_method_FP = (SSLv3_server_method_TYPE)GetProcAddress(ssleayHandleM, "SSLv3_server_method")) == NULL) goto err;
 //	if ((TLSv1_client_method_FP = (TLSv1_client_method_TYPE)GetProcAddress(ssleayHandleM, "TLSv1_client_method")) == NULL) goto err;
 	if ((TLSv1_method_FP = (TLSv1_method_TYPE)GetProcAddress(ssleayHandleM, "TLSv1_method")) == NULL) goto err;
+	if ((TLSv1_1_method_FP = (TLSv1_1_method_TYPE)GetProcAddress(ssleayHandleM, "TLSv1_1_method")) == NULL) goto err;
+	if ((TLSv1_2_method_FP = (TLSv1_2_method_TYPE)GetProcAddress(ssleayHandleM, "TLSv1_2_method")) == NULL) goto err;
 //	if ((TLSv1_server_method_FP = (TLSv1_server_method_TYPE)GetProcAddress(ssleayHandleM, "TLSv1_server_method")) == NULL) goto err;
 //	if ((d2i_SSL_SESSION_FP = (d2i_SSL_SESSION_TYPE)GetProcAddress(ssleayHandleM, "d2i_SSL_SESSION")) == NULL) goto err;
 //	if ((i2d_SSL_SESSION_FP = (i2d_SSL_SESSION_TYPE)GetProcAddress(ssleayHandleM, "i2d_SSL_SESSION")) == NULL) goto err;
@@ -3632,9 +3786,9 @@ bool OPENSSL_CLASS::loadLibeayLib()
 //	if ((RAND_egd_FP = (RAND_egd_TYPE)GetProcAddress(libeayHandleM, "RAND_egd")) == NULL) goto err;
 //	if ((RAND_egd_bytes_FP = (RAND_egd_bytes_TYPE)GetProcAddress(libeayHandleM, "RAND_egd_bytes")) == NULL) goto err;
 //	if ((RAND_event_FP = (RAND_event_TYPE)GetProcAddress(libeayHandleM, "RAND_event")) == NULL) goto err;
-//	if ((RAND_file_name_FP = (RAND_file_name_TYPE)GetProcAddress(libeayHandleM, "RAND_file_name")) == NULL) goto err;
+	if ((RAND_file_name_FP = (RAND_file_name_TYPE)GetProcAddress(libeayHandleM, "RAND_file_name")) == NULL) goto err;
 //	if ((RAND_get_rand_method_FP = (RAND_get_rand_method_TYPE)GetProcAddress(libeayHandleM, "RAND_get_rand_method")) == NULL) goto err;
-//	if ((RAND_load_file_FP = (RAND_load_file_TYPE)GetProcAddress(libeayHandleM, "RAND_load_file")) == NULL) goto err;
+	if ((RAND_load_file_FP = (RAND_load_file_TYPE)GetProcAddress(libeayHandleM, "RAND_load_file")) == NULL) goto err;
 //	if ((RAND_poll_FP = (RAND_poll_TYPE)GetProcAddress(libeayHandleM, "RAND_poll")) == NULL) goto err;
 //	if ((RAND_pseudo_bytes_FP = (RAND_pseudo_bytes_TYPE)GetProcAddress(libeayHandleM, "RAND_pseudo_bytes")) == NULL) goto err;
 //	if ((RAND_query_egd_bytes_FP = (RAND_query_egd_bytes_TYPE)GetProcAddress(libeayHandleM, "RAND_query_egd_bytes")) == NULL) goto err;
@@ -3642,7 +3796,7 @@ bool OPENSSL_CLASS::loadLibeayLib()
 	if ((RAND_seed_FP = (RAND_seed_TYPE)GetProcAddress(libeayHandleM, "RAND_seed")) == NULL) goto err;
 //	if ((RAND_set_rand_method_FP = (RAND_set_rand_method_TYPE)GetProcAddress(libeayHandleM, "RAND_set_rand_method")) == NULL) goto err;
 	if ((RAND_status_FP = (RAND_status_TYPE)GetProcAddress(libeayHandleM, "RAND_status")) == NULL) goto err;
-//	if ((RAND_write_file_FP = (RAND_write_file_TYPE)GetProcAddress(libeayHandleM, "RAND_write_file")) == NULL) goto err;
+	if ((RAND_write_file_FP = (RAND_write_file_TYPE)GetProcAddress(libeayHandleM, "RAND_write_file")) == NULL) goto err;
 //	if ((RC2_cbc_encrypt_FP = (RC2_cbc_encrypt_TYPE)GetProcAddress(libeayHandleM, "RC2_cbc_encrypt")) == NULL) goto err;
 //	if ((RC2_cfb64_encrypt_FP = (RC2_cfb64_encrypt_TYPE)GetProcAddress(libeayHandleM, "RC2_cfb64_encrypt")) == NULL) goto err;
 //	if ((RC2_decrypt_FP = (RC2_decrypt_TYPE)GetProcAddress(libeayHandleM, "RC2_decrypt")) == NULL) goto err;
@@ -4249,7 +4403,7 @@ bool OPENSSL_CLASS::loadLibeayLib()
 //	if ((d2i_ASN1_OCTET_STRING_FP = (d2i_ASN1_OCTET_STRING_TYPE)GetProcAddress(libeayHandleM, "d2i_ASN1_OCTET_STRING")) == NULL) goto err;
 //	if ((d2i_ASN1_PRINTABLESTRING_FP = (d2i_ASN1_PRINTABLESTRING_TYPE)GetProcAddress(libeayHandleM, "d2i_ASN1_PRINTABLESTRING")) == NULL) goto err;
 //	if ((d2i_ASN1_PRINTABLE_FP = (d2i_ASN1_PRINTABLE_TYPE)GetProcAddress(libeayHandleM, "d2i_ASN1_PRINTABLE")) == NULL) goto err;
-	if ((d2i_ASN1_SET_FP = (d2i_ASN1_SET_TYPE)GetProcAddress(libeayHandleM, "d2i_ASN1_SET")) == NULL) goto err;
+//	if ((d2i_ASN1_SET_FP = (d2i_ASN1_SET_TYPE)GetProcAddress(libeayHandleM, "d2i_ASN1_SET")) == NULL) goto err;
 //	if ((d2i_ASN1_T61STRING_FP = (d2i_ASN1_T61STRING_TYPE)GetProcAddress(libeayHandleM, "d2i_ASN1_T61STRING")) == NULL) goto err;
 //	if ((d2i_ASN1_TIME_FP = (d2i_ASN1_TIME_TYPE)GetProcAddress(libeayHandleM, "d2i_ASN1_TIME")) == NULL) goto err;
 	if ((d2i_ASN1_TYPE_FP = (d2i_ASN1_TYPE_TYPE)GetProcAddress(libeayHandleM, "d2i_ASN1_TYPE")) == NULL) goto err;

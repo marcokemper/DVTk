@@ -753,7 +753,7 @@ end:
 //>>===========================================================================
 
 char* CERTIFICATE_FILE_CLASS::derCallback(CERTIFICATE_FILE_CLASS* certFileClass_ptr, 
-										  unsigned char **buf_ptrptr, long length)
+										  const unsigned char **buf_ptrptr, long length)
 
 //  DESCRIPTION     : Callback called from ASN1_d2i_bio() to determine the type of the DER data and decode it.
 //  PRECONDITIONS   :
@@ -767,7 +767,7 @@ char* CERTIFICATE_FILE_CLASS::derCallback(CERTIFICATE_FILE_CLASS* certFileClass_
 		
 //>>===========================================================================
 
-char* CERTIFICATE_FILE_CLASS::derDecode(unsigned char **buf_ptrptr, long length)
+char* CERTIFICATE_FILE_CLASS::derDecode(const unsigned char **buf_ptrptr, long length)
 
 //  DESCRIPTION     : Determine the type of the DER data and decode it.
 //  PRECONDITIONS   :
@@ -777,110 +777,109 @@ char* CERTIFICATE_FILE_CLASS::derDecode(unsigned char **buf_ptrptr, long length)
 //<<===========================================================================
 {
 	DVT_STATUS status = MSG_ERROR;
-	unsigned char *p;
+	const unsigned char *p;
 	STACK_OF(ASN1_TYPE) *inkey_ptr = NULL;
 	EVP_PKEY *pkey_ptr = NULL;
 	X509 *cert_ptr = NULL;
 	int count = 0;
 
+	//// try to determine the contents of the file [this is adapted from d2i_AutoPrivateKey()]
+	//p = *buf_ptrptr;
+	//inkey_ptr = d2i_ASN1_SET_OF_ASN1_TYPE(NULL, &p, length, d2i_ASN1_TYPE, 
+	//				ASN1_TYPE_free, V_ASN1_SEQUENCE, V_ASN1_UNIVERSAL);
+	//if (inkey_ptr == NULL)
+	//{
+	//	// probably not a DER file
+	//	status = MSG_NO_VALUE;
+	//	goto end;
+	//}
+	//switch (sk_ASN1_TYPE_num(inkey_ptr))
+	//{
+	//case 3:
+	//	// certificate file
+	//	p = *buf_ptrptr;
+	//	cert_ptr = (X509*)ASN1_item_d2i(NULL, &p, length, ASN1_ITEM_rptr(X509));
+	//	if (cert_ptr == NULL)
+	//	{
+	//		openSslM_ptr->printError(loggerTest_ptr, LOG_ERROR, "decoding certificate in DER file");
+	//		status = MSG_ERROR;
+	//		goto end;
+	//	}
+	//	else
+	//	{
+	//		// save the certificate
+	//		if (!push(cert_ptr))
+	//		{
+	//			status = MSG_ERROR;
+	//			goto end;
+	//		}
+	//		count++;
+	//	}
+	//	break;
 
-	// try to determine the contents of the file [this is adapted from d2i_AutoPrivateKey()]
-	p = *buf_ptrptr;
-	inkey_ptr = d2i_ASN1_SET_OF_ASN1_TYPE(NULL, &p, length, d2i_ASN1_TYPE, 
-					ASN1_TYPE_free, V_ASN1_SEQUENCE, V_ASN1_UNIVERSAL);
-	if (inkey_ptr == NULL)
-	{
-		// probably not a DER file
-		status = MSG_NO_VALUE;
-		goto end;
-	}
-	switch (sk_ASN1_TYPE_num(inkey_ptr))
-	{
-	case 3:
-		// certificate file
-		p = *buf_ptrptr;
-		cert_ptr = (X509*)ASN1_item_d2i(NULL, &p, length, ASN1_ITEM_rptr(X509));
-		if (cert_ptr == NULL)
-		{
-			openSslM_ptr->printError(loggerM_ptr, LOG_ERROR, "decoding certificate in DER file");
-			status = MSG_ERROR;
-			goto end;
-		}
-		else
-		{
-			// save the certificate
-			if (!push(cert_ptr))
-			{
-				status = MSG_ERROR;
-				goto end;
-			}
-			count++;
-		}
-		break;
+	//case 6:
+	//	// DSA private key file
+	//	p = *buf_ptrptr;
+	//	pkey_ptr = d2i_PrivateKey(EVP_PKEY_DSA, NULL, &p, length);
+	//	if (pkey_ptr == NULL)
+	//	{
+		//	openSslM_ptr->printError(loggerM_ptr, LOG_ERROR, "decoding private key in DER file");
+	//		status = MSG_ERROR;
+	//		goto end;
+	//	}
+	//	else
+	//	{
+	//		// save the private key
+	//		if (!push(pkey_ptr))
+	//		{
+	//			status = MSG_ERROR;
+	//			goto end;
+	//		}
+	//		count++;
+	//	}
+	//	break;
 
-	case 6:
-		// DSA private key file
-		p = *buf_ptrptr;
-		pkey_ptr = d2i_PrivateKey(EVP_PKEY_DSA, NULL, &p, length);
-		if (pkey_ptr == NULL)
-		{
-			openSslM_ptr->printError(loggerM_ptr, LOG_ERROR, "decoding private key in DER file");
-			status = MSG_ERROR;
-			goto end;
-		}
-		else
-		{
-			// save the private key
-			if (!push(pkey_ptr))
-			{
-				status = MSG_ERROR;
-				goto end;
-			}
-			count++;
-		}
-		break;
-
-	case 9:
-		// RSA private key file
-		p = *buf_ptrptr;
-		pkey_ptr = d2i_PrivateKey(EVP_PKEY_RSA, NULL, &p, length);
-		if (pkey_ptr == NULL)
-		{
-			openSslM_ptr->printError(loggerM_ptr, LOG_ERROR, "decoding private key in DER file");
-			status = MSG_ERROR;
-			goto end;
-		}
-		else
-		{
-			// save the private key
-			if (!push(pkey_ptr))
-			{
-				status = MSG_ERROR;
-				goto end;
-			}
-			count++;
-		}
-		break;
-
-	default:
-		// unknown data
-		status = MSG_NO_VALUE;
-		goto end;
-	}
-
-	if (count == 0)
-	{
-		status = MSG_NO_VALUE;
-	}
-	else
-	{
-		status = MSG_OK;
-	}
-
-end:
-	if (inkey_ptr != NULL) sk_ASN1_TYPE_pop_free(inkey_ptr, ASN1_TYPE_free);
-	if (pkey_ptr != NULL) EVP_PKEY_free(pkey_ptr);
-	if (cert_ptr != NULL) X509_free(cert_ptr);
+	//case 9:
+	//	// RSA private key file
+	//	p = *buf_ptrptr;
+	//	pkey_ptr = d2i_PrivateKey(EVP_PKEY_RSA, NULL, &p, length);
+	//	if (pkey_ptr == NULL)
+	//	{
+		//	openSslM_ptr->printError(loggerM_ptr, LOG_ERROR, "decoding private key in DER file");
+//			status = MSG_ERROR;
+//			goto end;
+//		}
+//		else
+//		{
+//			// save the private key
+//			if (!push(pkey_ptr))
+//			{
+//				status = MSG_ERROR;
+//				goto end;
+//			}
+//			count++;
+//		}
+//		break;
+//
+//	default:
+//		// unknown data
+//		status = MSG_NO_VALUE;
+//		goto end;
+//	}
+//
+//	if (count == 0)
+//	{
+//		status = MSG_NO_VALUE;
+//	}
+//	else
+//	{
+//		status = MSG_OK;
+//	}
+//
+//end:
+//	if (inkey_ptr != NULL) sk_ASN1_TYPE_pop_free(inkey_ptr, ASN1_TYPE_free);
+//	if (pkey_ptr != NULL) EVP_PKEY_free(pkey_ptr);
+//	if (cert_ptr != NULL) X509_free(cert_ptr);
 
 	return (char*)(new DVT_STATUS(status));
 }
@@ -968,9 +967,11 @@ DVT_STATUS CERTIFICATE_FILE_CLASS::importDer(const char* filename, bool certific
 	}
 	else
 	{
+		// todo
 		// this calls derDecode()
-		status_ptr = (DVT_STATUS*)ASN1_d2i_bio(NULL, (char* (*)(void))derCallback, bio_ptr, (unsigned char**)this);
-		status = *status_ptr;
+		//status_ptr = (DVT_STATUS)ASN1_d2i_bio_of(char, NULL, NULL, bio_ptr, NULL);
+		//status_ptr = ASN1_d2i_bio_of(char *, NULL, derCallback, bio_ptr, this);
+		//status = *status_ptr;
 		delete status_ptr;
 	}
 

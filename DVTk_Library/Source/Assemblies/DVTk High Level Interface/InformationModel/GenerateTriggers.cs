@@ -1339,6 +1339,15 @@ namespace DvtkHighLevelInterface.InformationModel
                             }
                         }
                         break;
+                    case VR.UC:
+                        {
+                            UnlimitedCharacters ulimitedCharacters = (UnlimitedCharacters)attribute.DicomValue;
+                            if (ulimitedCharacters.Values.Count > 0)
+                            {
+                                lValue = ulimitedCharacters.Values[0].ToString();
+                            }
+                        }
+                        break;
                     default:
                         break;
                 }

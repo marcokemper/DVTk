@@ -105,22 +105,22 @@ namespace Dvt
 		private System.Windows.Forms.CheckBox CheckBoxTLS;
 		private System.Windows.Forms.CheckBox CheckBoxSSL;
 		private System.Windows.Forms.GroupBox GroupSecurityKeyExchange;
-		private System.Windows.Forms.CheckBox CheckBoxKeyExchangeRSA;
-		private System.Windows.Forms.CheckBox CheckBoxKeyExchangeDH;
+		private System.Windows.Forms.RadioButton RadioButtonKeyExchangeRSA;
+        private System.Windows.Forms.RadioButton RadioButtonKeyExchangeDH;
 		private System.Windows.Forms.GroupBox GroupSecurityGeneral;
 		private System.Windows.Forms.CheckBox CheckBoxCheckRemoteCertificates;
 		private System.Windows.Forms.CheckBox CheckBoxCacheSecureSessions;
 		private System.Windows.Forms.GroupBox GroupSecurityEncryption;
-		private System.Windows.Forms.CheckBox CheckBoxEncryptionNone;
-		private System.Windows.Forms.CheckBox CheckBoxEncryptionTripleDES;
-		private System.Windows.Forms.CheckBox CheckBoxEncryptionAES128;
-		private System.Windows.Forms.CheckBox CheckBoxEncryptionAES256;
+        private System.Windows.Forms.RadioButton RadioButtonEncryptionNone;
+        private System.Windows.Forms.RadioButton RadioButtonEncryptionTripleDES;
+        private System.Windows.Forms.RadioButton RadioButtonEncryptionAES128;
+        private System.Windows.Forms.RadioButton RadioButtonEncryptionAES256;
 		private System.Windows.Forms.GroupBox GroupSecurityDataIntegrity;
-		private System.Windows.Forms.CheckBox CheckBoxDataIntegritySHA;
-		private System.Windows.Forms.CheckBox CheckBoxDataIntegrityMD5;
+        private System.Windows.Forms.RadioButton RadioButtonDataIntegritySHA;
+        private System.Windows.Forms.RadioButton RadioButtonDataIntegrityMD5;
 		private System.Windows.Forms.GroupBox GroupSecurityAuthentication;
-		private System.Windows.Forms.CheckBox CheckBoxAuthenticationRSA;
-		private System.Windows.Forms.CheckBox CheckBoxAuthenticationDSA;
+        private System.Windows.Forms.RadioButton RadioButtonAuthenticationRSA;
+        private System.Windows.Forms.RadioButton RadioButtonAuthenticationDSA;
 		private System.Windows.Forms.ListBox ListBoxSecuritySettings;
 		private System.Windows.Forms.Label LabelCategories;
 		private System.Windows.Forms.Label LabelSelect1ItemMsg;
@@ -480,22 +480,22 @@ namespace Dvt
             this.CheckBoxTLS = new System.Windows.Forms.CheckBox();
             this.CheckBoxSSL = new System.Windows.Forms.CheckBox();
             this.GroupSecurityKeyExchange = new System.Windows.Forms.GroupBox();
-            this.CheckBoxKeyExchangeRSA = new System.Windows.Forms.CheckBox();
-            this.CheckBoxKeyExchangeDH = new System.Windows.Forms.CheckBox();
+            this.RadioButtonKeyExchangeRSA = new System.Windows.Forms.RadioButton();
+            this.RadioButtonKeyExchangeDH = new System.Windows.Forms.RadioButton();
             this.GroupSecurityGeneral = new System.Windows.Forms.GroupBox();
             this.CheckBoxCheckRemoteCertificates = new System.Windows.Forms.CheckBox();
             this.CheckBoxCacheSecureSessions = new System.Windows.Forms.CheckBox();
             this.GroupSecurityEncryption = new System.Windows.Forms.GroupBox();
-            this.CheckBoxEncryptionNone = new System.Windows.Forms.CheckBox();
-            this.CheckBoxEncryptionTripleDES = new System.Windows.Forms.CheckBox();
-            this.CheckBoxEncryptionAES128 = new System.Windows.Forms.CheckBox();
-            this.CheckBoxEncryptionAES256 = new System.Windows.Forms.CheckBox();
+            this.RadioButtonEncryptionNone = new System.Windows.Forms.RadioButton();
+            this.RadioButtonEncryptionTripleDES = new System.Windows.Forms.RadioButton();
+            this.RadioButtonEncryptionAES128 = new System.Windows.Forms.RadioButton();
+            this.RadioButtonEncryptionAES256 = new System.Windows.Forms.RadioButton();
             this.GroupSecurityDataIntegrity = new System.Windows.Forms.GroupBox();
-            this.CheckBoxDataIntegritySHA = new System.Windows.Forms.CheckBox();
-            this.CheckBoxDataIntegrityMD5 = new System.Windows.Forms.CheckBox();
+            this.RadioButtonDataIntegritySHA = new System.Windows.Forms.RadioButton();
+            this.RadioButtonDataIntegrityMD5 = new System.Windows.Forms.RadioButton();
             this.GroupSecurityAuthentication = new System.Windows.Forms.GroupBox();
-            this.CheckBoxAuthenticationRSA = new System.Windows.Forms.CheckBox();
-            this.CheckBoxAuthenticationDSA = new System.Windows.Forms.CheckBox();
+            this.RadioButtonAuthenticationRSA = new System.Windows.Forms.RadioButton();
+            this.RadioButtonAuthenticationDSA = new System.Windows.Forms.RadioButton();
             this.PanelSecuritySettingsTitle = new System.Windows.Forms.Panel();
             this.CheckBoxSecureConnection = new System.Windows.Forms.CheckBox();
             this.MinSecuritySettings = new System.Windows.Forms.PictureBox();
@@ -1042,8 +1042,8 @@ namespace Dvt
             // 
             this.GroupSecurityKeyExchange.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.GroupSecurityKeyExchange.Controls.Add(this.CheckBoxKeyExchangeRSA);
-            this.GroupSecurityKeyExchange.Controls.Add(this.CheckBoxKeyExchangeDH);
+            this.GroupSecurityKeyExchange.Controls.Add(this.RadioButtonKeyExchangeRSA);
+            this.GroupSecurityKeyExchange.Controls.Add(this.RadioButtonKeyExchangeDH);
             this.GroupSecurityKeyExchange.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.GroupSecurityKeyExchange.Location = new System.Drawing.Point(136, 24);
             this.GroupSecurityKeyExchange.Name = "GroupSecurityKeyExchange";
@@ -1053,27 +1053,29 @@ namespace Dvt
             this.GroupSecurityKeyExchange.Text = "Key Exchange";
             this.GroupSecurityKeyExchange.Visible = false;
             // 
-            // CheckBoxKeyExchangeRSA
+            // RadioButtonKeyExchangeRSA
             // 
-            this.CheckBoxKeyExchangeRSA.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.RadioButtonKeyExchangeRSA.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.CheckBoxKeyExchangeRSA.Location = new System.Drawing.Point(16, 24);
-            this.CheckBoxKeyExchangeRSA.Name = "CheckBoxKeyExchangeRSA";
-            this.CheckBoxKeyExchangeRSA.Size = new System.Drawing.Size(428, 24);
-            this.CheckBoxKeyExchangeRSA.TabIndex = 0;
-            this.CheckBoxKeyExchangeRSA.Text = "RSA";
-            this.CheckBoxKeyExchangeRSA.CheckedChanged += new System.EventHandler(this.CheckBoxKeyExchangeRSA_CheckedChanged);
+            this.RadioButtonKeyExchangeRSA.Location = new System.Drawing.Point(16, 24);
+            this.RadioButtonKeyExchangeRSA.Name = "RadioButtonKeyExchangeRSA";
+            this.RadioButtonKeyExchangeRSA.Size = new System.Drawing.Size(428, 24);
+            this.RadioButtonKeyExchangeRSA.TabIndex = 0;
+            this.RadioButtonKeyExchangeRSA.Text = "RSA";
+            this.RadioButtonKeyExchangeRSA.CheckedChanged += new System.EventHandler(this.RadioButtonKeyExchangeRSA_CheckedChanged);
+            this.RadioButtonKeyExchangeRSA.Click += new System.EventHandler(this.RadioButtonKeyExchangeRSA_Click);
             // 
-            // CheckBoxKeyExchangeDH
+            // RadioButtonKeyExchangeDH
             // 
-            this.CheckBoxKeyExchangeDH.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.RadioButtonKeyExchangeDH.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.CheckBoxKeyExchangeDH.Location = new System.Drawing.Point(16, 48);
-            this.CheckBoxKeyExchangeDH.Name = "CheckBoxKeyExchangeDH";
-            this.CheckBoxKeyExchangeDH.Size = new System.Drawing.Size(428, 24);
-            this.CheckBoxKeyExchangeDH.TabIndex = 0;
-            this.CheckBoxKeyExchangeDH.Text = "DH";
-            this.CheckBoxKeyExchangeDH.CheckedChanged += new System.EventHandler(this.CheckBoxKeyExchangeDH_CheckedChanged);
+            this.RadioButtonKeyExchangeDH.Location = new System.Drawing.Point(16, 48);
+            this.RadioButtonKeyExchangeDH.Name = "RadioButtonKeyExchangeDH";
+            this.RadioButtonKeyExchangeDH.Size = new System.Drawing.Size(428, 24);
+            this.RadioButtonKeyExchangeDH.TabIndex = 0;
+            this.RadioButtonKeyExchangeDH.Text = "DH";
+            this.RadioButtonKeyExchangeDH.CheckedChanged += new System.EventHandler(this.RadioButtonKeyExchangeDH_CheckedChanged);
+            this.RadioButtonKeyExchangeDH.Click += new System.EventHandler(this.RadioButtonKeyExchangeDH_Click);
             // 
             // GroupSecurityGeneral
             // 
@@ -1111,10 +1113,10 @@ namespace Dvt
             // 
             this.GroupSecurityEncryption.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.GroupSecurityEncryption.Controls.Add(this.CheckBoxEncryptionNone);
-            this.GroupSecurityEncryption.Controls.Add(this.CheckBoxEncryptionTripleDES);
-            this.GroupSecurityEncryption.Controls.Add(this.CheckBoxEncryptionAES128);
-            this.GroupSecurityEncryption.Controls.Add(this.CheckBoxEncryptionAES256);
+            this.GroupSecurityEncryption.Controls.Add(this.RadioButtonEncryptionNone);
+            this.GroupSecurityEncryption.Controls.Add(this.RadioButtonEncryptionTripleDES);
+            this.GroupSecurityEncryption.Controls.Add(this.RadioButtonEncryptionAES128);
+            this.GroupSecurityEncryption.Controls.Add(this.RadioButtonEncryptionAES256);
             this.GroupSecurityEncryption.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.GroupSecurityEncryption.Location = new System.Drawing.Point(136, 24);
             this.GroupSecurityEncryption.Name = "GroupSecurityEncryption";
@@ -1124,48 +1126,52 @@ namespace Dvt
             this.GroupSecurityEncryption.Text = "Encryption";
             this.GroupSecurityEncryption.Visible = false;
             // 
-            // CheckBoxEncryptionNone
+            // RadioButtonEncryptionNone
             // 
-            this.CheckBoxEncryptionNone.Location = new System.Drawing.Point(16, 24);
-            this.CheckBoxEncryptionNone.Name = "CheckBoxEncryptionNone";
-            this.CheckBoxEncryptionNone.Size = new System.Drawing.Size(184, 24);
-            this.CheckBoxEncryptionNone.TabIndex = 0;
-            this.CheckBoxEncryptionNone.Text = "None";
-            this.CheckBoxEncryptionNone.CheckedChanged += new System.EventHandler(this.CheckBoxEncryptionNone_CheckedChanged);
+            this.RadioButtonEncryptionNone.Location = new System.Drawing.Point(16, 24);
+            this.RadioButtonEncryptionNone.Name = "RadioButtonEncryptionNone";
+            this.RadioButtonEncryptionNone.Size = new System.Drawing.Size(184, 24);
+            this.RadioButtonEncryptionNone.TabIndex = 0;
+            this.RadioButtonEncryptionNone.Text = "None";
+            this.RadioButtonEncryptionNone.CheckedChanged += new System.EventHandler(this.RadioButtonEncryptionNone_CheckedChanged);
+            this.RadioButtonEncryptionNone.Click += new System.EventHandler(this.RadioButtonEncryptionNone_Click);
             // 
-            // CheckBoxEncryptionTripleDES
+            // RadioButtonEncryptionTripleDES
             // 
-            this.CheckBoxEncryptionTripleDES.Location = new System.Drawing.Point(16, 48);
-            this.CheckBoxEncryptionTripleDES.Name = "CheckBoxEncryptionTripleDES";
-            this.CheckBoxEncryptionTripleDES.Size = new System.Drawing.Size(184, 24);
-            this.CheckBoxEncryptionTripleDES.TabIndex = 0;
-            this.CheckBoxEncryptionTripleDES.Text = "Triple DES";
-            this.CheckBoxEncryptionTripleDES.CheckedChanged += new System.EventHandler(this.CheckBoxEncryptionTripleDES_CheckedChanged);
+            this.RadioButtonEncryptionTripleDES.Location = new System.Drawing.Point(16, 48);
+            this.RadioButtonEncryptionTripleDES.Name = "RadioButtonEncryptionTripleDES";
+            this.RadioButtonEncryptionTripleDES.Size = new System.Drawing.Size(184, 24);
+            this.RadioButtonEncryptionTripleDES.TabIndex = 0;
+            this.RadioButtonEncryptionTripleDES.Text = "Triple DES";
+            this.RadioButtonEncryptionTripleDES.CheckedChanged += new System.EventHandler(this.RadioButtonEncryptionTripleDES_CheckedChanged);
+            this.RadioButtonEncryptionTripleDES.Click += new System.EventHandler(this.RadioButtonEncryptionTripleDES_Click);
             // 
-            // CheckBoxEncryptionAES128
+            // RadioButtonEncryptionAES128
             // 
-            this.CheckBoxEncryptionAES128.Location = new System.Drawing.Point(16, 72);
-            this.CheckBoxEncryptionAES128.Name = "CheckBoxEncryptionAES128";
-            this.CheckBoxEncryptionAES128.Size = new System.Drawing.Size(184, 24);
-            this.CheckBoxEncryptionAES128.TabIndex = 0;
-            this.CheckBoxEncryptionAES128.Text = "AES 128-bit";
-            this.CheckBoxEncryptionAES128.CheckedChanged += new System.EventHandler(this.CheckBoxEncryptionAES128_CheckedChanged);
+            this.RadioButtonEncryptionAES128.Location = new System.Drawing.Point(16, 72);
+            this.RadioButtonEncryptionAES128.Name = "RadioButtonEncryptionAES128";
+            this.RadioButtonEncryptionAES128.Size = new System.Drawing.Size(184, 24);
+            this.RadioButtonEncryptionAES128.TabIndex = 0;
+            this.RadioButtonEncryptionAES128.Text = "AES 128-bit";
+            this.RadioButtonEncryptionAES128.CheckedChanged += new System.EventHandler(this.RadioButtonEncryptionAES128_CheckedChanged);
+            this.RadioButtonEncryptionAES128.Click += new System.EventHandler(this.RadioButtonEncryptionAES128_Click);
             // 
-            // CheckBoxEncryptionAES256
+            // RadioButtonEncryptionAES256
             // 
-            this.CheckBoxEncryptionAES256.Location = new System.Drawing.Point(16, 96);
-            this.CheckBoxEncryptionAES256.Name = "CheckBoxEncryptionAES256";
-            this.CheckBoxEncryptionAES256.Size = new System.Drawing.Size(184, 24);
-            this.CheckBoxEncryptionAES256.TabIndex = 0;
-            this.CheckBoxEncryptionAES256.Text = "AES 256-bit";
-            this.CheckBoxEncryptionAES256.CheckedChanged += new System.EventHandler(this.CheckBoxEncryptionAES256_CheckedChanged);
+            this.RadioButtonEncryptionAES256.Location = new System.Drawing.Point(16, 96);
+            this.RadioButtonEncryptionAES256.Name = "RadioButtonEncryptionAES256";
+            this.RadioButtonEncryptionAES256.Size = new System.Drawing.Size(184, 24);
+            this.RadioButtonEncryptionAES256.TabIndex = 0;
+            this.RadioButtonEncryptionAES256.Text = "AES 256-bit";
+            this.RadioButtonEncryptionAES256.CheckedChanged += new System.EventHandler(this.RadioButtonEncryptionAES256_CheckedChanged);
+            this.RadioButtonEncryptionAES256.Click += new System.EventHandler(this.RadioButtonEncryptionAES256_Click);
             // 
             // GroupSecurityDataIntegrity
             // 
             this.GroupSecurityDataIntegrity.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.GroupSecurityDataIntegrity.Controls.Add(this.CheckBoxDataIntegritySHA);
-            this.GroupSecurityDataIntegrity.Controls.Add(this.CheckBoxDataIntegrityMD5);
+            this.GroupSecurityDataIntegrity.Controls.Add(this.RadioButtonDataIntegritySHA);
+            this.GroupSecurityDataIntegrity.Controls.Add(this.RadioButtonDataIntegrityMD5);
             this.GroupSecurityDataIntegrity.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.GroupSecurityDataIntegrity.Location = new System.Drawing.Point(136, 24);
             this.GroupSecurityDataIntegrity.Name = "GroupSecurityDataIntegrity";
@@ -1175,30 +1181,32 @@ namespace Dvt
             this.GroupSecurityDataIntegrity.Text = "Data Integrity";
             this.GroupSecurityDataIntegrity.Visible = false;
             // 
-            // CheckBoxDataIntegritySHA
+            // RadioButtonDataIntegritySHA
             // 
-            this.CheckBoxDataIntegritySHA.Location = new System.Drawing.Point(16, 24);
-            this.CheckBoxDataIntegritySHA.Name = "CheckBoxDataIntegritySHA";
-            this.CheckBoxDataIntegritySHA.Size = new System.Drawing.Size(184, 24);
-            this.CheckBoxDataIntegritySHA.TabIndex = 0;
-            this.CheckBoxDataIntegritySHA.Text = "SHA";
-            this.CheckBoxDataIntegritySHA.CheckedChanged += new System.EventHandler(this.CheckBoxDataIntegritySHA_CheckedChanged);
+            this.RadioButtonDataIntegritySHA.Location = new System.Drawing.Point(16, 24);
+            this.RadioButtonDataIntegritySHA.Name = "RadioButtonDataIntegritySHA";
+            this.RadioButtonDataIntegritySHA.Size = new System.Drawing.Size(184, 24);
+            this.RadioButtonDataIntegritySHA.TabIndex = 0;
+            this.RadioButtonDataIntegritySHA.Text = "SHA";
+            this.RadioButtonDataIntegritySHA.CheckedChanged += new System.EventHandler(this.RadioButtonDataIntegritySHA_CheckedChanged);
+            this.RadioButtonDataIntegritySHA.Click += new System.EventHandler(this.RadioButtonDataIntegritySHA_Click);
             // 
-            // CheckBoxDataIntegrityMD5
+            // RadioButtonDataIntegrityMD5
             // 
-            this.CheckBoxDataIntegrityMD5.Location = new System.Drawing.Point(16, 48);
-            this.CheckBoxDataIntegrityMD5.Name = "CheckBoxDataIntegrityMD5";
-            this.CheckBoxDataIntegrityMD5.Size = new System.Drawing.Size(184, 24);
-            this.CheckBoxDataIntegrityMD5.TabIndex = 0;
-            this.CheckBoxDataIntegrityMD5.Text = "MD5";
-            this.CheckBoxDataIntegrityMD5.CheckedChanged += new System.EventHandler(this.CheckBoxDataIntegrityMD5_CheckedChanged);
+            this.RadioButtonDataIntegrityMD5.Location = new System.Drawing.Point(16, 48);
+            this.RadioButtonDataIntegrityMD5.Name = "RadioButtonDataIntegrityMD5";
+            this.RadioButtonDataIntegrityMD5.Size = new System.Drawing.Size(184, 24);
+            this.RadioButtonDataIntegrityMD5.TabIndex = 0;
+            this.RadioButtonDataIntegrityMD5.Text = "MD5";
+            this.RadioButtonDataIntegrityMD5.CheckedChanged += new System.EventHandler(this.RadioButtonDataIntegrityMD5_CheckedChanged);
+            this.RadioButtonDataIntegrityMD5.Click += new System.EventHandler(this.RadioButtonDataIntegrityMD5_Click);
             // 
             // GroupSecurityAuthentication
             // 
             this.GroupSecurityAuthentication.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.GroupSecurityAuthentication.Controls.Add(this.CheckBoxAuthenticationRSA);
-            this.GroupSecurityAuthentication.Controls.Add(this.CheckBoxAuthenticationDSA);
+            this.GroupSecurityAuthentication.Controls.Add(this.RadioButtonAuthenticationRSA);
+            this.GroupSecurityAuthentication.Controls.Add(this.RadioButtonAuthenticationDSA);
             this.GroupSecurityAuthentication.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.GroupSecurityAuthentication.Location = new System.Drawing.Point(136, 24);
             this.GroupSecurityAuthentication.Name = "GroupSecurityAuthentication";
@@ -1208,27 +1216,29 @@ namespace Dvt
             this.GroupSecurityAuthentication.Text = "Authentication";
             this.GroupSecurityAuthentication.Visible = false;
             // 
-            // CheckBoxAuthenticationRSA
+            // RadioButtonAuthenticationRSA
             // 
-            this.CheckBoxAuthenticationRSA.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.RadioButtonAuthenticationRSA.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.CheckBoxAuthenticationRSA.Location = new System.Drawing.Point(16, 24);
-            this.CheckBoxAuthenticationRSA.Name = "CheckBoxAuthenticationRSA";
-            this.CheckBoxAuthenticationRSA.Size = new System.Drawing.Size(428, 24);
-            this.CheckBoxAuthenticationRSA.TabIndex = 0;
-            this.CheckBoxAuthenticationRSA.Text = "RSA";
-            this.CheckBoxAuthenticationRSA.CheckedChanged += new System.EventHandler(this.CheckBoxAuthenticationRSA_CheckedChanged);
+            this.RadioButtonAuthenticationRSA.Location = new System.Drawing.Point(16, 24);
+            this.RadioButtonAuthenticationRSA.Name = "RadioButtonAuthenticationRSA";
+            this.RadioButtonAuthenticationRSA.Size = new System.Drawing.Size(428, 24);
+            this.RadioButtonAuthenticationRSA.TabIndex = 0;
+            this.RadioButtonAuthenticationRSA.Text = "RSA";
+            this.RadioButtonAuthenticationRSA.CheckedChanged += new System.EventHandler(this.RadioButtonAuthenticationRSA_CheckedChanged);
+            this.RadioButtonAuthenticationRSA.Click += new System.EventHandler(this.RadioButtonAuthenticationRSA_Click);
             // 
-            // CheckBoxAuthenticationDSA
+            // RadioButtonAuthenticationDSA
             // 
-            this.CheckBoxAuthenticationDSA.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.RadioButtonAuthenticationDSA.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.CheckBoxAuthenticationDSA.Location = new System.Drawing.Point(16, 48);
-            this.CheckBoxAuthenticationDSA.Name = "CheckBoxAuthenticationDSA";
-            this.CheckBoxAuthenticationDSA.Size = new System.Drawing.Size(428, 24);
-            this.CheckBoxAuthenticationDSA.TabIndex = 0;
-            this.CheckBoxAuthenticationDSA.Text = "DSA";
-            this.CheckBoxAuthenticationDSA.CheckedChanged += new System.EventHandler(this.CheckBoxAuthenticationDSA_CheckedChanged);
+            this.RadioButtonAuthenticationDSA.Location = new System.Drawing.Point(16, 48);
+            this.RadioButtonAuthenticationDSA.Name = "RadioButtonAuthenticationDSA";
+            this.RadioButtonAuthenticationDSA.Size = new System.Drawing.Size(428, 24);
+            this.RadioButtonAuthenticationDSA.TabIndex = 0;
+            this.RadioButtonAuthenticationDSA.Text = "DSA";
+            this.RadioButtonAuthenticationDSA.CheckedChanged += new System.EventHandler(this.RadioButtonAuthenticationDSA_CheckedChanged);
+            this.RadioButtonAuthenticationDSA.Click += new System.EventHandler(this.RadioButtonAuthenticationDSA_Click);
             // 
             // PanelSecuritySettingsTitle
             // 
@@ -3550,16 +3560,34 @@ namespace Dvt
 							CheckBoxCacheSecureSessions.Checked = theISecuritySettings.CacheTlsSessions;
 							CheckBoxTLS.Checked = ((theISecuritySettings.TlsVersionFlags & Dvtk.Sessions.TlsVersionFlags.TLS_VERSION_TLSv1) != 0);
 							CheckBoxSSL.Checked = ((theISecuritySettings.TlsVersionFlags & Dvtk.Sessions.TlsVersionFlags.TLS_VERSION_SSLv3) != 0);
-							CheckBoxAuthenticationDSA.Checked = ((theISecuritySettings.CipherFlags & Dvtk.Sessions.CipherFlags.TLS_AUTHENICATION_METHOD_DSA) != 0);
-							CheckBoxAuthenticationRSA.Checked = ((theISecuritySettings.CipherFlags & Dvtk.Sessions.CipherFlags.TLS_AUTHENICATION_METHOD_RSA) != 0);
-							CheckBoxDataIntegrityMD5.Checked = ((theISecuritySettings.CipherFlags & Dvtk.Sessions.CipherFlags.TLS_DATA_INTEGRITY_METHOD_MD5) != 0);
-							CheckBoxDataIntegritySHA.Checked = ((theISecuritySettings.CipherFlags & Dvtk.Sessions.CipherFlags.TLS_DATA_INTEGRITY_METHOD_SHA1) != 0);
-							CheckBoxEncryptionNone.Checked = ((theISecuritySettings.CipherFlags & Dvtk.Sessions.CipherFlags.TLS_ENCRYPTION_METHOD_NONE) != 0);
-							CheckBoxEncryptionTripleDES.Checked = ((theISecuritySettings.CipherFlags & Dvtk.Sessions.CipherFlags.TLS_ENCRYPTION_METHOD_3DES) != 0);
-							CheckBoxEncryptionAES128.Checked = ((theISecuritySettings.CipherFlags & Dvtk.Sessions.CipherFlags.TLS_ENCRYPTION_METHOD_AES128) != 0);
-							CheckBoxEncryptionAES256.Checked = ((theISecuritySettings.CipherFlags & Dvtk.Sessions.CipherFlags.TLS_ENCRYPTION_METHOD_AES256) != 0);
-							CheckBoxKeyExchangeDH.Checked = ((theISecuritySettings.CipherFlags & Dvtk.Sessions.CipherFlags.TLS_KEY_EXCHANGE_METHOD_DH) != 0);
-							CheckBoxKeyExchangeRSA.Checked = ((theISecuritySettings.CipherFlags & Dvtk.Sessions.CipherFlags.TLS_KEY_EXCHANGE_METHOD_RSA) != 0);
+
+                            Dvtk.Sessions.CipherFlags currentCipherFlags = theISecuritySettings.CipherFlags;
+                            bool areSecuritySettingsChanged = theISecuritySettings.securitySettingsChanged;
+
+                            if (areSecuritySettingsChanged)
+                            {
+                                if ((currentCipherFlags & Dvtk.Sessions.CipherFlags.TLS_ENCRYPTION_METHOD_3DES) != 0)
+                                {
+                                    RadioButtonEncryptionTripleDES.Checked = true;
+                                    UpdateCipherFlag(Dvtk.Sessions.CipherFlags.TLS_ENCRYPTION_METHOD_3DES, RadioButtonEncryptionTripleDES);
+                                }
+                                else
+                                {
+                                    RadioButtonEncryptionTripleDES.Checked = false;
+                                    UpdateCipherFlag(Dvtk.Sessions.CipherFlags.TLS_ENCRYPTION_METHOD_3DES, RadioButtonEncryptionTripleDES);
+                                }
+                            }
+                            
+							RadioButtonAuthenticationDSA.Checked = ((currentCipherFlags & Dvtk.Sessions.CipherFlags.TLS_AUTHENICATION_METHOD_DSA) != 0);
+							RadioButtonAuthenticationRSA.Checked = ((currentCipherFlags & Dvtk.Sessions.CipherFlags.TLS_AUTHENICATION_METHOD_RSA) != 0);
+							RadioButtonDataIntegrityMD5.Checked = ((currentCipherFlags & Dvtk.Sessions.CipherFlags.TLS_DATA_INTEGRITY_METHOD_MD5) != 0);
+							RadioButtonDataIntegritySHA.Checked = ((currentCipherFlags & Dvtk.Sessions.CipherFlags.TLS_DATA_INTEGRITY_METHOD_SHA1) != 0);
+							RadioButtonEncryptionNone.Checked = ((currentCipherFlags & Dvtk.Sessions.CipherFlags.TLS_ENCRYPTION_METHOD_NONE) != 0);
+							RadioButtonEncryptionTripleDES.Checked = ((currentCipherFlags & Dvtk.Sessions.CipherFlags.TLS_ENCRYPTION_METHOD_3DES) != 0);
+							RadioButtonEncryptionAES128.Checked = ((currentCipherFlags & Dvtk.Sessions.CipherFlags.TLS_ENCRYPTION_METHOD_AES128) != 0);
+							RadioButtonEncryptionAES256.Checked = ((currentCipherFlags & Dvtk.Sessions.CipherFlags.TLS_ENCRYPTION_METHOD_AES256) != 0);
+							RadioButtonKeyExchangeDH.Checked = ((currentCipherFlags & Dvtk.Sessions.CipherFlags.TLS_KEY_EXCHANGE_METHOD_DH) != 0);
+							RadioButtonKeyExchangeRSA.Checked = ((currentCipherFlags & Dvtk.Sessions.CipherFlags.TLS_KEY_EXCHANGE_METHOD_RSA) != 0);
 							TextBoxTrustedCertificatesFile.Text = theISecuritySettings.CertificateFileName;
 							TextBoxSecurityCredentialsFile.Text = theISecuritySettings.CredentialsFileName;
 						}
@@ -5551,7 +5579,7 @@ namespace Dvt
 			}
 		}
 
-		private void UpdateCipherFlag(Dvtk.Sessions.CipherFlags theCipherFlag, CheckBox theCheckBox) 
+		private void UpdateCipherFlag(Dvtk.Sessions.CipherFlags theCipherFlag, RadioButton theCheckBox) 
 		{		
 			if (GetSelectedSessionNew().Implementation is Dvtk.Sessions.ISecure) 
 			{
@@ -5578,7 +5606,23 @@ namespace Dvt
 				{
 					// Put the state of the check box back to the unchanged setting of the session.
 					theCheckBox.Checked = isCurrentlyChecked;
-            
+
+                    int account_num = 149;
+
+                    
+                    ////uit
+                    //theISecuritySettings.CipherFlags &= ~Dvtk.Sessions.CipherFlags.TLS_ENCRYPTION_METHOD_NONE;
+                    //theISecuritySettings.CipherFlags &= ~Dvtk.Sessions.CipherFlags.TLS_ENCRYPTION_METHOD_AES128;
+                    //theISecuritySettings.CipherFlags &= ~Dvtk.Sessions.CipherFlags.TLS_ENCRYPTION_METHOD_AES256;
+
+                    ////aan
+                    //theISecuritySettings.CipherFlags |= ~Dvtk.Sessions.CipherFlags.TLS_ENCRYPTION_METHOD_3DES;
+
+                    //RadioButtonEncryptionTripleDES.Checked = true;
+                    //RadioButtonEncryptionNone.Checked = false;
+                    //RadioButtonEncryptionAES128.Checked = false;
+                    //RadioButtonEncryptionAES256.Checked = false;
+
 					MessageBox.Show(theException.Message + "\n\nThe change for checkbox \"" + theCheckBox.Text + "\" is not allowed.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 				}
 			}
@@ -5643,85 +5687,378 @@ namespace Dvt
 			}										
 		}
 
-		private void CheckBoxAuthenticationRSA_CheckedChanged(object sender, System.EventArgs e) 
+        // Aut RSA
+        private void RadioButtonAuthenticationRSA_CheckedChanged(object sender, System.EventArgs e)
+        {
+            if (_TCM_UpdateCount != 0)
+            {
+                if (RadioButtonAuthenticationRSA.Checked)
+                {
+                    RadioButtonAuthenticationRSAisChecked = true;
+                }
+            }
+            else if (!RadioButtonAuthenticationRSA.Checked)
+            {
+                UpdateCipherFlag(Dvtk.Sessions.CipherFlags.TLS_AUTHENICATION_METHOD_RSA, RadioButtonAuthenticationRSA);
+                RadioButtonAuthenticationRSAisChecked = false;
+            }
+        }
+
+        bool RadioButtonAuthenticationRSAisChecked = false;
+
+        private void RadioButtonAuthenticationRSA_Click(object sender, System.EventArgs e)
+        {
+            if (_TCM_UpdateCount == 0)
+            {
+                if (RadioButtonAuthenticationRSA.Checked && RadioButtonAuthenticationRSAisChecked)
+                {
+                    RadioButtonAuthenticationRSA.Checked = false;
+                    RadioButtonAuthenticationRSAisChecked = false;
+                }
+                else
+                {
+                    RadioButtonAuthenticationRSA.Checked = true;
+                    RadioButtonAuthenticationRSAisChecked = true;
+                }
+                UpdateCipherFlag(Dvtk.Sessions.CipherFlags.TLS_AUTHENICATION_METHOD_RSA, RadioButtonAuthenticationRSA);
+            }
+        }
+
+        // Aut DSA
+        private void RadioButtonAuthenticationDSA_CheckedChanged(object sender, System.EventArgs e)
+        {
+            if (_TCM_UpdateCount != 0)
+            {
+                if (RadioButtonAuthenticationDSA.Checked)
+                {
+                    RadioButtonAuthenticationDSAisChecked = true;
+                }
+            }
+            else if (!RadioButtonAuthenticationDSA.Checked)
+            {
+                UpdateCipherFlag(Dvtk.Sessions.CipherFlags.TLS_AUTHENICATION_METHOD_DSA, RadioButtonAuthenticationDSA);
+                RadioButtonAuthenticationDSAisChecked = false;
+            }
+        }
+
+        bool RadioButtonAuthenticationDSAisChecked = false;
+
+        private void RadioButtonAuthenticationDSA_Click(object sender, System.EventArgs e)
+        {
+            if (_TCM_UpdateCount == 0)
+            {
+                if (RadioButtonAuthenticationDSA.Checked && RadioButtonAuthenticationDSAisChecked)
+                {
+                    RadioButtonAuthenticationDSA.Checked = false;
+                    RadioButtonAuthenticationDSAisChecked = false;
+                }
+                else
+                {
+                    RadioButtonAuthenticationDSA.Checked = true;
+                    RadioButtonAuthenticationDSAisChecked = true;
+                }
+                UpdateCipherFlag(Dvtk.Sessions.CipherFlags.TLS_AUTHENICATION_METHOD_DSA, RadioButtonAuthenticationDSA);
+            }
+        }
+
+        // KE RSA
+		private void RadioButtonKeyExchangeRSA_CheckedChanged(object sender, System.EventArgs e) 
 		{
-			if (_TCM_UpdateCount == 0) 
-			{
-				UpdateCipherFlag(Dvtk.Sessions.CipherFlags.TLS_AUTHENICATION_METHOD_RSA, CheckBoxAuthenticationRSA);
-			}
+            if (_TCM_UpdateCount != 0)
+            {
+                if (RadioButtonKeyExchangeRSA.Checked)
+                {
+                    RadioButtonKeyExchangeRSAisChecked = true;
+                }
+            }
+            else if (!RadioButtonKeyExchangeRSA.Checked)
+            {
+                UpdateCipherFlag(Dvtk.Sessions.CipherFlags.TLS_KEY_EXCHANGE_METHOD_RSA, RadioButtonKeyExchangeRSA);
+                RadioButtonKeyExchangeRSAisChecked = false;
+            }	
 		}
 
-		private void CheckBoxAuthenticationDSA_CheckedChanged(object sender, System.EventArgs e) 
+        bool RadioButtonKeyExchangeRSAisChecked = false;
+
+        private void RadioButtonKeyExchangeRSA_Click(object sender, System.EventArgs e) 
 		{
 			if (_TCM_UpdateCount == 0) 
 			{
-				UpdateCipherFlag(Dvtk.Sessions.CipherFlags.TLS_AUTHENICATION_METHOD_DSA, CheckBoxAuthenticationDSA);
+                if (RadioButtonKeyExchangeRSA.Checked && RadioButtonKeyExchangeRSAisChecked)
+                {
+                    RadioButtonKeyExchangeRSA.Checked = false;
+                    RadioButtonKeyExchangeRSAisChecked = false;
+                }
+                else
+                {
+                    RadioButtonKeyExchangeRSA.Checked = true;
+                    RadioButtonKeyExchangeRSAisChecked = true;
+                }
+                UpdateCipherFlag(Dvtk.Sessions.CipherFlags.TLS_KEY_EXCHANGE_METHOD_RSA, RadioButtonKeyExchangeRSA);
 			}										
 		}
 
-		private void CheckBoxKeyExchangeRSA_CheckedChanged(object sender, System.EventArgs e) 
-		{
-			if (_TCM_UpdateCount == 0) 
-			{
-				UpdateCipherFlag(Dvtk.Sessions.CipherFlags.TLS_KEY_EXCHANGE_METHOD_RSA, CheckBoxKeyExchangeRSA);
-			}										
-		}
+        // KE DH
 
-		private void CheckBoxKeyExchangeDH_CheckedChanged(object sender, System.EventArgs e) 
-		{
-			if (_TCM_UpdateCount == 0) 
-			{
-				UpdateCipherFlag(Dvtk.Sessions.CipherFlags.TLS_KEY_EXCHANGE_METHOD_DH, CheckBoxKeyExchangeDH);
-			}										
-		}
+        private void RadioButtonKeyExchangeDH_CheckedChanged(object sender, System.EventArgs e)
+        {
+            if (_TCM_UpdateCount != 0)
+            {
+                if (RadioButtonKeyExchangeDH.Checked)
+                {
+                    RadioButtonKeyExchangeDHisChecked = true;
+                }
+            }
+            else if (!RadioButtonKeyExchangeDH.Checked)
+            {
+                UpdateCipherFlag(Dvtk.Sessions.CipherFlags.TLS_KEY_EXCHANGE_METHOD_DH, RadioButtonKeyExchangeDH);
+                RadioButtonKeyExchangeDHisChecked = false;
+            }
+        }
 
-		private void CheckBoxDataIntegritySHA_CheckedChanged(object sender, System.EventArgs e) 
-		{
-			if (_TCM_UpdateCount == 0) 
-			{
-				UpdateCipherFlag(Dvtk.Sessions.CipherFlags.TLS_DATA_INTEGRITY_METHOD_SHA1, CheckBoxDataIntegritySHA);
-			}										
-		}
+        bool RadioButtonKeyExchangeDHisChecked = false;
 
-		private void CheckBoxDataIntegrityMD5_CheckedChanged(object sender, System.EventArgs e) 
-		{
-			if (_TCM_UpdateCount == 0) 
-			{
-				UpdateCipherFlag(Dvtk.Sessions.CipherFlags.TLS_DATA_INTEGRITY_METHOD_MD5, CheckBoxDataIntegrityMD5);
-			}										
-		}
+        private void RadioButtonKeyExchangeDH_Click(object sender, System.EventArgs e)
+        {
+            if (_TCM_UpdateCount == 0)
+            {
+                if (RadioButtonKeyExchangeDH.Checked && RadioButtonKeyExchangeDHisChecked)
+                {
+                    RadioButtonKeyExchangeDH.Checked = false;
+                    RadioButtonKeyExchangeDHisChecked = false;
+                }
+                else
+                {
+                    RadioButtonKeyExchangeDH.Checked = true;
+                    RadioButtonKeyExchangeDHisChecked = true;
+                }
+                UpdateCipherFlag(Dvtk.Sessions.CipherFlags.TLS_KEY_EXCHANGE_METHOD_DH, RadioButtonKeyExchangeDH);
+            }
+        }
 
-		private void CheckBoxEncryptionNone_CheckedChanged(object sender, System.EventArgs e) 
-		{
-			if (_TCM_UpdateCount == 0) 
-			{
-				UpdateCipherFlag(Dvtk.Sessions.CipherFlags.TLS_ENCRYPTION_METHOD_NONE, CheckBoxEncryptionNone);
-			}										
-		}
 
-		private void CheckBoxEncryptionTripleDES_CheckedChanged(object sender, System.EventArgs e) 
-		{
-			if (_TCM_UpdateCount == 0) 
-			{
-				UpdateCipherFlag(Dvtk.Sessions.CipherFlags.TLS_ENCRYPTION_METHOD_3DES, CheckBoxEncryptionTripleDES);
-			}										
-		}
+        // DI SHA
+        private void RadioButtonDataIntegritySHA_CheckedChanged(object sender, System.EventArgs e)
+        {
+            if (_TCM_UpdateCount != 0)
+            {
+                if (RadioButtonDataIntegritySHA.Checked)
+                {
+                    RadioButtonDataIntegritySHAisChecked = true;
+                }
+            }
+            else if (!RadioButtonDataIntegritySHA.Checked)
+            {
+                UpdateCipherFlag(Dvtk.Sessions.CipherFlags.TLS_DATA_INTEGRITY_METHOD_SHA1, RadioButtonDataIntegritySHA);
+                RadioButtonDataIntegritySHAisChecked = false;
+            }
+        }
 
-		private void CheckBoxEncryptionAES128_CheckedChanged(object sender, System.EventArgs e) 
-		{
-			if (_TCM_UpdateCount == 0) 
-			{
-				UpdateCipherFlag(Dvtk.Sessions.CipherFlags.TLS_ENCRYPTION_METHOD_AES128, CheckBoxEncryptionAES128);
-			}										
-		}
+        bool RadioButtonDataIntegritySHAisChecked = false;
 
-		private void CheckBoxEncryptionAES256_CheckedChanged(object sender, System.EventArgs e) 
-		{
-			if (_TCM_UpdateCount == 0) 
-			{
-				UpdateCipherFlag(Dvtk.Sessions.CipherFlags.TLS_ENCRYPTION_METHOD_AES256, CheckBoxEncryptionAES256);
-			}												
-		}
+        private void RadioButtonDataIntegritySHA_Click(object sender, System.EventArgs e)
+        {
+            if (_TCM_UpdateCount == 0)
+            {
+                if (RadioButtonDataIntegritySHA.Checked && RadioButtonDataIntegritySHAisChecked)
+                {
+                    RadioButtonDataIntegritySHA.Checked = false;
+                    RadioButtonDataIntegritySHAisChecked = false;
+                }
+                else
+                {
+                    RadioButtonDataIntegritySHA.Checked = true;
+                    RadioButtonDataIntegritySHAisChecked = true;
+                }
+                UpdateCipherFlag(Dvtk.Sessions.CipherFlags.TLS_DATA_INTEGRITY_METHOD_SHA1, RadioButtonDataIntegritySHA);
+            }
+        }
+
+        // DI MD5
+        private void RadioButtonDataIntegrityMD5_CheckedChanged(object sender, System.EventArgs e)
+        {
+            if (_TCM_UpdateCount != 0)
+            {
+                if (RadioButtonDataIntegrityMD5.Checked)
+                {
+                    RadioButtonDataIntegrityMD5isChecked = true;
+                }
+            }
+            else if (!RadioButtonDataIntegrityMD5.Checked)
+            {
+                UpdateCipherFlag(Dvtk.Sessions.CipherFlags.TLS_DATA_INTEGRITY_METHOD_MD5, RadioButtonDataIntegrityMD5);
+                RadioButtonDataIntegrityMD5isChecked = false;
+            }
+        }
+
+        bool RadioButtonDataIntegrityMD5isChecked = false;
+
+        private void RadioButtonDataIntegrityMD5_Click(object sender, System.EventArgs e)
+        {
+            if (_TCM_UpdateCount == 0)
+            {
+                if (RadioButtonDataIntegrityMD5.Checked && RadioButtonDataIntegrityMD5isChecked)
+                {
+                    RadioButtonDataIntegrityMD5.Checked = false;
+                    RadioButtonDataIntegrityMD5isChecked = false;
+                }
+                else
+                {
+                    RadioButtonDataIntegrityMD5.Checked = true;
+                    RadioButtonDataIntegrityMD5isChecked = true;
+                }
+                UpdateCipherFlag(Dvtk.Sessions.CipherFlags.TLS_DATA_INTEGRITY_METHOD_MD5, RadioButtonDataIntegrityMD5);
+            }
+        }
+
+        // En None
+        private void RadioButtonEncryptionNone_CheckedChanged(object sender, System.EventArgs e)
+        {
+            if (_TCM_UpdateCount != 0)
+            {
+                if (RadioButtonEncryptionNone.Checked)
+                {
+                    RadioButtonEncryptionNoneisChecked = true;
+                }
+            }
+            else if (!RadioButtonEncryptionNone.Checked)
+            {
+                UpdateCipherFlag(Dvtk.Sessions.CipherFlags.TLS_ENCRYPTION_METHOD_NONE, RadioButtonEncryptionNone);
+                RadioButtonEncryptionNoneisChecked = false;
+            }
+        }
+
+        bool RadioButtonEncryptionNoneisChecked = false;
+
+        private void RadioButtonEncryptionNone_Click(object sender, System.EventArgs e)
+        {
+            if (_TCM_UpdateCount == 0)
+            {
+                if (RadioButtonEncryptionNone.Checked && RadioButtonEncryptionNoneisChecked)
+                {
+                    RadioButtonEncryptionNone.Checked = false;
+                    RadioButtonEncryptionNoneisChecked = false;
+                }
+                else
+                {
+                    RadioButtonEncryptionNone.Checked = true;
+                    RadioButtonEncryptionNoneisChecked = true;
+                }
+                UpdateCipherFlag(Dvtk.Sessions.CipherFlags.TLS_ENCRYPTION_METHOD_NONE, RadioButtonEncryptionNone);
+            }
+        }
+
+        // En DES
+        private void RadioButtonEncryptionTripleDES_CheckedChanged(object sender, System.EventArgs e)
+        {
+            if (_TCM_UpdateCount != 0)
+            {
+                if (RadioButtonEncryptionTripleDES.Checked)
+                {
+                    CheckBoxEncryption3DESisChecked = true;
+                }
+            }
+            else if (!RadioButtonEncryptionTripleDES.Checked)
+            {
+                UpdateCipherFlag(Dvtk.Sessions.CipherFlags.TLS_ENCRYPTION_METHOD_3DES, RadioButtonEncryptionTripleDES);
+                CheckBoxEncryption3DESisChecked = false;
+            }
+        }
+
+        bool CheckBoxEncryption3DESisChecked = false;
+
+        private void RadioButtonEncryptionTripleDES_Click(object sender, System.EventArgs e)
+        {
+            if (_TCM_UpdateCount == 0)
+            {
+                if (RadioButtonEncryptionTripleDES.Checked && CheckBoxEncryption3DESisChecked)
+                {
+                    RadioButtonEncryptionTripleDES.Checked = false;
+                    CheckBoxEncryption3DESisChecked = false;
+                }
+                else
+                {
+                    RadioButtonEncryptionTripleDES.Checked = true;
+                    CheckBoxEncryption3DESisChecked = true;
+                }
+                UpdateCipherFlag(Dvtk.Sessions.CipherFlags.TLS_ENCRYPTION_METHOD_3DES, RadioButtonEncryptionTripleDES);
+            }
+        }
+
+        // En AES128
+        private void RadioButtonEncryptionAES128_CheckedChanged(object sender, System.EventArgs e)
+        {
+            if (_TCM_UpdateCount != 0)
+            {
+                if (RadioButtonEncryptionAES128.Checked)
+                {
+                    RadioButtonEncryptionAES128isChecked = true;
+                }
+            }
+            else if (!RadioButtonEncryptionAES128.Checked)
+            {
+                UpdateCipherFlag(Dvtk.Sessions.CipherFlags.TLS_ENCRYPTION_METHOD_AES128, RadioButtonEncryptionAES128);
+                RadioButtonEncryptionAES128isChecked = false;
+            }
+        }
+
+        bool RadioButtonEncryptionAES128isChecked = false;
+
+        private void RadioButtonEncryptionAES128_Click(object sender, System.EventArgs e)
+        {
+            if (_TCM_UpdateCount == 0)
+            {
+                if (RadioButtonEncryptionAES128.Checked && RadioButtonEncryptionAES128isChecked)
+                {
+                    RadioButtonEncryptionAES128.Checked = false;
+                    RadioButtonEncryptionAES128isChecked = false;
+                }
+                else
+                {
+                    RadioButtonEncryptionAES128.Checked = true;
+                    RadioButtonEncryptionAES128isChecked = true;
+                }
+                UpdateCipherFlag(Dvtk.Sessions.CipherFlags.TLS_ENCRYPTION_METHOD_AES128, RadioButtonEncryptionAES128);
+            }
+        }
+
+        // En AES256
+        private void RadioButtonEncryptionAES256_CheckedChanged(object sender, System.EventArgs e)
+        {
+            if (_TCM_UpdateCount != 0)
+            {
+                if (RadioButtonEncryptionAES256.Checked)
+                {
+                    RadioButtonEncryptionAES256isChecked = true;
+                }
+            }
+            else if (!RadioButtonEncryptionAES256.Checked)
+            {
+                UpdateCipherFlag(Dvtk.Sessions.CipherFlags.TLS_ENCRYPTION_METHOD_AES256, RadioButtonEncryptionAES256);
+                RadioButtonEncryptionAES256isChecked = false;
+            }
+        }
+
+        bool RadioButtonEncryptionAES256isChecked = false;
+
+        private void RadioButtonEncryptionAES256_Click(object sender, System.EventArgs e)
+        {
+            if (_TCM_UpdateCount == 0)
+            {
+                if (RadioButtonEncryptionAES256.Checked && RadioButtonEncryptionAES256isChecked)
+                {
+                    RadioButtonEncryptionAES256.Checked = false;
+                    RadioButtonEncryptionAES256isChecked = false;
+                }
+                else
+                {
+                    RadioButtonEncryptionAES256.Checked = true;
+                    RadioButtonEncryptionAES256isChecked = true;
+                }
+                UpdateCipherFlag(Dvtk.Sessions.CipherFlags.TLS_ENCRYPTION_METHOD_AES256, RadioButtonEncryptionAES256);
+            }
+        }
+
 
 		public void TCM_CopySelectedTextToClipboard() 
 		{

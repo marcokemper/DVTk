@@ -211,7 +211,7 @@ Copy "$(ProjectDir)Resources\Lib\Microsoft.mshtml.dll" "$(TargetDir)"
 Copy "$(ProjectDir)Resources\Lib\libeay32.dll" "$(TargetDir)"
 Copy "$(ProjectDir)Resources\Lib\ssleay32.dll" "$(TargetDir)"
 </PostBuildEvent>
-    <PreBuildEvent>REM SET LIBRARY_DIRECTORY=$(ProjectDir)..\DVTk_Library\Releases\1_2_3_4\$(ConfigurationName)
+    <PreBuildEvent>REM SET LIBRARY_DIRECTORY=$(ProjectDir)..\DVTk_Library\Releases\3_3_0_0\$(ConfigurationName)
 SET LIBRARY_DIRECTORY=$(ProjectDir)..\DVTk_Library\Builds\$(ConfigurationName)
 
 IF NOT EXIST "%25LIBRARY_DIRECTORY%25" (

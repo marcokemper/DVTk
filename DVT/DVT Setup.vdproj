@@ -15,26 +15,26 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_0694A4DD750D4F19AFF5A44B6FBDCB08"
-        "OwnerKey" = "8:_UNDEFINED"
+        "MsmKey" = "8:_043F95A959EA6D2DC541DF66AD1C6D84"
+        "OwnerKey" = "8:_95B025EEDF328FF5B21C943AD3558072"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_0A54EE4374826061D072521D451BB236"
-        "OwnerKey" = "8:_7805699CA84E34C5848DACC08925319D"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_0A54EE4374826061D072521D451BB236"
+        "MsmKey" = "8:_043F95A959EA6D2DC541DF66AD1C6D84"
         "OwnerKey" = "8:_DF461C1B4D9E4CC598ADF2593FE64B02"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_0A54EE4374826061D072521D451BB236"
+        "MsmKey" = "8:_043F95A959EA6D2DC541DF66AD1C6D84"
         "OwnerKey" = "8:_D7864720A76C4F13904BF6C2E5457FE0"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_0694A4DD750D4F19AFF5A44B6FBDCB08"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -69,30 +69,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_13F97D87770837C22ABDF5E673D86433"
-        "OwnerKey" = "8:_0A54EE4374826061D072521D451BB236"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_13F97D87770837C22ABDF5E673D86433"
-        "OwnerKey" = "8:_DF461C1B4D9E4CC598ADF2593FE64B02"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_13F97D87770837C22ABDF5E673D86433"
-        "OwnerKey" = "8:_D7864720A76C4F13904BF6C2E5457FE0"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_13F97D87770837C22ABDF5E673D86433"
-        "OwnerKey" = "8:_7805699CA84E34C5848DACC08925319D"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_1EBE2A77B14E46A4BC675C4A062B4A7A"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -105,8 +81,44 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_21987C3F011067440E2E17352CAAE36E"
+        "OwnerKey" = "8:_D7864720A76C4F13904BF6C2E5457FE0"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_21987C3F011067440E2E17352CAAE36E"
+        "OwnerKey" = "8:_DF461C1B4D9E4CC598ADF2593FE64B02"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_2A6BE1DDF0CB4BCEAC08715A5E0D6E73"
         "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_2BF4898CBBEB2C5AED4A2CC0EBB3B1D8"
+        "OwnerKey" = "8:_95B025EEDF328FF5B21C943AD3558072"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_2BF4898CBBEB2C5AED4A2CC0EBB3B1D8"
+        "OwnerKey" = "8:_DF461C1B4D9E4CC598ADF2593FE64B02"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_2BF4898CBBEB2C5AED4A2CC0EBB3B1D8"
+        "OwnerKey" = "8:_D7864720A76C4F13904BF6C2E5457FE0"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_2BF4898CBBEB2C5AED4A2CC0EBB3B1D8"
+        "OwnerKey" = "8:_21987C3F011067440E2E17352CAAE36E"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -119,6 +131,24 @@
         {
         "MsmKey" = "8:_30A47EC4152E46CDB80AEC89AFB123A4"
         "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_316385C1E7D7D9DBA6691238150A331B"
+        "OwnerKey" = "8:_2BF4898CBBEB2C5AED4A2CC0EBB3B1D8"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_316385C1E7D7D9DBA6691238150A331B"
+        "OwnerKey" = "8:_DF461C1B4D9E4CC598ADF2593FE64B02"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_316385C1E7D7D9DBA6691238150A331B"
+        "OwnerKey" = "8:_D7864720A76C4F13904BF6C2E5457FE0"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -159,6 +189,24 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_479688731E387862DA566A9BC137F1EC"
+        "OwnerKey" = "8:_2BF4898CBBEB2C5AED4A2CC0EBB3B1D8"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_479688731E387862DA566A9BC137F1EC"
+        "OwnerKey" = "8:_DF461C1B4D9E4CC598ADF2593FE64B02"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_479688731E387862DA566A9BC137F1EC"
+        "OwnerKey" = "8:_D7864720A76C4F13904BF6C2E5457FE0"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_48D7ED62B9184FCE8E4219F18C3FCE07"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -177,14 +225,8 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_4EC59F39D15F910B9106B30D2E7AF107"
-        "OwnerKey" = "8:_D7864720A76C4F13904BF6C2E5457FE0"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_4EC59F39D15F910B9106B30D2E7AF107"
-        "OwnerKey" = "8:_DF461C1B4D9E4CC598ADF2593FE64B02"
+        "MsmKey" = "8:_4EBB9FBDD34A4BCCBCB1217DC750A7A7"
+        "OwnerKey" = "8:_E707587981C04613824FD8436558AFEB"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -207,6 +249,24 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_5901A703FBBC052BDAA0BD31C5B920E1"
+        "OwnerKey" = "8:_B5F4A3B46C2EF28BF3A4FE1BE4EBF04B"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_5901A703FBBC052BDAA0BD31C5B920E1"
+        "OwnerKey" = "8:_DF461C1B4D9E4CC598ADF2593FE64B02"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_5901A703FBBC052BDAA0BD31C5B920E1"
+        "OwnerKey" = "8:_D7864720A76C4F13904BF6C2E5457FE0"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_5AF86E51AABA41B6B50F3108F0E764B4"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -225,6 +285,30 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_5D7BBE206B8075E300F2C9A080FFAA85"
+        "OwnerKey" = "8:_2BF4898CBBEB2C5AED4A2CC0EBB3B1D8"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_5D7BBE206B8075E300F2C9A080FFAA85"
+        "OwnerKey" = "8:_DF461C1B4D9E4CC598ADF2593FE64B02"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_5D7BBE206B8075E300F2C9A080FFAA85"
+        "OwnerKey" = "8:_D7864720A76C4F13904BF6C2E5457FE0"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_5D7BBE206B8075E300F2C9A080FFAA85"
+        "OwnerKey" = "8:_479688731E387862DA566A9BC137F1EC"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_5E2F84C3597D4699B7E45B95E1EDD45F"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -237,26 +321,32 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_64C47DC5399D40219031492FC0E30821"
-        "OwnerKey" = "8:_UNDEFINED"
+        "MsmKey" = "8:_619D5A5D6BA4F9E19EC48C48AA854667"
+        "OwnerKey" = "8:_DF647929B74E81B2D73FAAEEA60A80AB"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_65922A593BB00A35C8A02ACD283A5947"
-        "OwnerKey" = "8:_7805699CA84E34C5848DACC08925319D"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_65922A593BB00A35C8A02ACD283A5947"
+        "MsmKey" = "8:_619D5A5D6BA4F9E19EC48C48AA854667"
         "OwnerKey" = "8:_DF461C1B4D9E4CC598ADF2593FE64B02"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_65922A593BB00A35C8A02ACD283A5947"
+        "MsmKey" = "8:_619D5A5D6BA4F9E19EC48C48AA854667"
         "OwnerKey" = "8:_D7864720A76C4F13904BF6C2E5457FE0"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_619D5A5D6BA4F9E19EC48C48AA854667"
+        "OwnerKey" = "8:_95B025EEDF328FF5B21C943AD3558072"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_64C47DC5399D40219031492FC0E30821"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -281,132 +371,6 @@
         {
         "MsmKey" = "8:_76734931BE7947979DFC3BAF11F0BBC8"
         "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_7805699CA84E34C5848DACC08925319D"
-        "OwnerKey" = "8:_4EC59F39D15F910B9106B30D2E7AF107"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_7805699CA84E34C5848DACC08925319D"
-        "OwnerKey" = "8:_DF461C1B4D9E4CC598ADF2593FE64B02"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_7805699CA84E34C5848DACC08925319D"
-        "OwnerKey" = "8:_D7864720A76C4F13904BF6C2E5457FE0"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_7805699CA84E34C5848DACC08925319D"
-        "OwnerKey" = "8:_C800151AE86FEE9CAD61C262A37C3444"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_78D97938B22DBBA5AEBD53F750CAF857"
-        "OwnerKey" = "8:_D7864720A76C4F13904BF6C2E5457FE0"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_78D97938B22DBBA5AEBD53F750CAF857"
-        "OwnerKey" = "8:_DF461C1B4D9E4CC598ADF2593FE64B02"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_78D97938B22DBBA5AEBD53F750CAF857"
-        "OwnerKey" = "8:_C800151AE86FEE9CAD61C262A37C3444"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_78D97938B22DBBA5AEBD53F750CAF857"
-        "OwnerKey" = "8:_ABD08BF885418E651EC1148634227631"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_78D97938B22DBBA5AEBD53F750CAF857"
-        "OwnerKey" = "8:_65922A593BB00A35C8A02ACD283A5947"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_78D97938B22DBBA5AEBD53F750CAF857"
-        "OwnerKey" = "8:_0A54EE4374826061D072521D451BB236"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_78D97938B22DBBA5AEBD53F750CAF857"
-        "OwnerKey" = "8:_7805699CA84E34C5848DACC08925319D"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_78D97938B22DBBA5AEBD53F750CAF857"
-        "OwnerKey" = "8:_4EC59F39D15F910B9106B30D2E7AF107"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_7EB648B406A8DB41F0798CD2931DD537"
-        "OwnerKey" = "8:_78D97938B22DBBA5AEBD53F750CAF857"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_7EB648B406A8DB41F0798CD2931DD537"
-        "OwnerKey" = "8:_DF461C1B4D9E4CC598ADF2593FE64B02"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_7EB648B406A8DB41F0798CD2931DD537"
-        "OwnerKey" = "8:_C800151AE86FEE9CAD61C262A37C3444"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_7EB648B406A8DB41F0798CD2931DD537"
-        "OwnerKey" = "8:_D7864720A76C4F13904BF6C2E5457FE0"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_7EB648B406A8DB41F0798CD2931DD537"
-        "OwnerKey" = "8:_65922A593BB00A35C8A02ACD283A5947"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_7EB648B406A8DB41F0798CD2931DD537"
-        "OwnerKey" = "8:_7805699CA84E34C5848DACC08925319D"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_7EB648B406A8DB41F0798CD2931DD537"
-        "OwnerKey" = "8:_13F97D87770837C22ABDF5E673D86433"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_7EB648B406A8DB41F0798CD2931DD537"
-        "OwnerKey" = "8:_0A54EE4374826061D072521D451BB236"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_7EB648B406A8DB41F0798CD2931DD537"
-        "OwnerKey" = "8:_4EC59F39D15F910B9106B30D2E7AF107"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -471,6 +435,18 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_95B025EEDF328FF5B21C943AD3558072"
+        "OwnerKey" = "8:_D7864720A76C4F13904BF6C2E5457FE0"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_95B025EEDF328FF5B21C943AD3558072"
+        "OwnerKey" = "8:_DF461C1B4D9E4CC598ADF2593FE64B02"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_97D90E3F47BD4F83AC29241963BB3546"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -501,8 +477,26 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_A229E738F16345EAB223B8E16AF18D70"
-        "OwnerKey" = "8:_FA2A3C19853044E28F5A632E10CE5E5F"
+        "MsmKey" = "8:_A2F30C67B18261E0B689515FBB520F80"
+        "OwnerKey" = "8:_479688731E387862DA566A9BC137F1EC"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_A2F30C67B18261E0B689515FBB520F80"
+        "OwnerKey" = "8:_DF461C1B4D9E4CC598ADF2593FE64B02"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_A2F30C67B18261E0B689515FBB520F80"
+        "OwnerKey" = "8:_D7864720A76C4F13904BF6C2E5457FE0"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_A2F30C67B18261E0B689515FBB520F80"
+        "OwnerKey" = "8:_2BF4898CBBEB2C5AED4A2CC0EBB3B1D8"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -519,24 +513,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_ABD08BF885418E651EC1148634227631"
-        "OwnerKey" = "8:_4EC59F39D15F910B9106B30D2E7AF107"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_ABD08BF885418E651EC1148634227631"
-        "OwnerKey" = "8:_DF461C1B4D9E4CC598ADF2593FE64B02"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_ABD08BF885418E651EC1148634227631"
-        "OwnerKey" = "8:_D7864720A76C4F13904BF6C2E5457FE0"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_AE85D65E4EA74A6AA21CFC9DDF5E1A0B"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -549,14 +525,68 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_B83815E0558C403FB895F62F13E4EEA8"
-        "OwnerKey" = "8:_UNDEFINED"
+        "MsmKey" = "8:_B5F4A3B46C2EF28BF3A4FE1BE4EBF04B"
+        "OwnerKey" = "8:_DF647929B74E81B2D73FAAEEA60A80AB"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_BBD482184A69412D83B1C7014DB1C387"
-        "OwnerKey" = "8:_E707587981C04613824FD8436558AFEB"
+        "MsmKey" = "8:_B5F4A3B46C2EF28BF3A4FE1BE4EBF04B"
+        "OwnerKey" = "8:_DF461C1B4D9E4CC598ADF2593FE64B02"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_B5F4A3B46C2EF28BF3A4FE1BE4EBF04B"
+        "OwnerKey" = "8:_21987C3F011067440E2E17352CAAE36E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_B5F4A3B46C2EF28BF3A4FE1BE4EBF04B"
+        "OwnerKey" = "8:_D7864720A76C4F13904BF6C2E5457FE0"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_B5F4A3B46C2EF28BF3A4FE1BE4EBF04B"
+        "OwnerKey" = "8:_316385C1E7D7D9DBA6691238150A331B"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_B5F4A3B46C2EF28BF3A4FE1BE4EBF04B"
+        "OwnerKey" = "8:_2BF4898CBBEB2C5AED4A2CC0EBB3B1D8"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_B5F4A3B46C2EF28BF3A4FE1BE4EBF04B"
+        "OwnerKey" = "8:_A2F30C67B18261E0B689515FBB520F80"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_B5F4A3B46C2EF28BF3A4FE1BE4EBF04B"
+        "OwnerKey" = "8:_479688731E387862DA566A9BC137F1EC"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_B5F4A3B46C2EF28BF3A4FE1BE4EBF04B"
+        "OwnerKey" = "8:_95B025EEDF328FF5B21C943AD3558072"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_B5F4A3B46C2EF28BF3A4FE1BE4EBF04B"
+        "OwnerKey" = "8:_619D5A5D6BA4F9E19EC48C48AA854667"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_B83815E0558C403FB895F62F13E4EEA8"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -591,36 +621,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_C800151AE86FEE9CAD61C262A37C3444"
-        "OwnerKey" = "8:_D7864720A76C4F13904BF6C2E5457FE0"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_C800151AE86FEE9CAD61C262A37C3444"
-        "OwnerKey" = "8:_DF461C1B4D9E4CC598ADF2593FE64B02"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_C95F266B3D33431A00BE516A594CFF58"
-        "OwnerKey" = "8:_7EB648B406A8DB41F0798CD2931DD537"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_C95F266B3D33431A00BE516A594CFF58"
-        "OwnerKey" = "8:_DF461C1B4D9E4CC598ADF2593FE64B02"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_C95F266B3D33431A00BE516A594CFF58"
-        "OwnerKey" = "8:_D7864720A76C4F13904BF6C2E5457FE0"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_CA299C3977704E178155279E8615010A"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -645,6 +645,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_D543115CD5174DA7ACAC5DAF37AFFF09"
+        "OwnerKey" = "8:_1EBE2A77B14E46A4BC675C4A062B4A7A"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_D600897AFFC4448B8CA9C49A5F9A4985"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -659,6 +665,54 @@
         {
         "MsmKey" = "8:_DF461C1B4D9E4CC598ADF2593FE64B02"
         "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_DF647929B74E81B2D73FAAEEA60A80AB"
+        "OwnerKey" = "8:_D7864720A76C4F13904BF6C2E5457FE0"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_DF647929B74E81B2D73FAAEEA60A80AB"
+        "OwnerKey" = "8:_DF461C1B4D9E4CC598ADF2593FE64B02"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_DF647929B74E81B2D73FAAEEA60A80AB"
+        "OwnerKey" = "8:_21987C3F011067440E2E17352CAAE36E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_DF647929B74E81B2D73FAAEEA60A80AB"
+        "OwnerKey" = "8:_043F95A959EA6D2DC541DF66AD1C6D84"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_DF647929B74E81B2D73FAAEEA60A80AB"
+        "OwnerKey" = "8:_316385C1E7D7D9DBA6691238150A331B"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_DF647929B74E81B2D73FAAEEA60A80AB"
+        "OwnerKey" = "8:_479688731E387862DA566A9BC137F1EC"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_DF647929B74E81B2D73FAAEEA60A80AB"
+        "OwnerKey" = "8:_2BF4898CBBEB2C5AED4A2CC0EBB3B1D8"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_DF647929B74E81B2D73FAAEEA60A80AB"
+        "OwnerKey" = "8:_95B025EEDF328FF5B21C943AD3558072"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -681,30 +735,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_EC6025A3A5A33608830DCA6B256ADCBA"
-        "OwnerKey" = "8:_7805699CA84E34C5848DACC08925319D"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_EC6025A3A5A33608830DCA6B256ADCBA"
-        "OwnerKey" = "8:_DF461C1B4D9E4CC598ADF2593FE64B02"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_EC6025A3A5A33608830DCA6B256ADCBA"
-        "OwnerKey" = "8:_D7864720A76C4F13904BF6C2E5457FE0"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_EC6025A3A5A33608830DCA6B256ADCBA"
-        "OwnerKey" = "8:_0A54EE4374826061D072521D451BB236"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_ED97EF06CBD54753B72E777791C86FF1"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -723,8 +753,8 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_F6C0FBBDA1A14616A7521EC2F35798A7"
-        "OwnerKey" = "8:_1EBE2A77B14E46A4BC675C4A062B4A7A"
+        "MsmKey" = "8:_F42F51E6009946309C0786C1898DA898"
+        "OwnerKey" = "8:_FA2A3C19853044E28F5A632E10CE5E5F"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -772,67 +802,73 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_C800151AE86FEE9CAD61C262A37C3444"
+        "OwnerKey" = "8:_21987C3F011067440E2E17352CAAE36E"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_4EC59F39D15F910B9106B30D2E7AF107"
+        "OwnerKey" = "8:_95B025EEDF328FF5B21C943AD3558072"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_ABD08BF885418E651EC1148634227631"
+        "OwnerKey" = "8:_043F95A959EA6D2DC541DF66AD1C6D84"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_7805699CA84E34C5848DACC08925319D"
+        "OwnerKey" = "8:_2BF4898CBBEB2C5AED4A2CC0EBB3B1D8"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_65922A593BB00A35C8A02ACD283A5947"
+        "OwnerKey" = "8:_316385C1E7D7D9DBA6691238150A331B"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_0A54EE4374826061D072521D451BB236"
+        "OwnerKey" = "8:_479688731E387862DA566A9BC137F1EC"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_13F97D87770837C22ABDF5E673D86433"
+        "OwnerKey" = "8:_A2F30C67B18261E0B689515FBB520F80"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_EC6025A3A5A33608830DCA6B256ADCBA"
+        "OwnerKey" = "8:_5D7BBE206B8075E300F2C9A080FFAA85"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_78D97938B22DBBA5AEBD53F750CAF857"
+        "OwnerKey" = "8:_DF647929B74E81B2D73FAAEEA60A80AB"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_7EB648B406A8DB41F0798CD2931DD537"
+        "OwnerKey" = "8:_619D5A5D6BA4F9E19EC48C48AA854667"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_C95F266B3D33431A00BE516A594CFF58"
+        "OwnerKey" = "8:_B5F4A3B46C2EF28BF3A4FE1BE4EBF04B"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_5901A703FBBC052BDAA0BD31C5B920E1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -955,6 +991,37 @@
         }
         "File"
         {
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_043F95A959EA6D2DC541DF66AD1C6D84"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:DvtkScriptSupport, Version=3.3.0.0, Culture=neutral, PublicKeyToken=5166403a8245d5cb, processorArchitecture=x86"
+                "ScatterAssemblies"
+                {
+                    "_043F95A959EA6D2DC541DF66AD1C6D84"
+                    {
+                    "Name" = "8:DvtkScriptSupport.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:DvtkScriptSupport.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_4B0E8B63BDDD443392AF5CFF0796BB08"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0694A4DD750D4F19AFF5A44B6FBDCB08"
             {
             "SourcePath" = "8:Resources\\Dvt.ico"
@@ -973,37 +1040,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_0A54EE4374826061D072521D451BB236"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:DvtkComparator, Version=3.1.7.0, Culture=neutral, PublicKeyToken=5166403a8245d5cb, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_0A54EE4374826061D072521D451BB236"
-                    {
-                    "Name" = "8:DvtkComparator.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:DvtkComparator.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_4B0E8B63BDDD443392AF5CFF0796BB08"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0AB959317DD74538846F4746E9B014DA"
@@ -1106,37 +1142,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_13F97D87770837C22ABDF5E673D86433"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:DvtkHl7, Version=3.1.7.0, Culture=neutral, PublicKeyToken=5166403a8245d5cb, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_13F97D87770837C22ABDF5E673D86433"
-                    {
-                    "Name" = "8:DvtkHl7.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:DvtkHl7.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_4B0E8B63BDDD443392AF5CFF0796BB08"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1F814E48AB5E465E9AE90322E897413A"
             {
             "SourcePath" = "8:Resources\\Lib\\ssleay32.dll"
@@ -1157,6 +1162,37 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_21987C3F011067440E2E17352CAAE36E"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:DvtkDicomEmulators, Version=3.3.0.0, Culture=neutral, PublicKeyToken=5166403a8245d5cb, processorArchitecture=x86"
+                "ScatterAssemblies"
+                {
+                    "_21987C3F011067440E2E17352CAAE36E"
+                    {
+                    "Name" = "8:DvtkDicomEmulators.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:DvtkDicomEmulators.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_4B0E8B63BDDD443392AF5CFF0796BB08"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2A6BE1DDF0CB4BCEAC08715A5E0D6E73"
             {
             "SourcePath" = "8:Resources\\viewonmes.xsl"
@@ -1175,6 +1211,37 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_2BF4898CBBEB2C5AED4A2CC0EBB3B1D8"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:DvtkHighLevelInterface, Version=3.3.0.0, Culture=neutral, PublicKeyToken=5166403a8245d5cb, processorArchitecture=x86"
+                "ScatterAssemblies"
+                {
+                    "_2BF4898CBBEB2C5AED4A2CC0EBB3B1D8"
+                    {
+                    "Name" = "8:DvtkHighLevelInterface.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:DvtkHighLevelInterface.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_4B0E8B63BDDD443392AF5CFF0796BB08"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2DEB56A842AB463BB36D18BDBF550A66"
@@ -1215,6 +1282,37 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_316385C1E7D7D9DBA6691238150A331B"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:DvtkInformationEntity, Version=3.3.0.0, Culture=neutral, PublicKeyToken=5166403a8245d5cb, processorArchitecture=x86"
+                "ScatterAssemblies"
+                {
+                    "_316385C1E7D7D9DBA6691238150A331B"
+                    {
+                    "Name" = "8:DvtkInformationEntity.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:DvtkInformationEntity.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_4B0E8B63BDDD443392AF5CFF0796BB08"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_397470CE86FC4C2594CD3CAFA4601BD7"
@@ -1337,6 +1435,37 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_479688731E387862DA566A9BC137F1EC"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:DvtkComparator, Version=3.3.0.0, Culture=neutral, PublicKeyToken=5166403a8245d5cb, processorArchitecture=x86"
+                "ScatterAssemblies"
+                {
+                    "_479688731E387862DA566A9BC137F1EC"
+                    {
+                    "Name" = "8:DvtkComparator.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:DvtkComparator.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_4B0E8B63BDDD443392AF5CFF0796BB08"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_48D7ED62B9184FCE8E4219F18C3FCE07"
             {
             "SourcePath" = "8:DVTk_Library\\CharacterSets\\ISO_IR_100"
@@ -1395,37 +1524,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_4EC59F39D15F910B9106B30D2E7AF107"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:DvtkApplicationLayer, Version=3.1.7.0, Culture=neutral, PublicKeyToken=5166403a8245d5cb, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_4EC59F39D15F910B9106B30D2E7AF107"
-                    {
-                    "Name" = "8:DvtkApplicationLayer.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:DvtkApplicationLayer.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_4B0E8B63BDDD443392AF5CFF0796BB08"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_52C362EE0E2741BEB806072B14C6CAB2"
@@ -1488,6 +1586,37 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_5901A703FBBC052BDAA0BD31C5B920E1"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:DvtkDicomUnicodeConversion, Version=3.3.0.0, Culture=neutral, PublicKeyToken=5166403a8245d5cb, processorArchitecture=x86"
+                "ScatterAssemblies"
+                {
+                    "_5901A703FBBC052BDAA0BD31C5B920E1"
+                    {
+                    "Name" = "8:DvtkDicomUnicodeConversion.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:DvtkDicomUnicodeConversion.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_4B0E8B63BDDD443392AF5CFF0796BB08"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5AF86E51AABA41B6B50F3108F0E764B4"
             {
             "SourcePath" = "8:Resources\\Installer Banner.jpg"
@@ -1548,6 +1677,37 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_5D7BBE206B8075E300F2C9A080FFAA85"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:DvtkCommonDataFormat, Version=3.3.0.0, Culture=neutral, PublicKeyToken=5166403a8245d5cb, processorArchitecture=x86"
+                "ScatterAssemblies"
+                {
+                    "_5D7BBE206B8075E300F2C9A080FFAA85"
+                    {
+                    "Name" = "8:DvtkCommonDataFormat.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:DvtkCommonDataFormat.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_4B0E8B63BDDD443392AF5CFF0796BB08"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5E2F84C3597D4699B7E45B95E1EDD45F"
             {
             "SourcePath" = "8:DVTk_Library\\CharacterSets\\ISO_IR_6"
@@ -1588,6 +1748,37 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_619D5A5D6BA4F9E19EC48C48AA854667"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:DVTKManagedCodeAdapter, Version=3.3.0.0, Culture=neutral, PublicKeyToken=5166403a8245d5cb, processorArchitecture=x86"
+                "ScatterAssemblies"
+                {
+                    "_619D5A5D6BA4F9E19EC48C48AA854667"
+                    {
+                    "Name" = "8:DVTKManagedCodeAdapter.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:DVTKManagedCodeAdapter.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_4B0E8B63BDDD443392AF5CFF0796BB08"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_64C47DC5399D40219031492FC0E30821"
             {
             "SourcePath" = "8:DVTk_Library\\CharacterSets\\ISO_IR_101"
@@ -1606,37 +1797,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_65922A593BB00A35C8A02ACD283A5947"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:DvtkInformationEntity, Version=3.1.7.0, Culture=neutral, PublicKeyToken=5166403a8245d5cb, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_65922A593BB00A35C8A02ACD283A5947"
-                    {
-                    "Name" = "8:DvtkInformationEntity.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:DvtkInformationEntity.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_4B0E8B63BDDD443392AF5CFF0796BB08"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6D2BD1DC3C72484DB7BDEE9BBEE1AF2F"
@@ -1717,99 +1877,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_7805699CA84E34C5848DACC08925319D"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:DvtkHighLevelInterface, Version=3.1.7.0, Culture=neutral, PublicKeyToken=5166403a8245d5cb, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_7805699CA84E34C5848DACC08925319D"
-                    {
-                    "Name" = "8:DvtkHighLevelInterface.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:DvtkHighLevelInterface.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_4B0E8B63BDDD443392AF5CFF0796BB08"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_78D97938B22DBBA5AEBD53F750CAF857"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:DVTK, Version=3.1.7.0, Culture=neutral, PublicKeyToken=5166403a8245d5cb, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_78D97938B22DBBA5AEBD53F750CAF857"
-                    {
-                    "Name" = "8:DVTK.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:DVTK.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_4B0E8B63BDDD443392AF5CFF0796BB08"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_7EB648B406A8DB41F0798CD2931DD537"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:DvtkData, Version=3.1.7.0, Culture=neutral, PublicKeyToken=5166403a8245d5cb, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_7EB648B406A8DB41F0798CD2931DD537"
-                    {
-                    "Name" = "8:DvtkData.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:DvtkData.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_4B0E8B63BDDD443392AF5CFF0796BB08"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_80573C592C1848DE8123C07CA61254C7"
@@ -1992,6 +2059,37 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_95B025EEDF328FF5B21C943AD3558072"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:DvtkApplicationLayer, Version=3.3.0.0, Culture=neutral, PublicKeyToken=5166403a8245d5cb, processorArchitecture=x86"
+                "ScatterAssemblies"
+                {
+                    "_95B025EEDF328FF5B21C943AD3558072"
+                    {
+                    "Name" = "8:DvtkApplicationLayer.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:DvtkApplicationLayer.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_4B0E8B63BDDD443392AF5CFF0796BB08"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_97D90E3F47BD4F83AC29241963BB3546"
             {
             "SourcePath" = "8:DVTk_Library\\AllDimseCommands.def"
@@ -2092,6 +2190,37 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_A2F30C67B18261E0B689515FBB520F80"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:DvtkHl7, Version=3.3.0.0, Culture=neutral, PublicKeyToken=5166403a8245d5cb, processorArchitecture=x86"
+                "ScatterAssemblies"
+                {
+                    "_A2F30C67B18261E0B689515FBB520F80"
+                    {
+                    "Name" = "8:DvtkHl7.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:DvtkHl7.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_4B0E8B63BDDD443392AF5CFF0796BB08"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A44D36827704430AB4598EB76B2F1459"
             {
             "SourcePath" = "8:Documentation\\User Manual\\DVTDICOMSCRIPT.HLP"
@@ -2132,37 +2261,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_ABD08BF885418E651EC1148634227631"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:DvtkScriptSupport, Version=3.1.7.0, Culture=neutral, PublicKeyToken=5166403a8245d5cb, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_ABD08BF885418E651EC1148634227631"
-                    {
-                    "Name" = "8:DvtkScriptSupport.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:DvtkScriptSupport.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_4B0E8B63BDDD443392AF5CFF0796BB08"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_AE85D65E4EA74A6AA21CFC9DDF5E1A0B"
             {
             "SourcePath" = "8:DVTk_Library\\CharacterSets\\ISO_2022_IR_87"
@@ -2201,6 +2299,37 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_B5F4A3B46C2EF28BF3A4FE1BE4EBF04B"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:DvtkData, Version=3.3.0.0, Culture=neutral, PublicKeyToken=5166403a8245d5cb, processorArchitecture=x86"
+                "ScatterAssemblies"
+                {
+                    "_B5F4A3B46C2EF28BF3A4FE1BE4EBF04B"
+                    {
+                    "Name" = "8:DvtkData.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:DvtkData.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_4B0E8B63BDDD443392AF5CFF0796BB08"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B83815E0558C403FB895F62F13E4EEA8"
@@ -2323,68 +2452,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_C800151AE86FEE9CAD61C262A37C3444"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:DvtkDicomEmulators, Version=3.1.7.0, Culture=neutral, PublicKeyToken=5166403a8245d5cb, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_C800151AE86FEE9CAD61C262A37C3444"
-                    {
-                    "Name" = "8:DvtkDicomEmulators.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:DvtkDicomEmulators.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_4B0E8B63BDDD443392AF5CFF0796BB08"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_C95F266B3D33431A00BE516A594CFF58"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:DvtkDicomUnicodeConversion, Version=3.1.7.0, Culture=neutral, PublicKeyToken=5166403a8245d5cb, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_C95F266B3D33431A00BE516A594CFF58"
-                    {
-                    "Name" = "8:DvtkDicomUnicodeConversion.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:DvtkDicomUnicodeConversion.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_4B0E8B63BDDD443392AF5CFF0796BB08"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_CA299C3977704E178155279E8615010A"
             {
             "AssemblyRegister" = "3:1"
@@ -2496,6 +2563,37 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_DF647929B74E81B2D73FAAEEA60A80AB"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:DVTK, Version=3.3.0.0, Culture=neutral, PublicKeyToken=5166403a8245d5cb, processorArchitecture=x86"
+                "ScatterAssemblies"
+                {
+                    "_DF647929B74E81B2D73FAAEEA60A80AB"
+                    {
+                    "Name" = "8:DVTK.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:DVTK.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_4B0E8B63BDDD443392AF5CFF0796BB08"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E0FF69E0268240BAAD5A9916CABFD249"
             {
             "SourcePath" = "8:Resources\\createreport.xsl"
@@ -2534,37 +2632,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_EC6025A3A5A33608830DCA6B256ADCBA"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:DvtkCommonDataFormat, Version=3.1.7.0, Culture=neutral, PublicKeyToken=5166403a8245d5cb, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_EC6025A3A5A33608830DCA6B256ADCBA"
-                    {
-                    "Name" = "8:DvtkCommonDataFormat.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:DvtkCommonDataFormat.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_4B0E8B63BDDD443392AF5CFF0796BB08"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_ED97EF06CBD54753B72E777791C86FF1"
@@ -2821,14 +2888,14 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:DVTk DICOM Validation Tool"
-        "ProductCode" = "8:{7A7B4164-AFC7-4E7D-B54B-7EE5396D4F1E}"
-        "PackageCode" = "8:{BA98A4DC-7E40-444C-9749-E70483ED6D06}"
+        "ProductCode" = "8:{6CBEE8DD-C885-422F-B69B-FC94E0CC786D}"
+        "PackageCode" = "8:{C712B246-8FE0-4FB3-A2D2-A1D0D901B15E}"
         "UpgradeCode" = "8:{50C7C7F4-5179-4C4A-AAF7-FD5859246DA7}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:2.6.8"
+        "ProductVersion" = "8:2.8.0"
         "Manufacturer" = "8:DVTk"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:http://www.dvtk.org"
@@ -3318,7 +3385,7 @@
             {
             "UseDynamicProperties" = "11:TRUE"
             "IsDependency" = "11:FALSE"
-            "SourcePath" = "8:C:\\Program Files\\Common Files\\Merge Modules\\Microsoft_VC80_MFC_x86.msm"
+            "SourcePath" = "8:C:\\Program Files (x86)\\Common Files\\Merge Modules\\Microsoft_VC80_MFC_x86.msm"
                 "Properties"
                 {
                 }
@@ -3328,21 +3395,7 @@
             "Feature" = "8:"
             "IsolateTo" = "8:"
             }
-            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_A229E738F16345EAB223B8E16AF18D70"
-            {
-            "UseDynamicProperties" = "11:TRUE"
-            "IsDependency" = "11:TRUE"
-            "SourcePath" = "8:policy_8_0_microsoft_vc80_mfcloc_x86.msm"
-                "Properties"
-                {
-                }
-            "LanguageId" = "3:0"
-            "Exclude" = "11:FALSE"
-            "Folder" = "8:"
-            "Feature" = "8:"
-            "IsolateTo" = "8:"
-            }
-            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_BBD482184A69412D83B1C7014DB1C387"
+            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_4EBB9FBDD34A4BCCBCB1217DC750A7A7"
             {
             "UseDynamicProperties" = "11:TRUE"
             "IsDependency" = "11:TRUE"
@@ -3356,21 +3409,7 @@
             "Feature" = "8:"
             "IsolateTo" = "8:"
             }
-            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_E707587981C04613824FD8436558AFEB"
-            {
-            "UseDynamicProperties" = "11:TRUE"
-            "IsDependency" = "11:FALSE"
-            "SourcePath" = "8:C:\\Program Files\\Common Files\\Merge Modules\\Microsoft_VC80_CRT_x86.msm"
-                "Properties"
-                {
-                }
-            "LanguageId" = "3:0"
-            "Exclude" = "11:FALSE"
-            "Folder" = "8:"
-            "Feature" = "8:"
-            "IsolateTo" = "8:"
-            }
-            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_F6C0FBBDA1A14616A7521EC2F35798A7"
+            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_D543115CD5174DA7ACAC5DAF37AFFF09"
             {
             "UseDynamicProperties" = "11:TRUE"
             "IsDependency" = "11:TRUE"
@@ -3384,11 +3423,39 @@
             "Feature" = "8:"
             "IsolateTo" = "8:"
             }
+            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_E707587981C04613824FD8436558AFEB"
+            {
+            "UseDynamicProperties" = "11:TRUE"
+            "IsDependency" = "11:FALSE"
+            "SourcePath" = "8:C:\\Program Files (x86)\\Common Files\\Merge Modules\\Microsoft_VC80_CRT_x86.msm"
+                "Properties"
+                {
+                }
+            "LanguageId" = "3:0"
+            "Exclude" = "11:FALSE"
+            "Folder" = "8:"
+            "Feature" = "8:"
+            "IsolateTo" = "8:"
+            }
+            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_F42F51E6009946309C0786C1898DA898"
+            {
+            "UseDynamicProperties" = "11:TRUE"
+            "IsDependency" = "11:TRUE"
+            "SourcePath" = "8:policy_8_0_microsoft_vc80_mfcloc_x86.msm"
+                "Properties"
+                {
+                }
+            "LanguageId" = "3:0"
+            "Exclude" = "11:FALSE"
+            "Folder" = "8:"
+            "Feature" = "8:"
+            "IsolateTo" = "8:"
+            }
             "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_FA2A3C19853044E28F5A632E10CE5E5F"
             {
             "UseDynamicProperties" = "11:TRUE"
             "IsDependency" = "11:FALSE"
-            "SourcePath" = "8:C:\\Program Files\\Common Files\\Merge Modules\\Microsoft_VC80_MFCLOC_x86.msm"
+            "SourcePath" = "8:C:\\Program Files (x86)\\Common Files\\Merge Modules\\Microsoft_VC80_MFCLOC_x86.msm"
                 "Properties"
                 {
                 }
